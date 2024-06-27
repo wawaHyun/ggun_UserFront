@@ -1,0 +1,50 @@
+'use client'
+
+import { Inter } from "next/font/google";
+import "./globals.css";
+import dynamic from "next/dynamic";
+import Header from "./component/navigation/header";
+import Alarm from "./component/util/alarm";
+import Footer from "./component/box/footer";
+
+const inter = Inter({ subsets: ["latin"] });
+
+const ReduxProvider = dynamic(() => import("./redux/redux-provider"), {
+  ssr: false
+});
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+
+  return (
+    <html lang="ko">
+      <head>
+        <link rel="icon" href="/imgs/chart.png" type="image/<generated>" sizes="<generated" border-radius="50%" />
+        <title>최고의 주식거래소:: GGUN</title>
+      </head>
+      <body className={inter.className}>
+        <div className="w-screen h-screen bg-white">
+          <ReduxProvider>
+            {/* {parseCookies().accessToken != undefined ? */}
+            <div className="h-[80px]">
+              <div className="h-[70px] top-0 left-0 fixed z-10">
+                <Header />
+              </div>
+              <div className="h-screen hover:w-[500px] top-0 right-0 fixed z-10">
+                <Alarm />
+              </div>
+            </div>
+            {/* : <div></div>}  */}
+            <div className="justify-center flex z-1">
+              {children}
+            </div>
+              <div className="border-t-[1px]"><Footer /></div>
+          </ReduxProvider>
+        </div>
+      </body>
+    </html>
+  );
+}
