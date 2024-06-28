@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Pagination from "@/app/component/navigation/pagination";
 import { Search } from "@/app/component/search/search";
 import { useRouter } from "next/navigation";
+import { fetchMyArticleList } from "@/app/redux/service/article.service";
 
 const Board: NextPage = ({ params }: any) => {
 
@@ -32,12 +33,14 @@ const Board: NextPage = ({ params }: any) => {
         //     });
 
         //spring
-        // dispatch(fetchMyArticleList(params.id))
-        //     .then((res: any) =>
-        //        console.log(res)
-        //     )
-        // .catch((error: any) =>
-        //     console.log("articles err!!! : " + error))
+        dispatch(fetchMyArticleList(params.id))
+            .then((res: any) =>
+               console.log(res)
+            )
+        .catch((error: any) =>
+            console.log("articles err!!! : " + error))
+
+       console.log("articles: ",params.id)
     }, [params.id, dispatch]);
 
     const qnalist = [
@@ -70,7 +73,6 @@ const Board: NextPage = ({ params }: any) => {
         { id: 12, title: "자택 근무자 접속 안돼요", content: "방화벽 낮춰도 접속 막혀져 있는데 어떻게 해야 하나요?", writer: "한영희", answer: "처리중", modDate: "24-06-10" },
     ]
 
-
     const qqq = [
         [1, "비밀번호 초기화"],
         [2, "페이지 오류"],
@@ -85,6 +87,7 @@ const Board: NextPage = ({ params }: any) => {
         [11, "공모주 신청방법"],
         [12, "금융사기"],
     ]
+
     function handleColor() {
         const number = Math.floor(Math.random() * 5);
         console.log("number : ", number)

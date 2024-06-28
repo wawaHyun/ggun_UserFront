@@ -1,5 +1,5 @@
-interface ISubmenu {
+interface Imenu {
     id: number;
     title: string;
-    address: any;
+    href: string;
 }
