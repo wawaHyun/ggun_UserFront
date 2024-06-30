@@ -1,7 +1,7 @@
 import BoardMenu from "@/app/component/navigation/boardMenu"
 
 
-export default function DashboardLayout({
+export default function BoardLayout({
     children,
 }: {
     children: React.ReactNode

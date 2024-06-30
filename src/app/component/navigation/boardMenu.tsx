@@ -1,20 +1,14 @@
 'use client'
+
 import { BottomLlinButton } from "@/app/component/button/tabButton";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { BoardMenus } from "@/app/common/enums/menus";
+import Link from "next/link";
 
 function BoardMenu() {
 
-    const router = useRouter()
     const [isOpen, setIsOpen] = useState(0);
-
-    const serviceMenu: Imenu[] = [
-        { id: 1, title: "자주하는 질문", href: `/board/2`},
-        { id: 2, title: "QnA /1:1문의", href: `/board/1`},
-        { id: 3, title: "공지사항", href: `/board/3`},
-        { id: 4, title: "이벤트", href: `/board/4`},
-        //q&n :1 , 자주하는 질문 :2 , 공지사항 : 3, 이벤트 게시판 : 4
-    ]
 
     return (
         <nav className="w-[150px] fixed top-[80px] left-3">
@@ -32,9 +26,9 @@ function BoardMenu() {
 
             {isOpen > 0 ?
                 <div className="absolute top-6 rounded-lg left-0 h-auto w-auto mt-10 bg-white text-black border shadow-lg p-3">
-                    {serviceMenu.map((v, i) =>
+                    { BoardMenus.map((v:IMenu, i:number) =>
                         <div key={v.id} className="h-[30px] text-center my-5">
-                            <BottomLlinButton text={v.title} path={v.href} color="" select={isOpen == v.id}/>
+                            <Link href={v.href}><BottomLlinButton text={v.title} color="" select={isOpen == v.id}/></Link>
                         </div>
                     )}
                 </div>

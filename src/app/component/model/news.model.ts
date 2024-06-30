@@ -1,5 +1,4 @@
-
-interface NewsProps {
+interface INewsDummy {
     id: number;
     main: Boolean;
     img: any;
@@ -7,11 +6,18 @@ interface NewsProps {
     paper: string;
     ref: any;
     time: any;
-}
+  }
 
 
 interface INewsToday {
 title:string,
-newslist : NewsProps[];
+newslist : INewsDummy[];
 }
 
+interface INews {
+    id?:number,
+    imgLink : string,
+    title : string,
+    content : string,
+    imgSrc : string,
+  }

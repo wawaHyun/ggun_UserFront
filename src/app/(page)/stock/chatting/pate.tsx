@@ -5,8 +5,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
-import { BaseBox } from "@/app/component/box/baseBox";
-
+import { WhiteBox } from "@/app/component/box/baseBox";
 
 function ChatRoom() {
     const [isOpen, setIsOpen] = useState(false);
@@ -31,7 +30,7 @@ function ChatRoom() {
         <div className="w-full h-full">
                 {roomlist.map((i: any) =>
                     <button key={i.id} className="flex-col py-1 w-full text-left" onClick={() => router.push(`/stock/chatting/${i.senderId}`)}>
-                        <BaseBox color="white hover:bg-pebble-400 flex-col" content={
+                        <WhiteBox color="white hover:bg-pebble-400 flex-col" content={
                             <div className="">
                                 <div className="flex ">
                                     <div className="text-sm w-2/3 truncate">{i.sender}와의 대화</div>

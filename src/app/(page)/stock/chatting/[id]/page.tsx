@@ -2,7 +2,7 @@
 
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { AdminIcon } from "../../../../../../public/icon/icon";
+import { AdminIcon } from "../../../../common/icon/icon";
 
 function Chartting({ params }: any) {
 
