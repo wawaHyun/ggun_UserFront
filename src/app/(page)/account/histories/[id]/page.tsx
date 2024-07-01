@@ -1,6 +1,7 @@
 
 import { IAccount } from "@/app/api/model/account.model";
 import { accountHistories, allAccount } from "@/app/api/account/route";
+import { accDummy, tradeDummy } from "@/app/common/dummy/account.dummy";
 
 async function Account() {
 

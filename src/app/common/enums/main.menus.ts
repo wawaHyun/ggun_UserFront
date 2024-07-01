@@ -10,9 +10,8 @@ export const HeaderMenus: IMenu[] =[
 
 export const AcountMenus: IMenu[] = [
     { id: 1, title: "은행계좌목록", href: `/account/list` },
-    { id: 2, title: "거래내역", href: `/account/histories` },
-    { id: 2, title: "계좌이체", href: `/account/trade` },
-
+    { id: 2, title: "거래내역", href: `/account/histories/1` },
+    { id: 3, title: "계좌이체", href: `/account/trade` },
 ]
 
 export const BoardMenus: IMenu[] = [

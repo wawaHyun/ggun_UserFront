@@ -1,5 +1,5 @@
 
-export const accountDummy = [
+export const accDummy = [
     { id: 1, account: "111-111-555555" },
     { id: 2, account: "222-222-555555" },
     { id: 3, account: "333-333-555555" },

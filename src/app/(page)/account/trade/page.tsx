@@ -1,16 +1,48 @@
-import { WhiteBox } from "@/app/component/box/baseBox";
+'use client'
 
-export default async function AccountTrade(){
+import { deposit, withdraw } from "@/app/api/account/route";
+import { IAccount } from "@/app/api/model/account.model";
+import { WhiteBox } from "@/app/component/box/baseBox";
+import { useState } from "react";
+
+export default function AccountTrade(){
+
+    const [accinfo, setAccInfo] = useState<IAccount>({
+        id: 0,
+        balance : 0,   
+        acType: '',
+    });
+
+    const input = (info:string,name: string) => {
+        setAccInfo({
+          ...accinfo,
+          [name]: info
+        });
+        console.log('accinfo : ' + JSON.stringify(accinfo))
+      }
+
+    const depositMoney = async() => {
+        const result = await deposit(accinfo);
+        return result
+    }
+
+    const withdrawMoney = async() => {
+        const result = await withdraw(accinfo);
+        return result
+    }
+    
 
     return(
-<div className="w-full h-full flex justify-center content-center">
-<div className="w-[80%] h-auto flex-col">
+<div className="w-ful min-h-[100px] my-[100px] flex justify-center items-center">
+<div className="w-[30%] h-full flex-col">
     <WhiteBox content={
         <div>
-            <span>입금 : </span>
-            <input type="text" />
+            <div>입금 : <input type="radio" name="actype" value="입금" className="w-5"/></div>
+            <div>출금 : <input type="radio" name="actype" value="출금" className="w-5"/></div>
+
+            계좌이체 금액<input type="number" onChange={(e)=>input(e.target.value,'balance')}/>
             </div>
-    }/>
+    }/> 
 </div>
 </div>
     )

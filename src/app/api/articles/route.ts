@@ -3,10 +3,10 @@
 import { IArticle } from "../model/article.model";
 
 
-export const myArticleList = async (board_id: string) => {
-    const board = parseInt(board_id)
+export const myArticleList = async () => {
+    // const board = parseInt(board_id)
     try {                            
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/articles/list?=${board}`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/api/boards/list`);
         const data = await response.json();
         console.log("myArticleList : " + JSON.stringify(data))
         return data

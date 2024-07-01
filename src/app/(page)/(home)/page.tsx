@@ -29,7 +29,7 @@ export default function Home() {
         <div className="flex-col w-[40%]">
           <div className="w-full h-[90%] border">ad img </div>
           <div className="w-full h-auto py-2">
-          <Search text="Search" path=""/>
+          <Search text="Search" click=""/>
           </div>
         </div>
 

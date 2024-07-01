@@ -4,7 +4,7 @@ import Link from "next/link"
 
 export default async function Articles({ id }: any) {
 
-    const allArticles = await myArticleList(id)
+    const allArticles = await myArticleList()
 
     return (
         <table className="sticky z-[0] p-4">

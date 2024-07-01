@@ -2,13 +2,14 @@
 
 import { AcountMenus } from "@/app/common/enums/main.menus";
 import { BottomLlinButton } from "@/app/component/button/tabButton";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 
 function AcountMenu() {
 
-    const router = useRouter()
     const [isOpen, setIsOpen] = useState(0);
+    const mypath = usePathname()
 
     return (
         <nav className="w-[150px] fixed top-[80px] left-3">
@@ -28,7 +29,7 @@ function AcountMenu() {
                 <div className="absolute top-6 rounded-lg left-0 h-auto w-auto mt-10 bg-white text-black border shadow-lg p-3">
                     {AcountMenus.map((v:IMenu, i:number) =>
                         <div key={v.id} className="h-[30px] text-center my-5">
-                            <BottomLlinButton text={v.title} click={v.href} color="" select={isOpen == v.id}/>
+                            <Link href={v.href}><BottomLlinButton text={v.title} select={mypath == v.href} /></Link>
                         </div>
                     )}
                 </div>
