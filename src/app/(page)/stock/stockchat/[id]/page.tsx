@@ -32,7 +32,7 @@ function StockChat({ params }: any) {
                 </div>
                 <div>
                     {data.map((v, i) =>
-                        <StockChatBox id={v.id} writer={v.writer} title={v.title} content={v.content} date={v.date} />
+                        <StockChatBox key={v.id} id={v.id} writer={v.writer} title={v.title} content={v.content} date={v.date} />
                     )}
                 </div>
             </div>

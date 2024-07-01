@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { usePathname } from 'next/navigation'
-import { AcountMenus, BoardMenus, HeaderMenus } from "@/app/common/enums/menus";
+import { AcountMenus, BoardMenus, HeaderMenus } from "@/app/common/enums/main.menus";
 
 
 function Header() {

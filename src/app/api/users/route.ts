@@ -1,6 +1,6 @@
 'use server'
 
-import { IUser } from "./model/user.model";
+import { IUser } from "../model/user.model";
 
 export const existUser = async (username: string) => {
     try {
@@ -25,4 +25,3 @@ export const loginUser = async (admin: IUser) => {
         return error
     }
 }
-

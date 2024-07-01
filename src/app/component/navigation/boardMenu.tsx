@@ -1,10 +1,9 @@
 'use client'
 
 import { BottomLlinButton } from "@/app/component/button/tabButton";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { BoardMenus } from "@/app/common/enums/menus";
 import Link from "next/link";
+import { BoardMenus } from "@/app/common/enums/main.menus";
 
 function BoardMenu() {
 

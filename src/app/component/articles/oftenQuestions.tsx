@@ -37,7 +37,7 @@ export default function OftenQuestionsBox() {
         <div>
             <Search text="자주하는 질문 검색" />
             {oftenQuestions.map((i) =>
-                <Link href={`/articles/${i[0]}`} className={`cursor-pointer hover:text-black text-clip p-3 ${handleColor()} ${handleSize()}`}>{i[1]}</Link>
+                <Link key={i[0]} href={`/articles/${i[0]}`} className={`cursor-pointer hover:text-black text-clip p-3 ${handleColor()} ${handleSize()}`}>{i[1]}</Link>
             )}
         </div>
     )

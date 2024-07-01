@@ -1,6 +1,6 @@
 "use client"
 
-import { IUser } from "@/app/api/users/model/user.model";
+import { IUser } from "@/app/api/model/user.model";
 import { existUser, loginUser } from "@/app/api/users/route";
 import { useRef, useState } from "react";
 import { MoveButton } from "../button/moveButton";

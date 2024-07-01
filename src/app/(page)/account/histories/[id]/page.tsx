@@ -1,8 +1,10 @@
 
-import { allAccount } from "@/app/api/account/route";
+import { IAccount } from "@/app/api/model/account.model";
+import { accountHistories, allAccount } from "@/app/api/account/route";
 
 async function Account() {
 
+    const addTrade = await accountHistories();
     const accList = await allAccount();
 
     const month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
@@ -14,7 +16,7 @@ async function Account() {
                     <label htmlFor="">계좌선택 : </label>
                     <select name="" id="">
                         {accList.map((i:any) =>
-                            <option value="" key={i.id}>{i.account}</option>)}
+                            <option value="" key={i.id}>{i.acno}</option>)}
                     </select>
 
                     <label htmlFor="">월별조회 : </label>
@@ -37,24 +39,26 @@ async function Account() {
                         <tr>
                             <th>No.</th>
                             <th>거래일자</th>
+                            <th>종류</th>
                             <th>입금</th>
                             <th>출금</th>
                             <th>거래명</th>
                             <th>잔액</th>
                             <th>적요</th>
-                            <th>메모</th>
+                            <th>연결계좌번호</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {accList.map((v: any, i: any) =>
+                        {addTrade.map((v: IAccount, i: any) =>
                             <tr key={v.id}>
                                 <td>{v.id}</td>
-                                <td>{v.date}</td>
-                                <td>{v.deposit}</td>
-                                <td>{v.withdrawal}</td>
-                                <td>{v.name}</td>
-                                <td>{v.memo1}</td>
-                                <td>{v.memo2}</td>
+                                <td>{v.modDate}</td>``
+                                <td>{v.bank}</td>``
+                                <td>{v.acType == "입금" ? v.balance : 0}</td>
+                                <td>{v.acType == "출금" ? v.balance : 0}</td>
+                                <td>{v.balance}</td>
+                                <td>{v.bank}</td>
+                                <td>{v.refundAcno}</td>
                             </tr>
                         )}
                     </tbody>

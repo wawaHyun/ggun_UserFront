@@ -1,9 +1,9 @@
 'use client'
 
+import { AcountMenus } from "@/app/common/enums/main.menus";
 import { BottomLlinButton } from "@/app/component/button/tabButton";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { AcountMenus } from "@/app/common/enums/menus";
 
 function AcountMenu() {
 
@@ -28,7 +28,7 @@ function AcountMenu() {
                 <div className="absolute top-6 rounded-lg left-0 h-auto w-auto mt-10 bg-white text-black border shadow-lg p-3">
                     {AcountMenus.map((v:IMenu, i:number) =>
                         <div key={v.id} className="h-[30px] text-center my-5">
-                            <BottomLlinButton text={v.title} path={v.href} color="" select={isOpen == v.id}/>
+                            <BottomLlinButton text={v.title} click={v.href} color="" select={isOpen == v.id}/>
                         </div>
                     )}
                 </div>

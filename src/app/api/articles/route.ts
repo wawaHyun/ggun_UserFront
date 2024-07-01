@@ -1,6 +1,6 @@
 'use server'
 
-import { IArticle } from "./model/article.model";
+import { IArticle } from "../model/article.model";
 
 
 export const myArticleList = async (board_id: string) => {

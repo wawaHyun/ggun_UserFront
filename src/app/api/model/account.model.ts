@@ -5,7 +5,7 @@ export declare type IAccount = {
     refundAcno?: string,
     bank?: string,
     acType?: string,
-    regDate?: Date,
-    modDate?: Date,
+    regDate?: string,
+    modDate?: string,
     user: number
 }

@@ -1,4 +1,5 @@
-import { FirstMemus } from "@/app/common/enums/menus";
+
+import { FirstMemus } from "@/app/common/enums/first.menus";
 import Link from "next/link";
 
 function FirstMenu() {

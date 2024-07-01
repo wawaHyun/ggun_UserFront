@@ -1,6 +1,6 @@
 'use server'
 
-import { IAccount } from "./model/account.model";
+import { IAccount } from "../model/account.model";
 
 export const allAccount = async () => {
     const id = 1;
