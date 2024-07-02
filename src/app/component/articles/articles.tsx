@@ -1,35 +1,38 @@
 import { myArticleList } from "@/app/api/articles/route"
+import { IArticle } from "@/app/api/model/article.model";
+import { qnalistDummy } from "@/app/common/dummy/articles.dummy"
 import Link from "next/link"
+import { title } from "process";
 
 
 export default async function Articles({ id }: any) {
 
-    const allArticles = await myArticleList()
+    // const allArticles = await myArticleList()
+    const allArticles = qnalistDummy;
 
     return (
-        <table className="sticky z-[0] p-4">
+        <table className="">
             <thead>
                 <tr>
                     <th>No.</th>
+                    <th>게시판</th>
                     <th>제목</th>
                     <th>작성자</th>
                     <th>내용</th>
-                    <th>borad id</th>
                     <th>작성일</th>
                     <th>처리완료일</th>
                 </tr>
             </thead>
             <tbody>
-                {allArticles.map((v: any, i: any) =>
+                {allArticles.map((v: IArticle, i: number) =>
                     <tr key={v.id}>
                         <td>{v.id}</td>
-                        <td><Link href={`/articles/detail/${v.id}`}>{v.title}</Link></td>
-                        <td>{v.writer_id}</td>
-                        <td><Link href={`/articles/detail/${v.id}`}>{v.content}</Link></td>
-                        <td>{v.title}</td>
-                        <td>{v.writer_id}</td>
-                        <td>{v.content}</td>
-                        <td>{v.board_id}</td>
+                        <td>{v.boardId}</td>
+                        <td><Link href={{pathname:`/articles/detail/${v.id}`,query:{
+                         title : v.title, content : v.content, writerId : v.writerId, regDate : v.regDate, modDate: v.modDate}}}>{v.title}</Link></td>
+                        <td>{v.writerId}</td>
+                        <td><Link href={{pathname:`/articles/detail/${v.id}`,query:{
+                         title : v.title, content : v.content, writerId : v.writerId, regDate : v.regDate, modDate: v.modDate}}}>{v.content}</Link></td>
                         <td>{v.regDate}</td>
                         <td>{v.modDate}</td>
                     </tr>

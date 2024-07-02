@@ -6,7 +6,7 @@ import { useRef, useState } from "react";
 import { MoveButton } from "../button/moveButton";
 import OAuth from "./oAuth";
 
-export default function LoginBox () {
+export default function IdLoginBox() {
 
     const [isWrongId, setIsWrongId] = useState('');
     const [isWrongPw, setIsWrongPw] = useState('');
@@ -46,8 +46,8 @@ export default function LoginBox () {
             'Tel : 2046')
     }
 
-    const exist = async()=> await existUser(admininfo.username)
-    const login = async()=> await loginUser(admininfo)
+    const exist = async () => await existUser(admininfo.username)
+    const login = async () => await loginUser(admininfo)
 
     const handleSubmit = () => {
         console.log('login page 입력받은 내용 ' + JSON.stringify(admininfo))
@@ -89,8 +89,10 @@ export default function LoginBox () {
     return (
 
         <div className="w-full h-full">
-            <div className="mt-4">
-                <div>
+            <div className="">
+                <div className="pb-3">
+                    <div className="bold text-lg text-center">ID 로그인</div>
+                    <div className="text-slate-500 text-center">주문/뱅킹/서비스 신청 등 모든 거래가 가능합니다.</div>
                 </div>
                 <label className="block text-gray-700 text-sm font-bold mb-2">
                     ID : ggunAdmin0001
@@ -124,8 +126,16 @@ export default function LoginBox () {
                         )
                     : <pre></pre>}
             </div>
-            <div className="h-[30px] mt-5">
-                <MoveButton text="Sign In" click={() => handleSubmit()} />
+
+            <MoveButton style="w-full mt-[45px]" text="Login" click={() => handleSubmit()} />
+            <div className="grid grid-cols-3 text-center py-3">
+                자동로그아웃시간
+                <select name="timeSelect" id="1">
+                    <option value="" selected>30분</option>
+                    <option value="">1시간</option>
+                    <option value="">3시간</option>
+                </select>
+                <MoveButton text="인증센터 바로가기" />
             </div>
 
             <button
@@ -133,7 +143,8 @@ export default function LoginBox () {
                 Forget Password?
             </button>
             <div className="w-full items-center content-center justify-center">
-            <OAuth />
+                <span className="text-red-500">*</span><span className="text-slate-500">소셜로그인시 기능이 제한될수 있습니다.</span>
+                <OAuth />
             </div>
         </div >
 

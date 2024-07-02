@@ -1,14 +1,15 @@
 
 import Image from 'next/image';
 import NewsHeader from "../../component/navigation/newsHeader";
-import NewsToday from "./module/newsToday";
+import NewsToday from "../../component/news/newsToday";
 import { newsDummy } from "@/app/common/dummy/news.dummy";
 import Link from "next/link";
 import { allNews } from '@/app/api/news/route';
 
 export default async  function NewsPage() {
 
-  const newslist = await allNews();
+  // const newslist = await allNews();
+  const newslist = newsDummy;
 
   return (
     <div className="h-full w-full">

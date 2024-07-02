@@ -3,7 +3,7 @@
 import { useState } from "react";
 import StockInfo from "./stockInfo/page";
 import { TabButton } from "@/app/component/button/tabButton";
-import NewsToday from "../news/module/newsToday";
+import NewsToday from "../../component/news/newsToday";
 import StockLog from "./stockLog/page";
 import ChatRoom from "./chatting/pate";
 import { allNews } from "@/app/api/news/route";
@@ -32,11 +32,11 @@ function Stock() {
                     <div className="w-full h-[300px] bg-cover bg-benner_img bg-center bg-fixed"></div>
                     <div className="w-[85%] border shadow-lg rounded-lg ">
                         <div className="h-[50px] grid grid-cols-5">
-                            <TabButton text="종합" click={() => setBtn(1)} color='' select={btn == 1} />
-                            <TabButton text="시세" click={() => setBtn(2)} color='' select={btn == 2} />
-                            <TabButton text="재무정보" click={() => setBtn(3)} color='' select={btn == 3} />
-                            <TabButton text="관련뉴스" click={() => setBtn(4)} color='' select={btn == 4} />
-                            <TabButton text="종목토론" click={() => setBtn(5)} color='' select={btn == 5} />
+                            <TabButton text="종합" click={() => setBtn(1)} select={btn == 1} />
+                            <TabButton text="시세" click={() => setBtn(2)} select={btn == 2} />
+                            <TabButton text="재무정보" click={() => setBtn(3)} select={btn == 3} />
+                            <TabButton text="관련뉴스" click={() => setBtn(4)} select={btn == 4} />
+                            <TabButton text="종목토론" click={() => setBtn(5)} select={btn == 5} />
                         </div>
                         <div className="p-5" >{handleInfo(btn)}</div>
                     </div>

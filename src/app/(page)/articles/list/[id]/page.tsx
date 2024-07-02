@@ -1,6 +1,10 @@
 
+import { BoardMenus } from "@/app/common/enums/main.menus";
 import Articles from "@/app/component/articles/articles";
 import OftenQuestionsBox from "@/app/component/articles/oftenQuestions";
+import BoardMenu from "@/app/component/navigation/boardMenu";
+import { Search } from "@/app/component/search/search";
+import Link from "next/link";
 import { Suspense } from "react";
 
 async function ArticleList({ params }: any) {
@@ -17,19 +21,43 @@ async function ArticleList({ params }: any) {
     };
 
     return (
-        <div className="w-full h-full ">
-            <div className="m-auto bg-pebble-200 text-[32px] rounded-b-lg text-center w-[80%]">
-                {handleInfo()}</div>
-            {params.id == 2 ?
-                <div className="grid-cols-5 w-[80%] m-auto my-2">
-                    <OftenQuestionsBox />
-                </div>
-                : <div></div>}
+        <div className="w-full h-full flex justify-center">
+            <div className="w-[80%] ">
+                    <div className="sticky left-0 top-20">
+                        <BoardMenu />
+                    </div>
+                <div className="bg-pebble-100 ">
 
-            <div className="m-auto w-[80%] bg-white">
-                <Suspense>
-                    <Articles id={params.id} />
-                </Suspense>
+                    <div className="content-center iflex-col h-[120px]">
+                        <div className="space-x-5 justify-center flex">
+                            <div className="text-[35px] text-center content-center text-white w-[20%]">{handleInfo()}</div>
+                            <div className=" w-[70%] h-full">
+                                <Search text={`${handleInfo()} 검색`} style="" />
+                                <div className="space-x-3 py-3">
+                                    <span className="bold text-[20px] text-white">추천검색어</span>
+                                    <span className="text-pebble-200">비밀번호 초기화</span>
+                                    <span className="text-pebble-200">계좌개설</span>
+                                    <span className="text-pebble-200">공모주 신청방법</span>
+                                    <span className="text-pebble-200">금융사기 예방</span>
+                                    <span className="text-pebble-200">사이트 이용 가이드</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div className={`grid-cols-5 justify-center flex ${params.id == 2 ? 'visible' : 'h-1 invisible'}`}>
+                        <OftenQuestionsBox />
+                    </div>
+
+                </div>
+
+                <div className="h-auto my-10">
+                    <Suspense>
+                        <Articles id={params.id} />
+                    </Suspense>
+                </div>
             </div>
         </div>
     )

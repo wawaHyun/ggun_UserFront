@@ -14,7 +14,6 @@ export default function OAuth () {
             <div className="relative top-0 w-[50px] h-[50px]">
             <Link href={`http://localhost:8080/oauth2/authorization/kakao`}><Image src={'/imgs/kakao.png'} alt={"google"} fill /></Link>
             </div>
-            구글은 어캄?
         </div>
     )
 }

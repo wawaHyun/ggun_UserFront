@@ -9,9 +9,9 @@ export default function NewsHeader(){
           <Link href={`/news`}><span className=" text-bold text-[16px] text-black hover:text-gray-300">Home</span></Link>
           {newstitle.map((elem: IMenu, i: number) => {
             return (
-              <div key={elem.id} onClick={() => { elem.href }} className="text-center text-black hover:text-gray-300">
+              <Link key={elem.id} href={elem.href} className="text-center text-black hover:text-gray-300">
                 {elem.title}
-              </div>
+              </Link>
             );
           })}
         </div>

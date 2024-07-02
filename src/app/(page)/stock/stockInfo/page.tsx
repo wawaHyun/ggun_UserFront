@@ -1,6 +1,6 @@
-'use client'
 
-import { OneBox } from "@/app/component/box/oneBox";
+import { OneBox } from "@/app/component/stock/oneBox";
+
 
 function StockInfo() {
 
@@ -27,7 +27,7 @@ function StockInfo() {
         <div className="w-full h-full">
             <div className="w-full flex justify-center">
                 <div className="flex-col w-full grid grid-cols-4 gap-3">
-                    {data.map((v,i)=>
+                    {data.map((v:any,i:number)=>
                     <div key={v.id} className="h-[40px]">
                         <OneBox title={v.title} data={v.data} color={v.color}/>
                     </div>

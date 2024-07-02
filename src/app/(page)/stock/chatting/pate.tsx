@@ -30,7 +30,7 @@ function ChatRoom() {
         <div className="w-full h-full">
                 {roomlist.map((i: any) =>
                     <button key={i.id} className="flex-col py-1 w-full text-left" onClick={() => router.push(`/stock/chatting/${i.senderId}`)}>
-                        <WhiteBox color="white hover:bg-pebble-400 flex-col" content={
+                        <WhiteBox style="white hover:bg-pebble-400 flex-col" content={
                             <div className="">
                                 <div className="flex ">
                                     <div className="text-sm w-2/3 truncate">{i.sender}와의 대화</div>

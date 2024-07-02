@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       backgroundImage: {
           benner_img : "url('/imgs/stockBenner.jpg')",
+          search_img : "url('/imgs/searchIcon.png')",
       },
       colors: {
         pebble: {

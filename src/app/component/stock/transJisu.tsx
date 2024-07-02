@@ -1,5 +1,5 @@
 import BarChart from "../chart/barChart";
-import { WhiteBox } from "./baseBox";
+import { WhiteBox } from "../box/baseBox";
 
 export default function TransJisu() {
     return (
@@ -8,19 +8,19 @@ export default function TransJisu() {
             <div><WhiteBox content={<div className="py-3 ">
                 <div className="text-blue-500">구리<hr /></div>
                 <div className=""><BarChart/></div>
-            </div>} color="" /></div>
+            </div>} style="" /></div>
             <div><WhiteBox content={<div className="">
                 <div className="text-amber-500">금<hr /></div>
                 <div className=""><BarChart/></div>
-            </div>} color="" /></div>
+            </div>} style="" /></div>
             <div><WhiteBox content={<div className="">
                 <div className="text-green-500">희토류<hr /></div>
                 <div className=""><BarChart/></div>
-            </div>} color="" /></div>
+            </div>} style="" /></div>
             <div><WhiteBox content={<div className="">
                 <div className="text-red-500">반도체<hr /></div>
                 <div className=""><BarChart/></div>
-            </div>} color="" /></div>
+            </div>} style="" /></div>
             </div>
         </div>
     )

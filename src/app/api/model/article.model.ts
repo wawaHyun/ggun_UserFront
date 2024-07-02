@@ -4,6 +4,6 @@ export declare type IArticle = {
     content?: string,
     writerId? : string,
     boardId? : string,
-    mod_date? : string,
-    reg_date? : string
+    modDate? : string,
+    regDate? : string
 }

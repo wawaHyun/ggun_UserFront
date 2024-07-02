@@ -47,12 +47,12 @@ function Header() {
                             <Link className={`flex hover:border-t-2 hover:border-pebble-500 h-[70px] w-full text-center justify-center items-center checked:border ${pathName == hover.href ? 'border-pebble-500 border-t-2': '' }`}
                                 href={hover.href}>{hover.title}</Link>
 
-                            <div className="relative top-2 group/edit hidden group-hover/item:block h-[1px] ">
-                                <div className="h-auto bg-white rounded-lg">
+                            <div className="relative top-0 mt-2 group/edit hidden group-hover/item:block h-[1px] ">
+                                <div className="h-auto bg-white rounded-lg ">
                                     {hover.title == "거래내역" ?
                                         <ul className="text-center py-2 items-center justify-center border rounded-lg shadow-sm ">
                                             {AcountMenus.map((hover2: IMenu, i: number) => (
-                                                <li key={hover2.id} className=""><Link className="hover:text-pebble-500 w-full py-2 " href={hover2.href}>{hover2.title}</Link></li>
+                                                <li key={hover2.id} className="pb-1"><Link className="hover:text-pebble-500 w-full" href={hover2.href}>{hover2.title}</Link></li>
                                             ))}
                                         </ul>
                                         : <div></div>}
@@ -60,7 +60,7 @@ function Header() {
                                     {hover.title == "고객센터" ?
                                         <ul className="text-center py-2 items-center justify-center border rounded-lg shadow-sm ">
                                             {BoardMenus.map((hover2: IMenu, i: number) => (
-                                                <li key={hover2.id} className=""><Link className="hover:text-pebble-500 w-full py-2 " href={hover2.href}>{hover2.title}</Link></li>
+                                                <li key={hover2.id} className="pb-1"><Link className="hover:text-pebble-500 w-full py-2 " href={hover2.href}>{hover2.title}</Link></li>
                                             ))}
                                         </ul>
                                         : <div></div>}

@@ -49,7 +49,7 @@ function Chartting({ params }: any) {
                             </div>
                             :
                             <div key={i.id} className="flex w-full">
-                                <div className="w-[50px] h-[40px]"> <AdminIcon color="#433E49" /></div>
+                                <div className="w-[50px] h-[40px]"> <AdminIcon style="#433E49" /></div>
                                 <div className="border shadow-md rounded-lg text-pretty flex items-center my-3 max-w-[45%] p-2 bg-pebble-400">
                                     {i.text}
                                 </div>

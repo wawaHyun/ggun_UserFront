@@ -1,5 +1,5 @@
 interface IMenu {
     id: number;
-    title: string;
-    href: string;
+    title: any;
+    href: any;
 }

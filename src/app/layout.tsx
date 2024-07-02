@@ -25,11 +25,11 @@ export default function RootLayout({
         <title>최고의 주식거래소:: GGUN</title>
       </head>
       <body className={inter.className}>
-        <div className="w-screen h-screen bg-white">
+        <div className="bg-white">
           <ReduxProvider>
             {/* {parseCookies().accessToken != undefined ? */}
             <div className="h-[80px]">
-              <div className="h-[70px] top-0 left-0 fixed z-10">
+              <div className="fixed h-[70px] top-0 left-0 fixed z-10">
                 <Header />
               </div>
               <div className="h-screen hover:w-[500px] top-0 right-0 fixed z-10">
@@ -40,7 +40,7 @@ export default function RootLayout({
             <div className="justify-center flex z-1">
               {children}
             </div>
-              <div className="border-t-[1px]"><Footer /></div>
+              <div className="border-t-[1px] relative bottom-0 f-full"><Footer /></div>
           </ReduxProvider>
         </div>
       </body>

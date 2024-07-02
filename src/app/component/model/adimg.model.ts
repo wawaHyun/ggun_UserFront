@@ -1,0 +1,4 @@
+
+interface IAdImg {
+    imgSrc : string,
+  }
