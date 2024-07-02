@@ -7,7 +7,6 @@ import BarChart from "@/app/component/chart/barChart";
 import FirstMenu from "@/app/component/navigation/fristMenu";
 import { Search } from "@/app/component/search/search";
 import { useState } from "react";
-import Image from "next/image";
 import AdBox from "@/app/component/main/adBox";
 
 export default function Home() {

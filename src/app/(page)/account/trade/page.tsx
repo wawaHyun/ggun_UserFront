@@ -1,8 +1,6 @@
 'use client'
 
-import { deposit, withdraw } from "@/app/api/account/route";
 import { IAccount } from "@/app/api/model/account.model";
-import { WhiteBox } from "@/app/component/box/baseBox";
 import { useState } from "react";
 
 export default function AccountTrade() {
@@ -21,17 +19,6 @@ export default function AccountTrade() {
         });
         console.log('accinfo : ' + JSON.stringify(accinfo))
     }
-
-    const depositMoney = async () => {
-        const result = await deposit(accinfo);
-        return result
-    }
-
-    const withdrawMoney = async () => {
-        const result = await withdraw(accinfo);
-        return result
-    }
-
 
     return (
         <div className="w-ful min-h-[100px] my-[100px] flex justify-center items-center">

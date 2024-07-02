@@ -1,4 +1,4 @@
-import { QuestionIcon } from "../../common/icon/icon";
+import { QuestionIcon } from "../../../../public/icon/icon";
 
 export function Search({ text, click, style }: IButton) {
   return (

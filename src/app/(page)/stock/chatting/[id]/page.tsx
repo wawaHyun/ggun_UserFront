@@ -1,8 +1,6 @@
 'use client'
 
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { AdminIcon } from "../../../../common/icon/icon";
+import { AdminIcon } from "../../../../../../public/icon/icon";
 
 function Chartting({ params }: any) {
 
@@ -25,15 +23,6 @@ function Chartting({ params }: any) {
         { id: 14, roomid: myid, text: "감삼다", time: "11:50" },
         { id: 15, roomid: myid, text: "맛밥하시고 내일 봬요", time: "12:03" }
     ]
-
-    const dispatch = useDispatch()
-
-    // const allchatlist = useSelector(getAllChats);
-
-    // useEffect(() => {
-    //     dispatch(fetchChatById(params.id))
-    // }, [params.id, dispatch]);
-
 
     return (
         <div className="w-full h-full flex flex-col justify-center ">

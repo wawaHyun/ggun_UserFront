@@ -1,10 +1,8 @@
 
-import { BoardMenus } from "@/app/common/enums/main.menus";
 import Articles from "@/app/component/articles/articles";
 import OftenQuestionsBox from "@/app/component/articles/oftenQuestions";
 import BoardMenu from "@/app/component/navigation/boardMenu";
 import { Search } from "@/app/component/search/search";
-import Link from "next/link";
 import { Suspense } from "react";
 
 async function ArticleList({ params }: any) {

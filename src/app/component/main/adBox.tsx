@@ -3,9 +3,9 @@ import Image from "next/image"
 export default function AdBox(){
 
     const adImgs:IAdImg[] =[
-        {imgSrc : '/imgs/jusikAd1'},
-        {imgSrc : '/imgs/jusikAd2'},
-        {imgSrc : '/imgs/jusikAd3'},
+        {imgSrc : '/imgs/jusikAd1.png'},
+        {imgSrc : '/imgs/jusikAd2.png'},
+        {imgSrc : '/imgs/jusikAd3.png'},
     ]
     return(
         <div className="">

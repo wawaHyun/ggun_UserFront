@@ -1,12 +1,8 @@
 
 import { IAccount } from "@/app/api/model/account.model";
-import { accountHistories, allAccount } from "@/app/api/account/route";
 import { accDummy, tradeDummy } from "@/app/common/dummy/account.dummy";
 
 async function Account() {
-
-    const addTrade = await accountHistories();
-    const accList = await allAccount();
 
     const month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     
@@ -16,7 +12,7 @@ async function Account() {
                 <div className="grid grid-cols-2 w-[50%]">
                     <label htmlFor="">계좌선택 : </label>
                     <select name="" id="">
-                        {accList.map((i:any) =>
+                        {accDummy.map((i:any) =>
                             <option value="" key={i.id}>{i.acno}</option>)}
                     </select>
 
@@ -50,7 +46,7 @@ async function Account() {
                         </tr>
                     </thead>
                     <tbody>
-                        {addTrade.map((v: IAccount, i: any) =>
+                        {tradeDummy.map((v: IAccount, i: any) =>
                             <tr key={v.id}>
                                 <td>{v.id}</td>
                                 <td>{v.modDate}</td>``

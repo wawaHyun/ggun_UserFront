@@ -1,11 +1,9 @@
-import { allAccount } from "@/app/api/account/route";
+
 import { tradeDummy } from "@/app/common/dummy/account.dummy";
 import { WhiteBox } from "@/app/component/box/baseBox";
 import Image from "next/image";
 
 export default async function AccountList() {
-
-  const accList = await allAccount();
 
   return (
     <div className="w-full h-full">

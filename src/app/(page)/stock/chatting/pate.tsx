@@ -1,21 +1,12 @@
 
 'use client'
 
-import Image from "next/image";
-import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useDispatch, useSelector } from "react-redux";
 import { WhiteBox } from "@/app/component/box/baseBox";
 
 function ChatRoom() {
-    const [isOpen, setIsOpen] = useState(false);
-    const router = useRouter()
-    const dispatch = useDispatch();
-    // const allchatlist = useSelector(getAllChats);
 
-    // useEffect(() => {
-    //     dispatch(fetchAllChats())
-    // }, [dispatch])
+    const router = useRouter()
 
     const roomlist = [
         { id: 1, senderId: 1111, sender: "김대리", content: "안녕하세요, 좋은아침입니다.", modDate: "24-06-20 09:19" },
@@ -28,21 +19,18 @@ function ChatRoom() {
 
     return (
         <div className="w-full h-full">
-                {roomlist.map((i: any) =>
-                    <button key={i.id} className="flex-col py-1 w-full text-left" onClick={() => router.push(`/stock/chatting/${i.senderId}`)}>
-                        <WhiteBox style="white hover:bg-pebble-400 flex-col" content={
-                            <div className="">
-                                <div className="flex ">
-                                    <div className="text-sm w-2/3 truncate">{i.sender}와의 대화</div>
-                                    <div className="text-gray-400 text-xs w-1/3">{i.modDate}</div>
-                                </div>
-                                {/* <div>
-                                        <div className="text-xs row-span-2 text-gray-400 truncate">{i.content}</div>
-                                    </div> */}
+            {roomlist.map((i: any) =>
+                <button key={i.id} className="flex-col py-1 w-full text-left" onClick={() => router.push(`/stock/chatting/${i.senderId}`)}>
+                    <WhiteBox style="white hover:bg-pebble-400 flex-col" content={
+                        <div className="">
+                            <div className="flex ">
+                                <div className="text-sm w-2/3 truncate">{i.sender}와의 대화</div>
+                                <div className="text-gray-400 text-xs w-1/3">{i.modDate}</div>
                             </div>
-                        } />
-                    </button>
-                )}
+                        </div>
+                    } />
+                </button>
+            )}
         </div >
     )
 }

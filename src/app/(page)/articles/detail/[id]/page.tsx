@@ -7,7 +7,6 @@ import { IArticle } from '@/app/api/model/article.model';
 
 async function ArticleDetail({params} : any) {
 
-//   const article = await findArticleById(params.id);
   const article:IArticle = articlesDummy[1];
 
   return (

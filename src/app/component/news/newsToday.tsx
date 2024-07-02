@@ -1,11 +1,10 @@
-import { allNews } from "@/app/api/news/route";
+
 import { newsDummy } from "@/app/common/dummy/news.dummy";
 import Image from "next/image";
 import Link from "next/link";
 
 async function NewsToday({title, newslist}:{title:string, newslist?:INews[]}){
 
-  // const todayNews:INews[] = await allNews()
   const todayNews = newsDummy
   
   return(

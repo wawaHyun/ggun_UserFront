@@ -3,7 +3,7 @@
 import { AcountMenus } from "@/app/common/enums/main.menus";
 import { BottomLlinButton } from "@/app/component/button/tabButton";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 function AcountMenu() {

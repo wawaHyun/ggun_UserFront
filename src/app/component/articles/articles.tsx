@@ -1,13 +1,11 @@
-import { myArticleList } from "@/app/api/articles/route"
+
 import { IArticle } from "@/app/api/model/article.model";
 import { qnalistDummy } from "@/app/common/dummy/articles.dummy"
 import Link from "next/link"
-import { title } from "process";
 
 
 export default async function Articles({ id }: any) {
 
-    // const allArticles = await myArticleList()
     const allArticles = qnalistDummy;
 
     return (

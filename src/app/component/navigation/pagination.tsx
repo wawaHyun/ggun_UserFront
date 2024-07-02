@@ -1,6 +1,6 @@
-import { NextPage } from "next"
+
 import { useState } from "react";
-import { ArrowRightIcon, ArrowLeftIcon } from "../../common/icon/icon";
+import { ArrowRightIcon, ArrowLeftIcon } from "../../../../public/icon/icon";
 
 const Pagination = ({ total, limit, page, setPage }: any) => {
     const [btnActive, setBtnActive] = useState('');

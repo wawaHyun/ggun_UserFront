@@ -6,11 +6,9 @@ import { TabButton } from "@/app/component/button/tabButton";
 import NewsToday from "../../component/news/newsToday";
 import StockLog from "./stockLog/page";
 import ChatRoom from "./chatting/pate";
-import { allNews } from "@/app/api/news/route";
 
 function Stock() {
     const [btn, setBtn] = useState(1);
-    const [active, setActive] = useState(1);
 
     function handleInfo(btn: any) {
         console.log("handelCharts : ", btn)

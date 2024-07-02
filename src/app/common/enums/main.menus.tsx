@@ -21,7 +21,6 @@ export const BoardMenus: IMenu[] = [
     { id: 2, title: "QnA /1:1문의", href: `/articles/list/1` },
     { id: 3, title: "공지사항", href: `/articles/list/3` },
     { id: 4, title: "이벤트", href: `/articles/list/4` },
-    { id: 5, title: "환율", href: `/articles/list/4` },
     //q&n :1 , 자주하는 질문 :2 , 공지사항 : 3, 이벤트 게시판 : 4
 ]
 
