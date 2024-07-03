@@ -25,9 +25,16 @@ export default function Timer() {
         alert("로그인이 만료되었습니다.")
         router.push(`/login`);
       }
+
+      
       return () => clearInterval(id);
 
     }, [sec,minute,router]);
   
-    return (<div className="text-slate-400 text-sm">남은시간 <span className="">{minute}:{sec}</span></div>);
+    return (<div className="text-slate-400 text-sm">
+      {minute==0 && sec==0 ?
+      <div></div>
+      : <div>남은시간 <span className="">{minute}:{sec}</span></div>
+      }
+      </div>);
   }

@@ -5,9 +5,9 @@ import Link from "next/link"
 import { title } from "process";
 
 
-export default async function Articles({ id }: any) {
+export default async function Articles({prop}:{prop: string}) {
 
-    // const allArticles = await myArticleList()
+    // const allArticles = await myArticleList(id)
     const allArticles = qnalistDummy;
 
     return (

@@ -1,6 +1,6 @@
 // import { AttachFile, FmdGood } from '@mui/icons-material';
 import { articlesDummy } from '@/app/common/dummy/articles.dummy';
-import { WhiteBox } from '@/app/component/box/baseBox';
+import { WhiteBox } from '@/app/component/style/whiteBox';
 import Link from 'next/link';
 import { MoveButton } from '@/app/component/button/moveButton';
 import { IArticle } from '@/app/api/model/article.model';
@@ -12,7 +12,7 @@ async function ArticleDetail({params} : any) {
 
   return (
     <div className=' w-full h-full'>
-      <WhiteBox style="w-[50%] flex justify-center items-center " content={
+      <WhiteBox style="w-[50%] flex justify-center items-center " children={
       <div className="" >
         <div className="text-center text-[20px] my-3">{params.content}번 게시글 조회 <br /><br /> <hr /></div>
 

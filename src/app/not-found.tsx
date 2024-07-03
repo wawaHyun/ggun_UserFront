@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { WhiteBox } from "./component/box/baseBox";
+import { WhiteBox } from "./component/style/whiteBox";
 
 export default function NotFound() {
 
@@ -11,7 +11,7 @@ export default function NotFound() {
     return (
         <div className="w-full h-screen flex justify-center items-center">
             <div className="w-[50%] h-[320px] text-center">
-            <WhiteBox color="" content={
+            <WhiteBox style="" children={
                 <div className="flex-col">
                     <h1 className="bold text-[60px]">!!!Not Found!!!</h1>
                     <h1 className="bold text-[50px]">없는 페이지입니다!</h1>

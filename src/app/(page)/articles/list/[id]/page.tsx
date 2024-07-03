@@ -7,7 +7,7 @@ import { Search } from "@/app/component/search/search";
 import Link from "next/link";
 import { Suspense } from "react";
 
-async function ArticleList({ params }: any) {
+async function ArticleList({ params }: {params :{id: string}}) {
 
     function handleInfo() {
         //q&n :1 , 자주하는 질문 :2 , 공지사항 : 3, 이벤트 게시판 : 4
@@ -47,7 +47,7 @@ async function ArticleList({ params }: any) {
 
                     </div>
 
-                    <div className={`grid-cols-5 justify-center flex ${params.id == 2 ? 'visible' : 'h-1 invisible'}`}>
+                    <div className={`grid-cols-5 justify-center flex ${params.id == '2' ? 'visible' : 'h-1 invisible'}`}>
                         <OftenQuestionsBox />
                     </div>
 
@@ -55,7 +55,7 @@ async function ArticleList({ params }: any) {
 
                 <div className="h-auto my-10">
                     <Suspense>
-                        <Articles id={params.id} />
+                        <Articles prop={params.id} />
                     </Suspense>
                 </div>
             </div>

@@ -3,10 +3,16 @@ import { IAccount } from "@/app/api/model/account.model";
 import { accountHistories, allAccount } from "@/app/api/account/route";
 import { accDummy, tradeDummy } from "@/app/common/dummy/account.dummy";
 
-async function Account() {
+async function Account({params}
+    :{params:{
+        id : string,
+    }}) {
+        
 
-    const addTrade = await accountHistories();
-    const accList = await allAccount();
+    // const addTrade = await accountHistories();
+    // const accList = await allAccount();
+    const addTrade = tradeDummy;
+    const accList = accDummy;
 
     const month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     

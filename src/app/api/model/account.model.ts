@@ -7,5 +7,7 @@ export declare type IAccount = {
     acType?: string,
     regDate?: string,
     modDate?: string,
-    user?: number
+    user?: number,
+    
+    name? : string,
 }

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { WhiteBox } from "../box/baseBox";
+import { WhiteBox } from "../style/whiteBox";
 
 function Alarm() {
     const [isOpen, setIsOpen] = useState(false);
@@ -34,7 +34,7 @@ function Alarm() {
                 <div className="absolute top-3 right-[65px] w-full h-[80%] border-gray-300 border overflow-auto bg-white shadow-lg rounded-lg p-3">
                         {articles.map((i: any) =>
                         <div key={i.id} className="flex-col py-1 ">
-                             <WhiteBox style="white hover:bg-gray-100" content={
+                             <WhiteBox style="white hover:bg-gray-100" children={
                                 <div>
                                     <div className="flex">
                                         <div className="text-sm w-2/3 truncate">{i.title}</div>

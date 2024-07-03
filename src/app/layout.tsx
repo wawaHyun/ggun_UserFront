@@ -33,7 +33,7 @@ export default function RootLayout({
                 <Header />
               </div>
               <div className="h-screen hover:w-[500px] top-0 right-0 fixed z-10">
-                <Alarm />
+                {/* <Alarm /> */}
               </div>
             </div>
             {/* : <div></div>}  */}

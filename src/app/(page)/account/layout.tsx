@@ -7,7 +7,7 @@ export default function AccountLayout({
     children: React.ReactNode
 }) {
     return (
-        <div className="w-full h-full">
+        <div className="w-full h-full ">
             <div className="h-[50px] z-0 fixed top-0">
                 <AcountMenu />
             </div>

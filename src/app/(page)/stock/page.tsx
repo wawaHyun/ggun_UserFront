@@ -5,7 +5,7 @@ import StockInfo from "./stockInfo/page";
 import { TabButton } from "@/app/component/button/tabButton";
 import NewsToday from "../../component/news/newsToday";
 import StockLog from "./stockLog/page";
-import ChatRoom from "./chatting/pate";
+import ChatRoom from "./chatting/page";
 import { allNews } from "@/app/api/news/route";
 
 function Stock() {

@@ -72,14 +72,6 @@ function BarChart() {
         },
     }
 
-
-    // useEffect(() => {
-    //     dispatch(fetchTop10Nps())
-    //         .then((res: any) => {
-    //             console.log("res : " + JSON.stringify(res))
-    //         })
-    // }, []);
-
     return (
         <Bar data={data} options={oprions} className='w-full'></Bar>
     );

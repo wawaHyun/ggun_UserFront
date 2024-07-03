@@ -2,7 +2,6 @@
 
 import { deposit, withdraw } from "@/app/api/account/route";
 import { IAccount } from "@/app/api/model/account.model";
-import { WhiteBox } from "@/app/component/box/baseBox";
 import { useState } from "react";
 
 export default function AccountTrade() {
