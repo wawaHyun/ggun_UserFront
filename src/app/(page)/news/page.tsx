@@ -14,8 +14,8 @@ export default async  function NewsPage() {
   return (
     <div className="h-full w-full">
       <div className="flex justify-center w-full">
-        <div className="h-full w-[80%] sticky flex-col justify-center">
-          <NewsHeader />
+        <div className="h-full w-[80%] flex-col justify-center">
+        <div className='sticky top-[60px] h-[60px] z-35'><NewsHeader /></div>
           <div className="mb-5 ">
           <Link href={newslist[0].imgLink}>
             <div className="flex border bg-gray-200 text-center text-black hover:text-gray-500 rounded-lg">
@@ -31,7 +31,7 @@ export default async  function NewsPage() {
         <div className="text-center flex space-x-0">
         {newslist.map((v: INews, i: any) =>
             i < 5 ?
-              <ul key={v.id} className="border p-2 w-1/5 text-center text-black hover:text-gray-500 hover:shadow-lg hover:border rounded-lg">
+            <ul key={v.id} className="border p-2 w-1/5 text-center text-black hover:text-gray-500 hover:shadow-lg hover:border rounded-lg">
                 <li className="flex justify-center h-[60%]">
                   <Image unoptimized src={v.imgSrc} height={150} width={300} alt={v.title} className="rounded-t-lg" />
                 </li>
@@ -39,7 +39,7 @@ export default async  function NewsPage() {
                 <li className="text-left text-gray-400 h-[10%]">{i.id}분전</li>
               </ul>
               : <div key={v.id}></div>
-          )}
+            )}
         </div>
 
           <div>
@@ -47,6 +47,7 @@ export default async  function NewsPage() {
           </div>
 
         </div>
+
       </div>
     </div>
   );

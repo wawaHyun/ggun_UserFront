@@ -1,5 +1,5 @@
 interface IButton {
-    text: string,
+    text?: string,
     click?: any,
     style?: string,
     select? : any,

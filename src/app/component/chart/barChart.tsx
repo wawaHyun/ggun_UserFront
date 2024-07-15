@@ -1,5 +1,5 @@
 
-import { Bar} from 'react-chartjs-2'
+import { Bar } from 'react-chartjs-2'
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -21,6 +21,7 @@ Chart.register(CategoryScale,
 
 function BarChart() {
 
+
     const color =[
         {name:"red", color:"#433E49", value: "300"},
         {name:"green", color:"#928490",value: "200"},
@@ -37,37 +38,77 @@ function BarChart() {
         { name: "purple", color: "#872642", value: "420" },
     ]
 
-
     const labels = color.map((i) => i.name)
     const data: any =
     {
         labels: labels,
         datasets: [
             {
-                label: 'Allper',
-                type:'line',
+                label: '',
+                type: 'line',
+                pointStyle: false,
                 data: color.map((i) => i.value),
-                backgroundColor: color.map((i) => i.color),
-                BorderColor : "#FAD693",
-            },
-            {
-                label: 'two!!',
-                type: 'bar',
-                data: color2.map((i) => i.value),
-                backgroundColor: color2.map((i) => i.color),
+                backgroundColor: '#872642',
+                borderColor : 'white',
+                radius: 5,
             },
         ],
     };
 
 
+    const totalDuration = 600;
+    const delayBetweenPoints = totalDuration / data.length;
+    const previousY = (ctx:any) =>
+        ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(10)
+            : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
+
+    const animation = {
+        x: {
+            display : true,
+            // type: 'number',
+            // easing: 'linear',
+            // duration: delayBetweenPoints,
+            // from: NaN, // the point is initially skipped
+            // delay(ctx:any) {
+            //     if (ctx.type !== 'data' || ctx.xStarted) {
+            //         return 0;
+            //     }
+            //     ctx.xStarted = true;
+            //     return ctx.index * delayBetweenPoints;
+            // }
+        },
+        y: {
+            display:true,
+            // type: 'number',
+            // easing: 'linear',
+            // duration: delayBetweenPoints,
+            // from: previousY,
+            // delay(ctx:any) {
+            //     if (ctx.type !== 'data' || ctx.yStarted) {
+            //         return 0;
+            //     }
+            //     ctx.yStarted = true;
+            //     return ctx.index * delayBetweenPoints;
+            // }
+        }
+    };
+
     const oprions: any = {
+        animation,
+        interaction: {
+            intersect: false
+          },
         scales: {
             x: {
-                stacked: true,
+                // type: 'linear',
             },
             y: {
-                stacked: true,
-                beginAtZero: true
+                display: false,
+            },
+        },
+        plugins: {
+            legend: {
+                display: false,
             },
         },
     }

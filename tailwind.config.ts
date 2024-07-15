@@ -22,6 +22,15 @@ const config: Config = {
           600: "#9F4298",
         },
       },
+      keyframes: {
+        slider: {
+          "0%": { transform: "translateX(40px)" },
+          "100%": { transform: "translateX(-1100px)" },
+         },
+        },
+       animation: {
+        slider: "slider 25s linear infinite",
+       }
     },
   },
   plugins: [],

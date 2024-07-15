@@ -1,40 +1,62 @@
 'use client'
 
-import { AcountMenus } from "@/app/common/enums/main.menus";
-import { BottomLlinButton } from "@/app/component/button/tabButton";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { AcountMenus, AiMenus } from "@/app/common/enums/main.menus";
 import { useState } from "react";
+import IdLoginBox from "../login/loginBox";
+import { tradeDummy } from "@/app/common/dummy/account.dummy";
 
-function AcountMenu() {
+function AccountMenu() {
 
-    const [isOpen, setIsOpen] = useState(0);
-    const mypath = usePathname()
+    const [isOpen, setIsOpen] = useState(true);
+    // const mypath = usePathname()
+
+    const accAI = tradeDummy[0];
 
     return (
-        <nav className="w-[150px] fixed top-[80px] left-3">
+        <nav>
+            <ul className="w-full h-[50px] grid grid-cols-7 border-b-2 border-pebble-200 bg-pebble-100">
+                <Link href="/asset/list"><li className="bg-pebble-300 h-full w-full text-right justify-center content-center px-3">나의 자산</li></Link>
+                <li className="overflow-hidden justify-right flex h-full">
+                    <div className="bg-pebble-300 origin-bottom -rotate-45 -translate-y-6 ring-[33px] ring-offset-0 ring-pebble-300 h-[30px] w-[150px]"></div>
+                </li>
+                <Link href="/asset/asset" className="hover:text-lg text-white h-full w-full content-center text-center">
+                    <li className="">보유주식 조회</li></Link>
+                <Link href="/asset/histories/1" className="hover:text-lg text-white h-full w-full content-center text-center">
+                    <li className="">거래내역 조회</li></Link>
 
-            <div className="absolute bg-white top-3 left-0 group p-1.5 border shadow-lg rounded-lg content-center w-[40px] h-auto">
-                <button
-                    className="flex flex-col justify-center items-center group relative w-full h-auto"
-                    onClick={() => isOpen ==0 ? setIsOpen(1): setIsOpen(0)}>
-                    <div className={`h-0.5 w-[100%] my-[15%] rounded-full bg-black transition ease transform duration-300 ${isOpen ? "rotate-45 translate-y-1.5  group-hover:opacity-100" : " group-hover:opacity-100"}`} />
-                    <div className={`h-0.5 w-[100%] my-[15%] rounded-full bg-black transition ease transform duration-300} ${isOpen ? "opacity-0" : "group-hover:opacity-100"}`} />
-                    <div className={`h-0.5 w-[100%] my-[15%] rounded-full bg-black transition ease transform duration-300 ${isOpen ? "-rotate-45 -translate-y-3.5  group-hover:opacity-100" : "group-hover:opacity-100"}`}
-                    />
-                </button>
-            </div>
+                    <li className="group/item hover:text-lg text-white h-full w-full content-center text-center">
+                    <Link className={`flex justify-center`} href="/asset/histories/2">CMA</Link>
 
-            {isOpen > 0 ?
-                <div className="absolute top-6 rounded-lg left-0 h-auto w-auto mt-10 bg-white text-black border shadow-lg p-3">
-                    {AcountMenus.map((v:IMenu, i:number) =>
-                        <div key={v.id} className="h-[30px] text-center my-5">
-                            <Link href={v.href}><BottomLlinButton text={v.title} select={mypath == v.href} /></Link>
+                    <div className="relative top-0 group/edit hidden group-hover/item:block h-[1px] ">
+                        <div className="h-auto bg-pebble-100 rounded-b-lg ">
+                
+                                <ul className="text-center py-2 items-center justify-center shadow-sm ">
+                                    {AcountMenus.map((hover2: IMenu, i: number) => (
+                                        <li key={hover2.id} className="pb-1"><Link className="text-white hover:text-pebble-300 w-full py-2 " href={hover2.href}>{hover2.title}</Link></li>
+                                    ))}
+                                </ul>
                         </div>
-                    )}
-                </div>
-                : <div></div>}
+                    </div>
+                </li>
+
+                <li className="group/item hover:text-lg text-white h-full w-full content-center text-center">
+                    <Link className={`flex justify-center`} href="/asset/histories/1">AI</Link>
+
+                    <div className="relative top-0 group/edit hidden group-hover/item:block h-[1px] ">
+                        <div className="h-auto bg-pebble-100 rounded-b-lg ">
+                
+                                <ul className="text-center py-2 items-center justify-center shadow-sm ">
+                                    {AiMenus.map((hover2: IMenu, i: number) => (
+                                        <li key={hover2.id} className="pb-1"><Link className="text-white hover:text-pebble-300 w-full py-2 " href={hover2.href}>{hover2.title}</Link></li>
+                                    ))}
+                                </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
         </nav>
     )
 }
-export default AcountMenu;
+export default AccountMenu;

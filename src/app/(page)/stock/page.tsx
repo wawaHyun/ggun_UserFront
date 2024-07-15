@@ -1,48 +1,66 @@
 'use client'
 
-import { useState } from "react";
-import StockInfo from "./stockInfo/page";
-import { TabButton } from "@/app/component/button/tabButton";
-import NewsToday from "../../component/news/newsToday";
-import StockLog from "./stockLog/page";
-import ChatRoom from "./chatting/page";
-import { allNews } from "@/app/api/news/route";
+import { StockRankingDummy } from "@/app/common/dummy/stock.dummy";
+import MiniChart from "@/app/component/chart/miniChart";
+import { WhiteBox } from "@/app/component/style/whiteBox";
+import Image from "next/image";
+import Link from "next/link";
 
-function Stock() {
-    const [btn, setBtn] = useState(1);
-    const [active, setActive] = useState(1);
+export default function stockMain() {
 
-    function handleInfo(btn: any) {
-        console.log("handelCharts : ", btn)
+
+    function handleLogo(id:number) {
         const enums: any = {
-            1: <StockInfo />,
-            2: <StockLog />,
-            3: "재무정보는 머냐 ㅋ",
-            4: <NewsToday title="최신뉴스" />,
-            5: <ChatRoom />,
-            6: <div ><a href="/stock/stockchat/1">종목 토론방을 만들긴 함</a></div>,
+            1: '/stockLogo/samsung.jpg',
+            2: '/stockLogo/lg.jpg',
+            3: '/stockLogo/sk.jpg',
+            4: '/stockLogo/db.jpg',
+            5: '/stockLogo/nepes.jpg',
+            6: '/stockLogo/foosung.jpg',
+            7: '/stockLogo/wonik.jpg',
+            8: '/stockLogo/lsElec.jpg',
+            9: '/stockLogo/sk.jpg',
+            10: '/stockLogo/motrex.jpg',
+            11: '/stockLogo/ssg.jpg',
+            12: '/stockLogo/protec.jpg',
         };
-        return <div>{enums[btn]}</div>;
+        return enums[id];
     };
 
     return (
-        <div className="w-full h-full">
-            <div className="w-full flex justify-center">
-                <div className="flex-col w-[85%] items-center flex mb-3">
-                    <div className="w-full h-[300px] bg-cover bg-benner_img bg-center bg-fixed"></div>
-                    <div className="w-[85%] border shadow-lg rounded-lg ">
-                        <div className="h-[50px] grid grid-cols-5">
-                            <TabButton text="종합" click={() => setBtn(1)} select={btn == 1} />
-                            <TabButton text="시세" click={() => setBtn(2)} select={btn == 2} />
-                            <TabButton text="재무정보" click={() => setBtn(3)} select={btn == 3} />
-                            <TabButton text="관련뉴스" click={() => setBtn(4)} select={btn == 4} />
-                            <TabButton text="종목토론" click={() => setBtn(5)} select={btn == 5} />
-                        </div>
-                        <div className="p-5" >{handleInfo(btn)}</div>
-                    </div>
+        <div className="w-full h-full justify-center flex">
+            <div className="w-[80%]">
+                <div>실시간 랭킹 TOP 10</div>
+                <div className="grid grid-cols-8 text-center items-center bg-pebble-100 text-white h-[40px] bold text-lg rounded-lg">
+                    <div>rank</div>
+                    <div className="col-span-3">종목</div>
+                    <div>현재가</div>
+                    <div>거래량</div>
+                    <div>시총</div>
                 </div>
+                {StockRankingDummy.map((v:any, i:number) =>
+                    <WhiteBox key={v.id} style="my-3">
+                        <Link href={`/stock/stockDetail/${v.id}`}
+                            className="grid grid-cols-7 text-center items-center" >
+                            <div className="row-span-2 ">{v.id}</div>
+                            <div className="row-span-2 flex items-center justify-center">
+                                <Image src={handleLogo(v.id)} width={50} height={30} alt={"search"} className="rounded-lg"/>
+                            </div>
+                            <div className="row-span-2 "><MiniChart/></div>
+                            <span className="row-span-2 ">{v.stock}</span>
+                            <span>{v.now}</span>
+                            <span>{v.volume}</span>
+                            <span>{v.total}</span>
+
+                            {/* <div className="text-slate-400">{i.stock}</div> */}
+                            <div className="text-slate-400">{v.now}</div>
+                            <div className="text-slate-400">{v.volume}</div>
+                            <div className="text-slate-400">fff</div>
+
+                        </Link>
+                    </WhiteBox>
+                )}
             </div>
         </div>
     )
-};
-export default Stock;
+}

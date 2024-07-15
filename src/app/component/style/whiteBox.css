@@ -1,6 +1,0 @@
-
-@layer components {
-.whitebox {
-    @apply border rouned-lg p-3 shadow-lg overflaw-auto
-}
-}

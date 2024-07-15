@@ -2,73 +2,34 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from 'next/navigation'
 import { AcountMenus, BoardMenus, HeaderMenus } from "@/app/common/enums/main.menus";
+import HeaderLink from "../header/headerLink";
 
 
 function Header() {
 
-    const router = useRouter();
     const [showProfile, setShowProfile] = useState(false);
-    const [active, setActive] = useState<number>(0);
+    const [showHeader, setShowHeader] = useState(true);
     const pathName = usePathname();
 
-    const logoutHandler = () => {
-        // console.log('로그아웃 적용 전 : ' + parseCookies().accessToken)
-        // logout()
-        //   .then((res: any) => {
-        //     destroyCookie(null, 'accessToken')
-        //     setShowProfile(false)
-        //     router.push('/')
-        //   })
-        //   .catch((err: any) => {
-        //     console.log('logout 실행에서 에러가 발생함' + err)
-        //   })
-    }
+    useEffect(() => {
 
-    const logout = async () => {
-        // try {
-        //   const response = await LogoutUser(5);
-        //   return response
-        // }
-        // catch (error) {
-        //   console.log(error)
-        // }
-    }
+        const handleScroll = () => {
+            // 일정 구간 스크롤이 내려가면 버튼을 보여준다.
+            window.scrollY > 10 ? setShowHeader(false) : setShowHeader(true);
+        };
 
+        // window에 scroll 이벤트를 넣는다.
+        window.addEventListener('scroll', handleScroll);
+
+    }, []);
 
     return (
-        <nav className="w-screen">
-            <div className="flex justify-center">
-                <ul className="grid grid-cols-7 justify-center gap-5 border h-[70px] w-[85%] shadow-sm rounded-b-lg bg-white">
-                    {HeaderMenus.map((hover: IMenu, i: number) => (
-                        <li key={hover.id} className="group/item">
-                            <Link className={`flex hover:border-t-2 hover:border-pebble-500 h-[70px] w-full text-center justify-center items-center checked:border ${pathName == hover.href ? 'border-pebble-500 border-t-2': '' }`}
-                                href={hover.href}>{hover.title}</Link>
-
-                            <div className="relative top-0 mt-2 group/edit hidden group-hover/item:block h-[1px] ">
-                                <div className="h-auto bg-white rounded-lg ">
-                                    {hover.title == "거래내역" ?
-                                        <ul className="text-center py-2 items-center justify-center border rounded-lg shadow-sm ">
-                                            {AcountMenus.map((hover2: IMenu, i: number) => (
-                                                <li key={hover2.id} className="pb-1"><Link className="hover:text-pebble-500 w-full" href={hover2.href}>{hover2.title}</Link></li>
-                                            ))}
-                                        </ul>
-                                        : <div></div>}
-
-                                    {hover.title == "고객센터" ?
-                                        <ul className="text-center py-2 items-center justify-center border rounded-lg shadow-sm ">
-                                            {BoardMenus.map((hover2: IMenu, i: number) => (
-                                                <li key={hover2.id} className="pb-1"><Link className="hover:text-pebble-500 w-full py-2 " href={hover2.href}>{hover2.title}</Link></li>
-                                            ))}
-                                        </ul>
-                                        : <div></div>}
-                                </div>
-                            </div>
-                        </li>
-                    ))}
-                </ul>
+        <nav className="w-screen flex justify-center ">
+            <div className={`duration-500 ease-in-out transition-[width] border ${showHeader == true ? 'h-[70px] w-[85%]' : 'h-[40px] w-full'} shadow-sm rounded-b-lg bg-white`}>
+                <HeaderLink />
             </div>
         </nav >
 

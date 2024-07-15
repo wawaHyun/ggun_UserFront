@@ -4,45 +4,45 @@ import { WhiteBox } from '@/app/component/style/whiteBox';
 import Link from 'next/link';
 import { MoveButton } from '@/app/component/button/moveButton';
 import { IArticle } from '@/app/api/model/article.model';
+import { ClipIcon, MapIcon } from '@/app/common/icon/icon';
+import Image from 'next/image';
 
-async function ArticleDetail({params} : any) {
+async function ArticleDetail({ props }: any) {
 
-//   const article = await findArticleById(params.id);
-  const article:IArticle = articlesDummy[1];
+  //   const article = await findArticleById(params.id);
+  const article: IArticle = articlesDummy[1];
 
   return (
     <div className=' w-full h-full'>
-      <WhiteBox style="w-[50%] flex justify-center items-center " children={
-      <div className="" >
-        <div className="text-center text-[20px] my-3">{params.content}번 게시글 조회 <br /><br /> <hr /></div>
+      <WhiteBox style="flex justify-center items-center ">
+        <div className="w-[80%]" >
+            <Image src={'/imgs/notice.jpg'} className="w-full h-[400px]" width={500} height={500} alt={'notice'}/>
+          <div className="text-center text-[36px] my-3">{article.title} <hr /></div>
 
-        <div className='flex gap-2 pb-2'>
-          <input className="" placeholder={`작성자 ID : ${params.writerId}`}
-            type="text" readOnly/>
-          <input className="" placeholder={params.regDate}
-            type="text" readOnly/>
-        </div>
-        <div className='space-y-2'>
-          <input className="" placeholder={article.title}
-            type="text" readOnly />
+          <div className='flex py-2 w-full border-b-2'>
+            <div className='w-1/2'>
+              작성자 : {article.writerId} 부서 {article.writerId} 님
+            </div>
+            <div className='text-right w-1/2'>작성일자 : {article.regDate} </div>
+          </div>
 
-          <textarea className="h-[200px]" placeholder={article.content}
-            readOnly />
-        </div>
-        <div className="icons flex text-gray-500 m-2">
-          <svg className="mr-2 cursor-pointer hover:text-gray-700 border rounded-full p-1 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            {/* <FmdGood component={FmdGood}></FmdGood> */}
-          </svg>
-          <svg className="mr-2 cursor-pointer hover:text-gray-700 border rounded-full p-1 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            {/* <AttachFile component={AttachFile}></AttachFile> */}
-          </svg>
-          <div className="count ml-auto text-gray-400 text-xs font-semibold">0/300</div>
-        </div>
-        <div className="buttons flex gap-5 justify-center h-[50px]">
-          <Link href={`/articles/list/1`}><MoveButton text="뒤로가기"/></Link>
-        </div>
-      </div >
-      }/>
+          <div className='min-h-[200px] py-[20px]'>
+            {article.content}
+
+          </div>
+          <div className="icons flex text-gray-500 gap-3 cursor-point">
+            <MapIcon />
+            <span className="hover:toolkit flex gap-4 group">
+            <ClipIcon /> <span className='invisible group-hover:visible rounded-lg p-1 px-3 bg-pebble-400'>첨부파일이 없습니다.</span>
+            </span>
+            <div className="count ml-auto text-gray-400 text-xs font-semibold">0/300</div>
+          </div>
+          <div className="buttons flex gap-5 justify-center h-[70px] ">
+            <Link href={`/articles/list/1`} className='w-[20%] '><MoveButton text="목록으로 돌아가기" style='w-full h-full'/></Link>
+          </div>
+        </div >
+      </WhiteBox>
+      <div className='flex py-[15px] space-x-[70%] h-[80px] truncate'><WhiteBox>이전글 가기</WhiteBox><WhiteBox style='text-right'>다음글 가기</WhiteBox></div>
     </div>
   );
 };

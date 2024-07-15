@@ -19,7 +19,7 @@ function StockChat({ params }: any) {
             4: "테슬라 종목 토론",
             5: "아마존 종목 토론",
         };
-        return <div>{enums[params.id]}</div>;
+        return <div>{enums[params]}</div>;
     };
 
     return (

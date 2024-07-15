@@ -45,6 +45,11 @@ input[type="radio"]:focus{
   border : none;
 }
 
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 input:focus {
   outline :rgb(148 163 184) solid 1px;
   border : rgb(148 163 184) solid 1px;
