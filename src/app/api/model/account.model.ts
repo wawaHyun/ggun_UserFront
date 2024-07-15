@@ -8,6 +8,5 @@ export declare type IAccount = {
     regDate?: string,
     modDate?: string,
     user?: number,
-    
     name? : string,
 }

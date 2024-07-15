@@ -23,8 +23,8 @@ export default function TradeOrder({ordDvsnCd}:{ordDvsnCd:number}) {
     return (
         <div className="w-full h-full ">
                 <div className="h-[50px] grid grid-cols-2">
-                    <TabButton text="매수" click={() => setBtn(1)} select={btn == 1} />
-                    <TabButton text="매도" click={() => setBtn(2)} select={btn == 2} />
+                    <TabButton click={() => setBtn(1)} select={btn == 1} >매수</TabButton>
+                    <TabButton click={() => setBtn(2)} select={btn == 2} >매도</TabButton>
                 </div>
                 <div className="border border-t-0 p-5 content-center space-y-3" >
                     <div className="flex justify-center gap-4">
@@ -36,9 +36,9 @@ export default function TradeOrder({ordDvsnCd}:{ordDvsnCd:number}) {
                         지정가
                             <input type="text" className="w-auto" value={price} onChange={(e: any) => setPrice(Number(e.target.value))}/></label>
                         <div className="flex">
-                            <GrayButton text="+" style="min-w-[30px] w-[1%]" click={() => handleCount(1)} />
+                            <GrayButton style="min-w-[30px] w-[1%]" click={() => handleCount(1)} >+</GrayButton>
                             <label className="flex content-center gap-3 w-auto"><input type="number" className="" value={volume} onChange={(e: any) => setVolume(Number(e.target.value))} /></label>
-                            <GrayButton text="-" style="min-w-[30px] w-[1%]" click={() => handleCount(0)} />
+                            <GrayButton style="min-w-[30px] w-[1%]" click={() => handleCount(0)} >-</GrayButton>
                         </div>
                     </div>
                     <div className="text-pebble-500 text-xl bold h-[20%] bg-pebble-400 grid grid-cols-2 space-y-3 ">
@@ -46,7 +46,7 @@ export default function TradeOrder({ordDvsnCd}:{ordDvsnCd:number}) {
                         <div className="text-right">{price * volume}원</div>
                     </div>
                     <div className="flex justify-center w-full h-[70px]">
-                    <MoveButton text={handleInfo(btn)} style="w-[70%]"/>
+                    <MoveButton style="w-[70%]">{handleInfo(btn)}</MoveButton>
                     </div>
                 </div>
         </div>

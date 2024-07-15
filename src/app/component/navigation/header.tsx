@@ -17,11 +17,8 @@ function Header() {
     useEffect(() => {
 
         const handleScroll = () => {
-            // 일정 구간 스크롤이 내려가면 버튼을 보여준다.
             window.scrollY > 10 ? setShowHeader(false) : setShowHeader(true);
         };
-
-        // window에 scroll 이벤트를 넣는다.
         window.addEventListener('scroll', handleScroll);
 
     }, []);

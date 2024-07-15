@@ -1,13 +1,12 @@
 'use client'
 
-import Today from "@/app/common/date/today";
-import MyCalendar from "@/app/component/util/calendar";
-import moment from "moment"
+import BigCalendar from "@/app/component/util/bigCalendar"
+
 
 export default function IpoPage() {
     return (
         <div>
-            <MyCalendar />
+            <BigCalendar />
         </div>
     )
 }     

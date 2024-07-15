@@ -127,7 +127,7 @@ export default function IdLoginBox() {
                     : <pre></pre>}
             </div>
 
-            <MoveButton style="w-full mt-[45px]" text="Login" click={() => handleSubmit()} />
+            <MoveButton style="w-full mt-[45px]" click={() => handleSubmit()} >Login</MoveButton>
             <div className="grid grid-cols-3 text-center py-3">
                 자동로그아웃시간
                 <select name="timeSelect" id="1">
@@ -135,7 +135,7 @@ export default function IdLoginBox() {
                     <option value="">1시간</option>
                     <option value="">3시간</option>
                 </select>
-                <MoveButton text="인증센터 바로가기" />
+                <MoveButton>인증센터 바로가기</MoveButton>
             </div>
 
             <button

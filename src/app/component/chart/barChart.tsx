@@ -44,11 +44,20 @@ function BarChart() {
         labels: labels,
         datasets: [
             {
-                label: '',
+                label: 'one',
                 type: 'line',
                 pointStyle: false,
                 data: color.map((i) => i.value),
                 backgroundColor: '#872642',
+                borderColor : 'white',
+                radius: 5,
+            },
+            {
+                label: 'twe',
+                type: 'bar',
+                pointStyle: false,
+                data: color2.map((i) => i.value),
+                backgroundColor: color2.map((i) => i.color),
                 borderColor : 'white',
                 radius: 5,
             },

@@ -31,8 +31,8 @@ export default async function AccountList() {
                 <div className="text-lg content-center">{v.acno}</div>
                 <div className="text-slate-400 text-left content-center">잔액 : {v.balance?.toLocaleString("ko", LocalNumberOptions)}</div>
                 <div className="grid grid-cols-2">
-                  <WhiteLink click={"/asset/account/charge"} text="이체/충전" />
-                  <WhiteLink click={`/asset/histories/${v.id}`} text="조회" />
+                  <WhiteLink click={"/asset/account/charge"} >이체/충전</WhiteLink>
+                  <WhiteLink click={`/asset/histories/${v.id}`} >조회</WhiteLink>
                 </div>
               </div>
             </div>
@@ -45,8 +45,8 @@ export default async function AccountList() {
               <div className="text-lg content-center">{accAI.acno}</div>
               <div className="text-slate-400 text-left content-center">잔액 : {accAI.balance?.toLocaleString("ko", LocalNumberOptions)}</div>
               <div className="grid grid-cols-2">
-                <WhiteLink click={"/asset/account/charge"} text="이체/충전" />
-                <WhiteLink click={`/asset/histories/${accAI.id}`} text="조회" />
+              <WhiteLink click={"/asset/account/charge"} >이체/충전</WhiteLink>
+              <WhiteLink click={`/asset/histories/${accAI.id}`} >조회</WhiteLink>
               </div>
             </div>
           </div>

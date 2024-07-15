@@ -19,7 +19,7 @@ export default function CertificateLogin() {
                 <label className="flex content-center"><input type="radio" name="select" className="w-5"/>공동인증서</label>
                 <label className="flex content-center"><input type="radio" name="select" className="w-5"/>금융인증서(클라우드)</label>
             </div>
-            <MoveButton text="Login" style="w-full mt-2"/>
+            <MoveButton style="w-full mt-2">Login</MoveButton>
             <div className="grid grid-cols-3 text-center py-3">
                 자동로그아웃시간
                 <select name="timeSelect" id="2"  >
@@ -27,7 +27,7 @@ export default function CertificateLogin() {
                     <option value="">1시간</option>
                     <option value="">3시간</option>
                 </select>
-                <MoveButton text="인증센터 바로가기" />
+                <MoveButton>인증센터 바로가기</MoveButton>
             </div>
         </div>
     )

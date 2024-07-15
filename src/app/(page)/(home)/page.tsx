@@ -8,6 +8,7 @@ import AdBox from "@/app/component/main/adBox";
 import { WhiteBox } from "@/app/component/style/whiteBox";
 import TransJisu from "@/app/component/main/transJisu";
 import TransWon from "@/app/component/main/transWon";
+import NasdaqBarChart from "@/app/component/chart/nasdaqBarChart";
 
 export default function Home() {
 
@@ -16,7 +17,7 @@ export default function Home() {
   function handleCharts(btn: any) {
     console.log("handelCharts : ", btn)
     const enums: any = {
-      1: <BarChart />,
+      1: <NasdaqBarChart />,
       2: <TransWon />,
       3: <TransJisu />,
     };
@@ -30,7 +31,7 @@ export default function Home() {
         <div className="flex-col w-[40%]">
           <div className="w-full h-[90%]"><AdBox /></div>
           <div className="w-full h-auto pb-2">
-            <Search text="Search" click="" />
+            <Search click="" >Search</Search>
           </div>
         </div>
 

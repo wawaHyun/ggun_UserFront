@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { AcountMenus, AiMenus } from "@/app/common/enums/main.menus";
 import { useState } from "react";
-import IdLoginBox from "../login/loginBox";
 import { tradeDummy } from "@/app/common/dummy/account.dummy";
 
 function AccountMenu() {
@@ -24,6 +23,8 @@ function AccountMenu() {
                     <li className="">보유주식 조회</li></Link>
                 <Link href="/asset/histories/1" className="hover:text-lg text-white h-full w-full content-center text-center">
                     <li className="">거래내역 조회</li></Link>
+                <Link href="/asset/IPO" className="hover:text-lg text-white h-full w-full content-center text-center">
+                    <li className="">IPO 달력</li></Link>
 
                     <li className="group/item hover:text-lg text-white h-full w-full content-center text-center">
                     <Link className={`flex justify-center`} href="/asset/histories/2">CMA</Link>

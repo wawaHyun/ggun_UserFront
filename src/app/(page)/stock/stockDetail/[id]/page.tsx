@@ -10,7 +10,6 @@ import StockAnnual from "../../stockAnnual/page";
 
 function Stock({params}:{params:{id:number}}) {
     const [btn, setBtn] = useState(1);
-    const [active, setActive] = useState(1);
 
     function handleInfo(btn: any) {
         console.log("handelCharts : ", btn)
@@ -30,16 +29,16 @@ function Stock({params}:{params:{id:number}}) {
             <div className="w-full flex justify-center">
                 <div className="flex-col w-[85%] items-center flex mb-3">
                     <div className="w-full h-[300px] bg-cover bg-benner_img bg-center bg-fixed"></div>
-                    <div className="w-[85%] border shadow-lg rounded-lg ">
+                    <div className="w-[85%] shadow-lg rounded-lg ">
                         <div className="h-[50px] grid grid-cols-5">
-                            <TabButton text="종합" click={() => setBtn(1)} select={btn == 1} />
-                            <TabButton text="시세" click={() => setBtn(2)} select={btn == 2} />
-                            <TabButton text="재무정보" click={() => setBtn(3)} select={btn == 3} />
-                            {/* <TabButton text="관련뉴스" click={() => setBtn(4)} select={btn == 4} /> */}
-                            <TabButton text="종목챗방" click={() => setBtn(5)} select={btn == 5} />
-                            <TabButton text="종목토론" click={() => setBtn(6)} select={btn == 6} />
+                            <TabButton click={() => setBtn(1)} select={btn == 1} >종합</TabButton>
+                            <TabButton click={() => setBtn(2)} select={btn == 2} >시세</TabButton>
+                            <TabButton click={() => setBtn(3)} select={btn == 3} >재무정보</TabButton>
+                            {/* <TabButton click={() => setBtn(4)} select={btn == 4} >관련뉴스</TabButton> */}
+                            <TabButton click={() => setBtn(5)} select={btn == 5} >종목챗방</TabButton>
+                            <TabButton click={() => setBtn(6)} select={btn == 6} >종목토론</TabButton>
                         </div>
-                        <div className="p-5" >{handleInfo(btn)}</div>
+                        <div className="p-5 border border-t-0" >{handleInfo(btn)}</div>
                     </div>
                 </div>
             </div>

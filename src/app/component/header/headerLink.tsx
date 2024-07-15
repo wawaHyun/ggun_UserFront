@@ -24,8 +24,8 @@ export default function HeaderLink() {
                             
                             {hover.title == "Finance" ?
                                 <ul className="text-center py-2 items-center justify-center border rounded-lg shadow-sm ">
-                                    <li><Link className="hover:text-pebble-500 w-full my-3" href="/asset/list">보유주식 조회</Link></li>
-                                    <li><Link className="hover:text-pebble-500 w-full my-3" href="/asset/list">거래내역 조회</Link></li>
+                                    <li><Link className="hover:text-pebble-500 w-full my-3" href="/asset/list">보유주식</Link></li>
+                                    <li><Link className="hover:text-pebble-500 w-full my-3" href="/asset/list">거래내역</Link></li>
                                     <li className="border border-1 border-pebble-200 my-3"></li>
                                     <li className="bold border-dashed border-b-2 border-amber-200 mb-1">CMA</li>
                                     <li>

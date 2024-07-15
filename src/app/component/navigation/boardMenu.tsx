@@ -7,7 +7,7 @@ function BoardMenu() {
 
     return (
         <nav>
-            <ul className="w-full h-[50px] grid grid-cols-7 border-b-2 border-pebble-200 bg-pebble-100 ">
+            <ul className="w-full h-[50px] grid grid-cols-8 border-b-2 border-pebble-200 bg-pebble-100 ">
                 <li className=""> <button className="bg-pebble-300 h-full w-full text-right justify-center items-center px-3">Home</button></li>
                 <li className="overflow-hidden justify-right flex h-full">
                     <div className="bg-pebble-300 origin-bottom -rotate-45 -translate-y-6 ring-[33px] ring-offset-0 ring-pebble-300 h-[30px] w-[150px]"></div>

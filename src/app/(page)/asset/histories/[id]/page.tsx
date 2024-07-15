@@ -2,47 +2,49 @@
 import { IAccount } from "@/app/api/model/account.model";
 import { accountHistories, allAccount } from "@/app/api/account/route";
 import { tradeDummy } from "@/app/common/dummy/account.dummy";
+import MiniCalendar from "@/app/component/util/miniCalender";
+import { MoveButton } from "@/app/component/button/moveButton";
+import { usePathname } from "next/navigation";
 
-async function AccountHistories({params}
-    :{params:{
-        id : string,
-    }}) {
-        
+async function AccountHistories({ params }
+    : {
+        params: {
+            id: number,
+        }
+    }) {
+
 
     // const addTrade = await accountHistories();
     // const accList = await allAccount();
     const addTrade = tradeDummy;
 
-    const month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-    
     return (
         <div className="w-full h-full flex justify-center ">
             <div className="w-[85%] flex-col flex text-center items-center">
-                <div className="grid grid-cols-2 w-[50%]">
-                    <label htmlFor="">계좌선택 : </label>
-                    <select name="" id="">
-                        {addTrade.map((i:any) =>
+                <div className="grid grid-cols-3 w-full border gap-5 bg-pebble-400 rounded-lg p-3">
+                <div className="col-span-3 text-xl bold">{params.id == 1 ? 'AI 거래내역 조회' : 'CMA 거래내역 조회'}</div>
+                    <label htmlFor="" className="text-right">계좌선택 : </label>
+                    <select name="" id="" className="">
+                        {addTrade.map((i: any) =>
                             <option value="" key={i.id}>{i.acno}</option>)}
                     </select>
-
-                    <label htmlFor="">월별조회 : </label>
-                    <select name="" id="">
-                        {month.map((i) =>
-                            <option value="" key={i}>{i}월</option>)}
-                    </select>
-
-                    <label htmlFor="">조회일자 : </label>
-                    <div className="flex w-[300px]">
-                    <input type="text" value="년" className="w-1/3"/>
-                    <input type="text" value="월" className="w-1/3"/>
-                    <input type="text" value="일" className="w-1/3"/>
+                    <div></div>
+                    <div className="text-right">월별조회 : </div>
+                    <div className="flex col-span-2 ">
+                        <MiniCalendar /><p className="px-5">~</p><MiniCalendar />
                     </div>
-                    <div>
-                        
+
+                    <label htmlFor="" className="text-right">입출금 : </label>
+                    <div className="flex col-span-2 gap-5 items-center ">
+                    <div><input type="radio" name="actype" value="입출금" className="w-5" />입출금</div>
+                    <div><input type="radio" name="actype" value="입금" className="w-5" />입금</div>
+                    <div><input type="radio" name="actype" value="출금" className="w-5" />출금</div>
                     </div>
+
+                    <div className="col-span-3"><MoveButton>조회하기</MoveButton></div>
                 </div>
 
-                <table className="sticky z-[0] p-4">
+                <table className="p-4">
                     <thead>
                         <tr>
                             <th>No.</th>
@@ -50,8 +52,8 @@ async function AccountHistories({params}
                             <th>종류</th>
                             <th>입금</th>
                             <th>출금</th>
-                            <th>거래명</th>
                             <th>잔액</th>
+                            <th>거래처</th>
                             <th>적요</th>
                             <th>연결계좌번호</th>
                         </tr>
@@ -60,12 +62,13 @@ async function AccountHistories({params}
                         {addTrade.map((v: IAccount, i: any) =>
                             <tr key={v.id}>
                                 <td>{v.id}</td>
-                                <td>{v.modDate}</td>``
-                                <td>{v.bank}</td>``
+                                <td>{v.modDate}</td>
+                                <td>{v.bank}</td>
                                 <td>{v.acType == "입금" ? v.balance : 0}</td>
                                 <td>{v.acType == "출금" ? v.balance : 0}</td>
                                 <td>{v.balance}</td>
-                                <td>{v.bank}</td>
+                                <td>{v.user}</td>
+                                <td>{v.name}</td>
                                 <td>{v.refundAcno}</td>
                             </tr>
                         )}
