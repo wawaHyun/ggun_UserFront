@@ -58,7 +58,11 @@ function MiniChart() {
         plugins: {
             legend: {
                 display:false,
-              }}
+              },
+              datalabels :{
+                display : false,
+            },
+            }
     }
 
 

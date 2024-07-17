@@ -1,10 +1,10 @@
 'use client';
 
 import { useEffect, useState } from "react";
-import HeaderLink from "../header/headerLink";
+import MyHeaderLink from "../header/myheaderLink";
 
 
-function Header() {
+function MyHeader() {
 
     const [showHeader, setShowHeader] = useState(true);
 
@@ -20,10 +20,10 @@ function Header() {
     return (
         <nav className="w-screen flex justify-center ">
             <div className={`duration-500 ease-in-out transition-[width] border ${showHeader == true ? 'h-[70px] w-[85%]' : 'h-[40px] w-full'} shadow-sm rounded-b-lg bg-white`}>
-                <HeaderLink />
+                <MyHeaderLink />
             </div>
         </nav >
 
     );
 }
-export default Header;
+export default MyHeader;

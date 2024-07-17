@@ -1,14 +1,26 @@
+import MiniProfile from "@/app/component/myprofile/miniProfile"
 import Timer from "@/app/component/util/timer"
 
 export const HeaderMenus: IMenu[] =[
     { id: 1, title: "ggunLogo", href: `/` },
+    { id: 2, title: "Finance", href: `/gotoLogin`},
+    { id: 3, title: "호가 매매", href: `/trade`},
+    { id: 4, title: "주식 랭킹", href: `/gotoLogin`},
+    { id: 5, title: "경제 News", href: `/news` },
+    { id: 6, title: "고객센터", href: `/articles/list/2` },
+    { id: 7, title: '', href: `` },
+    { id: 8, title: "Login", href: `/login` },
+]
+
+export const MyHeaderMenus: IMenu[] =[
+    { id: 1, title: "ggunLogo", href: `/afterMain` },
     { id: 2, title: "Finance", href: `/asset/list`},
     { id: 3, title: "호가 매매", href: `/trade`},
     { id: 4, title: "주식 랭킹", href: `/stock`},
     { id: 5, title: "경제 News", href: `/news` },
     { id: 6, title: "고객센터", href: `/articles/list/2` },
     { id: 7, title: <Timer />, href: `` },
-    { id: 8, title: "Login", href: `/login` },
+    { id: 8, title: <MiniProfile />, href: `/` },
 ]
 
 export const AcountMenus: IMenu[] = [
@@ -33,9 +45,9 @@ export const StockMenus: IMenu[] = [
 ]
 
 export const AiMenus: IMenu[] = [
-    { id: 1, title: "AI 거래내역", href: `/asset/histories/1` },
-    { id: 2, title: "AI 있음", href: `/asset/ai/exist/existTrue` },
-    { id: 3, title: "AI 없음", href: `/asset/ai/exist/existFalse` },
+    // { id: 1, title: "AI 거래내역", href: `/asset/histories/1` },
+    { id: 2, title: "AI 계좌 있음", href: `/asset/ai/exist/existTrue` },
+    { id: 3, title: "AI 계좌 없음", href: `/asset/ai/exist/existFalse` },
     { id: 4, title: "AI 보유주식", href: `/asset/ai/exist/existFalse` },
     { id: 5, title: "계좌이체", href: `/asset/account/charge` },
 ]

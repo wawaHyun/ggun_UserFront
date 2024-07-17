@@ -110,6 +110,9 @@ function NasdaqBarChart() {
             legend: {
                 display: false,
             },
+            datalabels :{
+                display : false,
+            },
         },
     }
 

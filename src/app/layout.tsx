@@ -5,6 +5,8 @@ import dynamic from "next/dynamic";
 import Header from "./component/navigation/header";
 import Footer from "./component/box/footer";
 import JisuBenner from "./component/util/jisuBenner";
+import MyHeader from "./component/navigation/myHeader";
+import Alarm from "./component/util/alarm";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,10 +33,8 @@ export default function RootLayout({
             <div className="h-[90px]">
               <div className="fixed h-[50px] top-0 left-0 fixed z-30 ">
                 <JisuBenner/>
-                <Header />
-              </div>
-              <div className="h-screen hover:w-[500px] top-0 right-0 fixed z-20">
-                {/* <Alarm /> */}
+                {/* <Header /> */}
+                <MyHeader />
               </div>
             </div>
             {/* : <div></div>}  */}

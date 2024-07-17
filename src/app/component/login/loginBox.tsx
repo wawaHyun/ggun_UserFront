@@ -5,8 +5,11 @@ import { existUser, loginUser } from "@/app/api/users/route";
 import { useRef, useState } from "react";
 import { MoveButton } from "../button/moveButton";
 import OAuth from "./oAuth";
+import { useRouter } from "next/navigation";
 
 export default function IdLoginBox() {
+
+    const router = useRouter();
 
     const [isWrongId, setIsWrongId] = useState('');
     const [isWrongPw, setIsWrongPw] = useState('');
@@ -52,11 +55,12 @@ export default function IdLoginBox() {
     const handleSubmit = () => {
         console.log('login page 입력받은 내용 ' + JSON.stringify(admininfo))
         setLen(true)
-        exist()
-            .then((resp: any) => {
-                console.log('login page : ' + JSON.stringify(resp))
-                if (resp.payload == true) {
-                    setMsg("* 있는 아이디입니다.")
+        router.push(`/afterMain`);
+        // exist()
+        //     .then((resp: any) => {
+        //         console.log('login page : ' + JSON.stringify(resp))
+        //         if (resp.payload == true) {
+        //             setMsg("* 있는 아이디입니다.")
                     // login()
                     //     .then((resp: any) => {
                     //         setCookie({}, 'message', resp.payload.message, { httpOnly: false, path: '/' })
@@ -71,14 +75,14 @@ export default function IdLoginBox() {
                     //         console.log("fetchLoginAdmin error : " + JSON.stringify(err))
                     //         alert("Wrong password. 시도하세요")
                     //     })
-                } else {
-                    console.log("fetchExistAdmin page false : " + JSON.stringify(resp))
-                    setMsg('* 회원가입을 진행해주세요.')
-                }
-            })
-            .catch((err: any) => {
-                console.log("fetchExistAdmin error : " + err)
-            })
+            //     } else {
+            //         console.log("fetchExistAdmin page false : " + JSON.stringify(resp))
+            //         setMsg('* 회원가입을 진행해주세요.')
+            //     }
+            // })
+            // .catch((err: any) => {
+            //     console.log("fetchExistAdmin error : " + err)
+            // })
 
         if (ref.current) {
             ref.current.value = "";
