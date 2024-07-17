@@ -30,7 +30,7 @@ export default function RootLayout({
         <div className="bg-white">
           <ReduxProvider>
             {/* {parseCookies().accessToken != undefined ? */}
-            <div className="h-[90px]">
+            <div className="h-[95px]">
               <div className="fixed h-[50px] top-0 left-0 fixed z-30 ">
                 <JisuBenner/>
                 {/* <Header /> */}

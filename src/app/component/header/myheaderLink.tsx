@@ -13,7 +13,7 @@ export default function MyHeaderLink() {
 
 
     return (
-        <ul className="grid grid-cols-8 justify-center gap-5 h-full w-full">
+        <ul className="grid grid-cols-9 justify-center gap-5 h-full w-full">
             {MyHeaderMenus.map((hover: IMenu, i: number) => (
                 <li key={hover.id} className="group/item">
                     <Link className={`flex hover:border-t-2 hover:border-pebble-500 h-full w-full text-center justify-center items-center checked:border ${pathName == hover.href ? 'border-pebble-500 border-t-2' : ''}`}

@@ -20,6 +20,7 @@ export const MyHeaderMenus: IMenu[] =[
     { id: 5, title: "경제 News", href: `/news` },
     { id: 6, title: "고객센터", href: `/articles/list/2` },
     { id: 7, title: <Timer />, href: `` },
+    { id: 8, title: "Login", href: `/login` },
     { id: 8, title: <MiniProfile />, href: `/` },
 ]
 
