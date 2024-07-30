@@ -1,7 +1,7 @@
 
 export default function Introduce() {
     return (
-        <div className="w-full h-full my-5">
+        <div className="w-full h-full">
               <div className="bg-pebble-100 h-[500px]">
             AI설명 1차 <br />
             천만 주식거래 시대 <br />

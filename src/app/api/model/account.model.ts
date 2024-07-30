@@ -1,6 +1,6 @@
 export declare type IAccount = {
     id: number,
-    acno?: string,
+    acno: string,
     balance?: number,
     refundAcno?: string,
     bank?: string,

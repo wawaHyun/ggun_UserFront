@@ -27,7 +27,7 @@ export const stockInfoDummy =[
     {id:11, title:'추정PER', data:'', color:''},
     {id:12, title:'추정EPS', data:'', color:''},
     {id:13, title:'PBR', data:'2.19', color:''},
-    {id:13, title:'BPS', data:'7,669원', color:''},
-    {id:13, title:'배당수익률', data:'', color:''},
-    {id:13, title:'주당배당금', data:'', color:''},
+    {id:14, title:'BPS', data:'7,669원', color:''},
+    {id:15, title:'배당수익률', data:'', color:''},
+    {id:16, title:'주당배당금', data:'', color:''},
 ]

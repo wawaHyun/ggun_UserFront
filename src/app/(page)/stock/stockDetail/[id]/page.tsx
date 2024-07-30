@@ -7,6 +7,7 @@ import StockLog from "@/app/component/stock/stockLog";
 import ChatRoom from "../../chatting/page";
 import StockChat from "../../stockchat/[id]/page";
 import StockAnnual from "../../stockAnnual/page";
+import Link from "next/link";
 
 function Stock({params}:{params:{id:number}}) {
     const [btn, setBtn] = useState(1);
@@ -19,7 +20,7 @@ function Stock({params}:{params:{id:number}}) {
             3: <StockAnnual/>,
             5: <ChatRoom />,
             6: <StockChat params={1} />,
-            7: <div ><a href="/stock/stockchat/1">종목 토론방을 만들긴 함</a></div>,
+            7: <div ><Link href="/stock/stockchat/1">종목 토론방을 만들긴 함</Link></div>,
         };
         return <div>{enums[btn]}</div>;
     };

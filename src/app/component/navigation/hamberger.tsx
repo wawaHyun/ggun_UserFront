@@ -20,8 +20,7 @@ export default function AccountMenuDelete() {
                     onClick={() => isOpen ==0 ? setIsOpen(1): setIsOpen(0)}>
                     <div className={`h-0.5 w-[100%] my-[15%] rounded-full bg-black transition ease transform duration-300 ${isOpen ? "rotate-45 translate-y-1.5  group-hover:opacity-100" : " group-hover:opacity-100"}`} />
                     <div className={`h-0.5 w-[100%] my-[15%] rounded-full bg-black transition ease transform duration-300} ${isOpen ? "opacity-0" : "group-hover:opacity-100"}`} />
-                    <div className={`h-0.5 w-[100%] my-[15%] rounded-full bg-black transition ease transform duration-300 ${isOpen ? "-rotate-45 -translate-y-3.5  group-hover:opacity-100" : "group-hover:opacity-100"}`}
-                    />
+                    <div className={`h-0.5 w-[100%] my-[15%] rounded-full bg-black transition ease transform duration-300 ${isOpen ? "-rotate-45 -translate-y-3.5  group-hover:opacity-100" : "group-hover:opacity-100"}`}/>
                 </button>
             </div>
 
@@ -29,7 +28,7 @@ export default function AccountMenuDelete() {
                 <div className="absolute top-6 rounded-lg left-0 h-auto w-auto mt-10 bg-white text-black border shadow-lg p-3">
                     {AcountMenus.map((v:IMenu, i:number) =>
                         <div key={v.id} className="h-[30px] text-center my-5">
-                            <Link href={v.href}><BottomLlinButton text={v.title} select={mypath == v.href} /></Link>
+                            <BottomLlinButton select={mypath == v.href} click={v.href}>{v.title}</BottomLlinButton>
                         </div>
                     )}
                 </div>
