@@ -1,12 +1,12 @@
 'use server'
 
-import { IArticle } from "../model/article.model";
+import { IArticle } from "../../../api/model/article.model";
 
 
-export const myArticleList = async () => {
-    // const board = parseInt(board_id)
-    try {                            
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/api/boards/list`);
+export const myArticleList = async (board: string) => {
+    // const board = parseInt(board)
+    try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/api/boards/list${board}`);
         const data = await response.json();
         console.log("myArticleList : " + JSON.stringify(data))
         return data
@@ -27,9 +27,9 @@ export const saveArticle = async (article: IArticle) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                title :title,
-                content : content,
-                writerId : writerId,
+                title: title,
+                content: content,
+                writerId: writerId,
                 boardId: "2",
             })
         })

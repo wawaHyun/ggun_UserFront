@@ -1,34 +1,34 @@
 'use client'
 
-import { deposit, withdraw } from "@/app/api/account/route";
+// import { deposit, withdraw } from "@/app/api/account/route";
 import { IAccount } from "@/app/api/model/account.model";
 import { useState } from "react";
 
 export default function AccountTrade() {
 
-    const [accinfo, setAccInfo] = useState<IAccount>({
-        id: 0,
-        balance: 0,
-        acType: '',
-        //입금할때는 
-    });
+    // const [accinfo, setAccInfo] = useState<IAccount>({
+    //     id: 0,
+    //     balance: 0,
+    //     acType: '',
+    //     //입금할때는 
+    // });
 
     const input = (info: string, name: string) => {
-        setAccInfo({
-            ...accinfo,
-            [name]: info
-        });
-        console.log('accinfo : ' + JSON.stringify(accinfo))
+        // setAccInfo({
+        //     ...accinfo,
+        //     [name]: info
+        // });
+        // console.log('accinfo : ' + JSON.stringify(accinfo))
     }
 
     const depositMoney = async () => {
-        const result = await deposit(accinfo);
-        return result
+        // const result = await deposit(accinfo);
+        // return result
     }
 
     const withdrawMoney = async () => {
-        const result = await withdraw(accinfo);
-        return result
+        // const result = await withdraw(accinfo);
+        // return result
     }
 
 

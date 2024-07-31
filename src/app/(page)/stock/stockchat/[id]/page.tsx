@@ -1,6 +1,6 @@
 'use client'
 
-import { StockChatBox } from "@/app/component/stock/stcokChatBox";
+import { StockChatBox } from "@/app/component/stock/stockChatBox";
 
 function StockChat({ params }: any) {
 

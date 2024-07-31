@@ -4,12 +4,15 @@ import NewsHeader from "../../component/navigation/newsHeader";
 import NewsToday from "../../component/news/newsToday";
 import { newsDummy } from "@/app/common/dummy/news.dummy";
 import Link from "next/link";
-import { allNews } from '@/app/api/news/route';
 
 export default async  function NewsPage() {
 
-  // const newslist = await allNews();
-  const newslist = newsDummy;
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/news/list`);
+  if (!res.ok) {
+      throw new Error('Failed to fetch news');
+  }
+  const newslist: INews[] = await res.json();
+  // const newslist = newsDummy;
 
   return (
     <div className="h-full w-full">
@@ -28,17 +31,15 @@ export default async  function NewsPage() {
             </div>
           </Link>
         </div>
-        <div className="text-center flex space-x-0">
-        {newslist.map((v: INews, i: any) =>
-            i < 5 ?
-            <ul key={v.id} className="border p-2 w-1/5 text-center text-black hover:text-gray-500 hover:shadow-lg hover:border rounded-lg">
+        <div className="text-center grid grid-cols-5 gap-3">
+        {newslist.slice(0,5).map((v: INews, i: any) =>
+            <ul key={v.id} className="border text-center text-black hover:text-gray-500 hover:shadow-lg hover:border rounded-lg">
                 <li className="flex justify-center h-[60%]">
                   <Image unoptimized src={v.imgSrc} height={150} width={300} alt={v.title} className="rounded-t-lg" />
                 </li>
-                <li className="p-2 h-[30%] truncate">{v.title}</li>
-                <li className="text-left text-gray-400 h-[10%]">{i.id}분전</li>
+                <li className="p-2 h-[30%] ">{v.title}</li>
+                {/* <li className="text-left text-gray-400 h-[10%]">{i.id}분전</li> */}
               </ul>
-              : <div key={v.id}></div>
             )}
         </div>
 

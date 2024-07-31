@@ -1,6 +1,6 @@
 
 import { IAccount } from "@/app/api/model/account.model";
-import { accountHistories, allAccount } from "@/app/api/account/route";
+import { accountHistories, allAccount } from "@/app/api/account/router";
 import { tradeDummy } from "@/app/common/dummy/account.dummy";
 import MiniCalendar from "@/app/component/util/miniCalender";
 import { MoveButton } from "@/app/component/button/moveButton";
@@ -22,7 +22,7 @@ async function AccountHistories({ params }
         <div className="w-full h-full flex justify-center ">
             <div className="w-[85%] flex-col flex text-center items-center">
                 <div className="grid grid-cols-3 w-full border gap-5 bg-pebble-400 rounded-lg p-3">
-                <div className="col-span-3 text-xl bold">{params.id == 1 ? 'AI 거래내역 조회' : 'CMA 거래내역 조회'}</div>
+                    <div className="col-span-3 text-xl bold">{params.id == 1 ? 'AI 거래내역 조회' : 'CMA 거래내역 조회'}</div>
                     <label htmlFor="" className="text-right">계좌선택 : </label>
                     <select name="" id="" className="">
                         {addTrade.map((i: any) =>
@@ -36,9 +36,9 @@ async function AccountHistories({ params }
 
                     <label htmlFor="" className="text-right">입출금 : </label>
                     <div className="flex col-span-2 gap-5 items-center ">
-                    <div><input type="radio" name="actype" value="입출금" className="w-5" />입출금</div>
-                    <div><input type="radio" name="actype" value="입금" className="w-5" />입금</div>
-                    <div><input type="radio" name="actype" value="출금" className="w-5" />출금</div>
+                        <div><input type="radio" name="actype" value="입출금" className="w-5" />입출금</div>
+                        <div><input type="radio" name="actype" value="입금" className="w-5" />입금</div>
+                        <div><input type="radio" name="actype" value="출금" className="w-5" />출금</div>
                     </div>
 
                     <div className="col-span-3"><MoveButton>조회하기</MoveButton></div>

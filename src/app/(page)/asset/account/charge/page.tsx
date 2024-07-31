@@ -1,39 +1,37 @@
 'use client'
 
-import { deposit, withdraw } from "@/app/api/account/route";
-import { IAccount } from "@/app/api/model/account.model";
 import { WhiteBox } from "@/app/component/style/whiteBox";
 import { useState } from "react";
 import Image from "next/image";
 import { MoveButton } from "@/app/component/button/moveButton";
 import { TabButton } from "@/app/component/button/tabButton";
+import { tradeDummy } from "@/app/common/dummy/account.dummy";
 
 export default function AccountTCharge() {
 
     const [btn, setBtn] = useState(0);
-    const [accinfo, setAccInfo] = useState<IAccount>({
-        id: 0,
-        balance: 0,
-        acType: '',
-        //입금할때는 
-    });
+    // const [accinfo, setAccInfo] = useState<IAccount>({
+    //     id: 0,
+    //     balance: 0,
+    //     acType: '',
+    // });
+    // const accinfo:IAccount = useAccountStack();
+    const accinfo = tradeDummy[0];
+    // const { update } = useAccountAction();
 
     const input = (info: string, name: string) => {
-        setAccInfo({
-            ...accinfo,
-            [name]: info
-        });
+        input(info, name);
         console.log('accinfo : ' + JSON.stringify(accinfo))
     }
 
     const depositMoney = async () => {
-        const result = await deposit(accinfo);
-        return result
+        // const result = await deposit(accinfo);
+        // return result
     }
 
     const withdrawMoney = async () => {
-        const result = await withdraw(accinfo);
-        return result
+        // const result = await withdraw(accinfo);
+        // return result
     }
 
 
@@ -84,3 +82,7 @@ export default function AccountTCharge() {
         </div>
     )
 };
+
+function useAccountStore(arg0: (state: any) => any): { accinfo: any; setAccInfo: any; } {
+    throw new Error("Function not implemented.");
+}

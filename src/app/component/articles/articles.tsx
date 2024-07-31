@@ -1,13 +1,13 @@
-import { myArticleList } from "@/app/api/articles/route"
+import { myArticleList } from "@/app/common/config/articles/route"
 import { IArticle } from "@/app/api/model/article.model";
 import { qnalistDummy } from "@/app/common/dummy/articles.dummy"
 import Link from "next/link"
 
 
-export default async function Articles({prop}:{prop: string}) {
+export default async function Articles({ prop }: { prop: string }) {
 
-    // const allArticles = await myArticleList(id)
-    const allArticles = qnalistDummy;
+    const allArticles = await myArticleList(prop)
+    // const allArticles = qnalistDummy;
 
     return (
         <table className="">
@@ -27,11 +27,17 @@ export default async function Articles({prop}:{prop: string}) {
                     <tr key={v.id}>
                         <td>{v.id}</td>
                         {/* <td>{v.boardId}</td> */}
-                        <td><Link href={{pathname:`/articles/detail/${v.id}`,query:{
-                         title : v.title, content : v.content, writerId : v.writerId, regDate : v.regDate, modDate: v.modDate}}}>{v.title}</Link></td>
+                        <td><Link href={{
+                            pathname: `/articles/detail/${v.id}`, query: {
+                                title: v.title, content: v.content, writerId: v.writerId, regDate: v.regDate, modDate: v.modDate
+                            }
+                        }}>{v.title}</Link></td>
                         {/* <td>{v.writerId}</td> */}
-                        <td><Link href={{pathname:`/articles/detail/${v.id}`,query:{
-                         title : v.title, content : v.content, writerId : v.writerId, regDate : v.regDate, modDate: v.modDate}}}>{v.content}</Link></td>
+                        <td><Link href={{
+                            pathname: `/articles/detail/${v.id}`, query: {
+                                title: v.title, content: v.content, writerId: v.writerId, regDate: v.regDate, modDate: v.modDate
+                            }
+                        }}>{v.content}</Link></td>
                         {/* <td>{v.regDate}</td> */}
                         <td>{v.modDate}</td>
                     </tr>

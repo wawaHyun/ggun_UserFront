@@ -3,7 +3,7 @@
 import { mainExchangeDummy } from "@/app/common/dummy/exchange.dummy";
 import { WhiteBox } from "../style/whiteBox";
 import { useEffect, useState } from "react";
-import { cookies } from "next/headers";
+// import { cookies } from "next/headers";
 
 export default function TransWon() {
 
@@ -39,24 +39,24 @@ export default function TransWon() {
                 throw new Error(`Network response was not ok: ${response.statusText}`);
             }
 
-            const data: IKisAuth = await response.json();
+            const data: IKisSection[] = await response.json();
             console.log("KIS section : ", data);
-            return data.access_token;
+            return setNowWon(data);
         } catch (error) {
             console.log("KIS section err : " + error);
             return null;
         }
     }
 
-    const accessToken = cookies().get('kisAccessToken');
+    // const accessToken = cookies().get('kisAccessToken');
 
     useEffect(() => {
-        if (accessToken) {
+        // if (accessToken) {
             kisSection()
                 .then((res) => console.log("kisSection : ", res))
-        } else {
-            alert("token 발급실패! 다시 로그인 해주세요.")
-        }
+        // } else {
+        //     alert("token 발급실패! 다시 로그인 해주세요.")
+        // }
     }, []);
 
 

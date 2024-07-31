@@ -28,21 +28,22 @@ function ChatRoom() {
 
     return (
         <div className="w-full h-full">
-                {roomlist.map((i: any) =>
-                    <button key={i.id} className="flex-col py-1 w-full text-left" onClick={() => router.push(`/stock/chatting/${i.senderId}`)}>
-                        <WhiteBox style="white hover:bg-pebble-400 flex-col" children={
-                            <div className="">
-                                <div className="flex ">
-                                    <div className="text-sm w-2/3 truncate">{i.sender}와의 대화</div>
-                                    <div className="text-gray-400 text-xs w-1/3">{i.modDate}</div>
-                                </div>
-                                {/* <div>
+            {roomlist.map((i: any) =>
+                <button key={i.id} className="flex-col py-1 w-full text-left" onClick={() => router.push(`/stock/chatting/${i.senderId}`)}>
+                    <WhiteBox style="white hover:bg-pebble-400 flex-col">
+                        <div className="">
+                            <div className="flex ">
+                                <div className="text-sm w-2/3 truncate">{i.sender}와의 대화</div>
+                                <div className="text-gray-400 text-xs w-1/3">{i.modDate}</div>
+                            </div>
+                            {/* <div>
                                         <div className="text-xs row-span-2 text-gray-400 truncate">{i.content}</div>
                                     </div> */}
-                            </div>
-                        } />
-                    </button>
-                )}
+                        </div>
+                    </WhiteBox>
+
+                </button>
+            )}
         </div >
     )
 }

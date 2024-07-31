@@ -1,5 +1,6 @@
 'use client'
 
+import { kisTradeDummy } from "@/app/common/dummy/kis.dummy";
 import BarChart from "@/app/component/chart/barChart";
 import QuoteLChart from "@/app/component/chart/quoteLChart";
 import QuoteRChart from "@/app/component/chart/quoteRChart";
@@ -7,20 +8,11 @@ import StockInfo from "@/app/component/stock/stockInfo";
 import { WhiteBox } from "@/app/component/style/whiteBox";
 import TradeInfo from "@/app/component/trade/tradeInfo";
 import TradeOrder from "@/app/component/trade/tradeOrder";
-import { useState } from "react";
 
-export const kisTradeDummy = [
-    { quote: 21, price: 9910 },
-    { quote: 400, price: 9900 },
-    { quote: 302, price: 9890 },
-    { quote: 1305, price: 9880 },
-    { quote: 9, price: 9870 },
-    { quote: 2000, price: 9860 },
-]
 
 export default async function tradePage() {
 
-    const [list, setList] = useState([]);
+    // const [list, setList] = useState([]);
 
     // const kisTrade = async () => { await kisTradeAPI().then((res: any) => setList(res)) }
     // const kisTrade = await kisTradeAPI();

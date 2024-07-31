@@ -7,7 +7,8 @@ interface KrxJisuState {
 
 const useKrxJisuStore = create<KrxJisuState>()((set) => ({
     data: [],
-    update : ()=> set( (state) => ({ data:{ ...state.data, ...state } }) ),
+    // update : ()=> set( (state) => ({ data:{ ...state.data, ...state } }) ),
+    update: (data: IKrx[]) => set({ data }),
 }))
 
 export const useKrxJisuAction =() =>useKrxJisuStore((store)=>store.update)

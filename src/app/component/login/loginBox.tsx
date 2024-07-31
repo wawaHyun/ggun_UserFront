@@ -3,10 +3,10 @@
 import { IUser } from "@/app/api/model/user.model";
 import { existUser, loginUser } from "@/app/api/users/route";
 import { useRef, useState } from "react";
-import { MoveButton } from "../button/moveButton";
+import { MoveButton } from "../button/buttons";
 import OAuth from "./oAuth";
 import { useRouter } from "next/navigation";
-import { cookies } from 'next/headers'
+import { kisAuthkey } from "./loginSubmit";
 
 export default function IdLoginBox() {
 
@@ -63,59 +63,31 @@ export default function IdLoginBox() {
         //         console.log('login page : ' + JSON.stringify(resp))
         //         if (resp.payload == true) {
         //             setMsg("* 있는 아이디입니다.")
-                    // login()
-                    //     .then((resp: any) => {
-                    //         setCookie({}, 'message', resp.payload.message, { httpOnly: false, path: '/' })
-                    //         setCookie({}, 'accessToken', resp.payload.accessToken, { httpOnly: false, path: '/' })
-                    //         console.log("서버에서 넘어온 message " + parseCookies().message)
-                    //         console.log("서버에서 넘어온 token " + parseCookies().accessToken)
-                    //         console.log("token decoding 내용 " + jwtDecode<any>(parseCookies().accessToken).username)
-                    //         router.push(`${PG.REPORT}/dashboard`)
-                    //         router.refresh()
-                    //     })
-                    //     .catch((err: any) => {
-                    //         console.log("fetchLoginAdmin error : " + JSON.stringify(err))
-                    //         alert("Wrong password. 시도하세요")
-                    //     })
-            //     } else {
-            //         console.log("fetchExistAdmin page false : " + JSON.stringify(resp))
-            //         setMsg('* 회원가입을 진행해주세요.')
-            //     }
-            // })
-            // .catch((err: any) => {
-            //     console.log("fetchExistAdmin error : " + err)
-            // })
+        // login()
+        //     .then((resp: any) => {
+        //         setCookie({}, 'message', resp.payload.message, { httpOnly: false, path: '/' })
+        //         setCookie({}, 'accessToken', resp.payload.accessToken, { httpOnly: false, path: '/' })
+        //         console.log("서버에서 넘어온 message " + parseCookies().message)
+        //         console.log("서버에서 넘어온 token " + parseCookies().accessToken)
+        //         console.log("token decoding 내용 " + jwtDecode<any>(parseCookies().accessToken).username)
+        //         router.push(`${PG.REPORT}/dashboard`)
+        //         router.refresh()
+        //     })
+        //     .catch((err: any) => {
+        //         console.log("fetchLoginAdmin error : " + JSON.stringify(err))
+        //         alert("Wrong password. 시도하세요")
+        //     })
+        //     } else {
+        //         console.log("fetchExistAdmin page false : " + JSON.stringify(resp))
+        //         setMsg('* 회원가입을 진행해주세요.')
+        //     }
+        // })
+        // .catch((err: any) => {
+        //     console.log("fetchExistAdmin error : " + err)
+        // })
 
         if (ref.current) {
             ref.current.value = "";
-        }
-    }
-
-
-
-    const kisAuthkey = async () => {
-        try {
-            const response = await fetch(`/api/kis/kisAuth`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({})
-            });
-    
-            if (!response.ok) {
-                throw new Error(`Network response was not ok: ${response.statusText}`);
-            }
-    
-            const data: { access_token: string } = await response.json(); 
-            cookies().set('kisAccessToken', data.access_token)
-            console.log("KIS authkey : ", cookies().get('kisAccessToken')); 
-            // setCookie({}, 'kisAccessToken', data.access_token, { httpOnly: false, path: '/' })
-            // console.log("KIS authkey : ", parseCookies().kisAccessToken); 
-
-        } catch (error) {
-            console.log("KIS authkey err: ", error);
-            return null; 
         }
     }
 
@@ -161,7 +133,7 @@ export default function IdLoginBox() {
             </div>
 
             <MoveButton style="w-full mt-[45px]" click={() => handleSubmit()} >Login</MoveButton>
-            
+
             <div className="grid grid-cols-3 text-center py-3">
                 자동로그아웃시간
                 <select name="timeSelect" defaultValue='30' >
