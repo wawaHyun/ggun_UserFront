@@ -73,7 +73,7 @@ th {
   border: 0.3px solid #ffffff;
 }
 td {
-  border: 0.3px solid #dee2e6;
+  border: 0px 0.3px solid #dee2e6;
 }
 tr:hover {
   border: 0.3px solid #dee2e6;

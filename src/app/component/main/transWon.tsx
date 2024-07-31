@@ -3,12 +3,11 @@
 import { mainExchangeDummy } from "@/app/common/dummy/exchange.dummy";
 import { WhiteBox } from "../style/whiteBox";
 import { useEffect, useState } from "react";
-
+import { cookies } from "next/headers";
 
 export default function TransWon() {
 
     const [nowWon, setNowWon] = useState<IKisSection[]>([]);
-    const [accessToken, setAccessToken] = useState<string | null>(null); 
 
     // useEffect(() => {
     //     const fetchData = async () => {
@@ -24,84 +23,40 @@ export default function TransWon() {
     //     fetchData();
     // }, []);
 
-    const kisAuthkey = async (): Promise<string | null> => {
+
+    const kisSection = async () => {
         try {
-            const response = await fetch(`/api/kis/kisAuth`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({})
-            });
-    
+            // console.log("KIS section page in!", parseCookies().kisAccessToken);
+            const response = await fetch(`/api/kis/kisSection`);
+            // const response = await fetch(`/api/kis/kisSection`, {
+            //     method: 'GET',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //         'Authorization': `Bearer ${parseCookies().kisAccessToken}`
+            //     },
+            // })
             if (!response.ok) {
                 throw new Error(`Network response was not ok: ${response.statusText}`);
             }
-    
-            const data: { access_token: string } = await response.json(); 
-            console.log("KIS authkey : ", data); 
-            return data.access_token;
 
-        } catch (error) {
-            console.log("KIS authkey err: ", error);
-            return null; 
-        }
-    }
-
-    const kisSection = async (token:string) => {
-        try {
-            console.log("KIS section : page in!"); 
-            const response = await fetch(`/api/kis/kisSection`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify({})
-            })
-            if (!response.ok) {
-                throw new Error(`Network response was not ok: ${response.statusText}`);
-            }
-    
             const data: IKisAuth = await response.json();
-            console.log("KIS section : ", data); 
-            return data.access_token; 
+            console.log("KIS section : ", data);
+            return data.access_token;
         } catch (error) {
             console.log("KIS section err : " + error);
             return null;
         }
     }
-    const fetchAccessToken = async () => {
-        try{
-            if(accessToken==null|| accessToken == undefined){
-                const token = await kisAuthkey();
-                console.log("KIS kisAuthkey Data: ", token);
-                setAccessToken(token); 
-            }
-        } catch (error) {
-            console.log("KIS ERROR: ", error);
-        }
-    }
+
+    const accessToken = cookies().get('kisAccessToken');
 
     useEffect(() => {
-        fetchAccessToken()
-        .then(()=>{
-            // const fetchData = async () => {
-            //     try {
-            if(accessToken){
-                const sectionData = kisSection(accessToken); 
-                console.log("KIS Section Data: ", sectionData);
-            }
-            //     } catch (error) {
-            //         console.log("KIS ERROR: ", error);
-            //     }
-            // }
-        })
-        .catch((error)=>{
-            console.log("fail!!",error)
-        })
-        
-        // fetchData();
+        if (accessToken) {
+            kisSection()
+                .then((res) => console.log("kisSection : ", res))
+        } else {
+            alert("token 발급실패! 다시 로그인 해주세요.")
+        }
     }, []);
 
 

@@ -1,7 +1,8 @@
 'use server'
-import Today from "@/app/common/date/today";
-import Yesterday from "@/app/common/date/yesterday";
+
+import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
+
 
 // Element	한글명	Type	Required	Length	Description
 // rt_cd	성공 실패 여부	String	Y	1	0 : 성공
@@ -35,33 +36,45 @@ import { NextRequest, NextResponse } from "next/server";
 // -ACML_TR_PBMN	누적 거래 대금	String	Y	18	누적 거래 대금
 // -MOD_YN	변경 여부	String	Y	1	변경 여부
 
-export async function POST(req: NextRequest) {
+export async function GET(req: NextRequest) {
+    
+    const authToken = cookies().get('kisAccessToken')+''
+    console.log("KIS Section!!! ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ", authToken);
+    if (!authToken) {
+        return NextResponse.json({ error: "Authorization token missing" }, { status: 400 });
+    }
 
+    // const query2 = 
+    // "FID_COND_MRKT_DIV_CODE=U&FID_INPUT_ISCD=0002&FID_INPUT_DATE_1=20240701&FID_INPUT_DATE_2=20240729& FID_PERIOD_DIV_CODE=D&"
+    
     const query = new URLSearchParams({
         FID_COND_MRKT_DIV_CODE: 'U',
         FID_INPUT_ISCD: '0002', 
         FID_INPUT_DATE_1: '20240701', 
         FID_INPUT_DATE_2: '20240729', 
         FID_PERIOD_DIV_CODE: 'D' 
-    });
+    }).toString();
+    
+    const url = `${process.env.KIS_DEV_API_BASE_URL}${process.env.KIS_DEV_API_SECTION}?${query}`
+    console.log("KIS Section authToken ", authToken)
+    // console.log("KIS Section url ", url)
 
-    const authToken = req.headers.get('Authorization');
-    const url = `${process.env.KIS_DEV_API_BASE_URL}${process.env.KIS_DEV_API_SECTION}${query}`
-    console.log("KIS Section!!! ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
 
+    const headers: HeadersInit = {
+        'Content-Type': 'application/json; charset=utf-8',
+        'Authorization': authToken,
+        'App-Key': process.env.NEXT_PUBLIC_API_KEY || '',
+        'App-Secret': process.env.NEXT_PUBLIC_API_SECRET || '',
+        'Tr-Id': 'FHKST01010100'
+      };
+
+  
     try {
         const response = await fetch(url
             , {
-                method: 'POST',
-                headers: {
-                },
-                body: JSON.stringify({
-                    grant_type: 'client_credentials',
-                    authorization: authToken,
-                    appkey: process.env.KIS_DEV_API_KEY,
-                    appsecret: process.env.KIS_DEV_API_SECERET,
-                    tr_id: 'FHKUP03500100',
-                })
+                method: 'GET',
+                headers: headers,
+                // params: query,
             }
         );
 
@@ -70,7 +83,6 @@ export async function POST(req: NextRequest) {
         }
 
         const res: IKisSection = await response.json();
-
         console.log("KIS Section data : ", res);
 
         if (res.length === 0) {
@@ -79,7 +91,7 @@ export async function POST(req: NextRequest) {
 
         return NextResponse.json(res);
     } catch (error) {
-        console.log("KIS Section err : " + error);
+        console.log("KIS Section route err : " + error);
         return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
     }
 }

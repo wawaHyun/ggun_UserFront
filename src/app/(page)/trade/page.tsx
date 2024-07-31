@@ -1,6 +1,5 @@
 'use client'
 
-import { kisAuthKeyAPI, kisTradeAPI } from "@/app/api/kisTrade/route";
 import BarChart from "@/app/component/chart/barChart";
 import QuoteLChart from "@/app/component/chart/quoteLChart";
 import QuoteRChart from "@/app/component/chart/quoteRChart";
@@ -23,7 +22,7 @@ export default async function tradePage() {
 
     const [list, setList] = useState([]);
 
-    const kisTrade = async () => { await kisTradeAPI().then((res: any) => setList(res)) }
+    // const kisTrade = async () => { await kisTradeAPI().then((res: any) => setList(res)) }
     // const kisTrade = await kisTradeAPI();
 
     const color = "text-blue-400"
@@ -88,7 +87,7 @@ export default async function tradePage() {
                 <div className="bg-pebble-100 text-white col-span-2 text-center">매수잔량 총합</div>
                     </div>
                     <div className=" w-full h-full">
-                        <button onClick={()=>kisTrade()}>흑흑 시바 허락해조</button>
+                        {/* <button onClick={()=>kisTrade()}>흑흑 시바 허락해조</button> */}
                         <TradeOrder ordDvsnCd={9990}/></div>
                 </div>
             </div>

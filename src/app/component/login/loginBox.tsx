@@ -6,6 +6,7 @@ import { useRef, useState } from "react";
 import { MoveButton } from "../button/moveButton";
 import OAuth from "./oAuth";
 import { useRouter } from "next/navigation";
+import { cookies } from 'next/headers'
 
 export default function IdLoginBox() {
 
@@ -55,6 +56,7 @@ export default function IdLoginBox() {
     const handleSubmit = () => {
         console.log('login page 입력받은 내용 ' + JSON.stringify(admininfo))
         setLen(true)
+        kisAuthkey();
         router.push(`/afterMain`);
         // exist()
         //     .then((resp: any) => {
@@ -89,6 +91,33 @@ export default function IdLoginBox() {
         }
     }
 
+
+
+    const kisAuthkey = async () => {
+        try {
+            const response = await fetch(`/api/kis/kisAuth`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({})
+            });
+    
+            if (!response.ok) {
+                throw new Error(`Network response was not ok: ${response.statusText}`);
+            }
+    
+            const data: { access_token: string } = await response.json(); 
+            cookies().set('kisAccessToken', data.access_token)
+            console.log("KIS authkey : ", cookies().get('kisAccessToken')); 
+            // setCookie({}, 'kisAccessToken', data.access_token, { httpOnly: false, path: '/' })
+            // console.log("KIS authkey : ", parseCookies().kisAccessToken); 
+
+        } catch (error) {
+            console.log("KIS authkey err: ", error);
+            return null; 
+        }
+    }
 
     return (
 
@@ -132,6 +161,7 @@ export default function IdLoginBox() {
             </div>
 
             <MoveButton style="w-full mt-[45px]" click={() => handleSubmit()} >Login</MoveButton>
+            
             <div className="grid grid-cols-3 text-center py-3">
                 자동로그아웃시간
                 <select name="timeSelect" defaultValue='30' >

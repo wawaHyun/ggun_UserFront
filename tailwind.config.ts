@@ -25,6 +25,7 @@ const config: Config = {
           400: "#F3E8EB",
           500: "#872642",
           600: "#9F4298",
+          // 700 : @apply 'from-pebble-200 to-pebble-400 via-pebble-300',
         },
         ggun:{
           100: "#f87171",

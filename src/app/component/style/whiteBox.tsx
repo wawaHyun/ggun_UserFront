@@ -5,5 +5,4 @@ export const WhiteBox = ({ children, style }: { children: React.ReactNode, style
             {children}
         </div>
     )
-
 }
