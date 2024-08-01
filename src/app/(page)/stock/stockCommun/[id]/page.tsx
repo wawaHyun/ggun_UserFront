@@ -1,15 +1,9 @@
 'use client'
 
-import { StockChatBox } from "@/app/component/stock/stockChatBox";
+import { stockCommunDummy } from "@/app/common/dummy/chat.dummy";
+import { StockComuBox } from "@/app/component/stock/stockCommun";
 
 function StockChat({ params }: any) {
-
-    const data = [
-        { id: 1, writer: '주친자', title: '그러고보니 오늘 뉴스', content: '뉴스 최상단에 떴던데 기대해볼만함', date: '24-06-21' },
-        { id: 2, writer: '따따따따따블', title: '상한가 가능한가요?', content: '경제지표가 엉망인데 털고 떠야 하는지 물타야 하는지ㅠ', date: '24-06-21' },
-        { id: 3, writer: '박정연', title: 'ㅋㅋㅋ', content: '믿음 믿음만이 구원 아멘', date: '24-06-21' },
-        { id: 4, writer: '.', title: '구리는 올랐는데', content: '반도체는 어케 떨어질수 있냐\n이건 말도 안돼', date: '24-06-21' },
-    ]
 
     function handleTitle() {
         const enums: any = {
@@ -31,8 +25,8 @@ function StockChat({ params }: any) {
                     <input type="text" className="h-[50px] w-2/3" placeholder="종목에 대한 자유로운 이야기를 해보세요!" />
                 </div>
                 <div>
-                    {data.map((v, i) =>
-                        <StockChatBox key={v.id} id={v.id} writer={v.writer} title={v.title} content={v.content} date={v.date} />
+                    {stockCommunDummy.map((v, i) =>
+                        <StockComuBox key={v.id} id={v.id} writer={v.writer} title={v.title} content={v.content} date={v.date} />
                     )}
                 </div>
             </div>

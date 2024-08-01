@@ -9,19 +9,19 @@ export default function TransWon() {
 
     const [nowWon, setNowWon] = useState<IKisSection[]>([]);
 
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         try {
-    //             const res = await fetch(`/api/exchange`);
-    //             const data: [] = await res.json();
-    //             setNowWon(data);
-    //             // console.log("exchange : ", data);
-    //         } catch (error) {
-    //             console.error("Failed to fetch exchange rates:", error);
-    //         }
-    //     };
-    //     fetchData();
-    // }, []);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const res = await fetch(`/api/exchange`);
+                const data: [] = await res.json();
+                setNowWon(data);
+                // console.log("exchange : ", data);
+            } catch (error) {
+                console.error("Failed to fetch exchange rates:", error);
+            }
+        };
+        fetchData();
+    }, []);
 
 
     const kisSection = async () => {
@@ -63,16 +63,16 @@ export default function TransWon() {
     return (
         <div className="w-full h-full flex justify-center content-center">
             <div className="w-full h-[70%] text-center grid grid-cols-2 gap-5">
-                {nowWon.map((v: IKisSection, i: number) =>
+                {mainExchangeDummy.map((v: IExchange, i: number) =>
                     <WhiteBox key={i}>
-                        <div>
+                        {/* <div>
                             {v.ACML_TR_PBMN}ddd
-                        </div>
-                        {/* <div className="py-3 space-y-2">
+                        </div> */}
+                        <div className="py-3 space-y-2">
                             <div className="">{v.cur_nm} {v.cur_unit}<hr /></div>
                             <div className="text-blue-500 text-lg">살때 {v.ttb}</div>
                             <div className="text-blue-500 text-lg">팔때 {v.tts}</div>
-                        </div> */}
+                        </div>
                     </WhiteBox>
                 )}
             </div>

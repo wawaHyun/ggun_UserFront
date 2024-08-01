@@ -5,7 +5,7 @@ import StockInfo from "@/app/component/stock/stockInfo";
 import { TabButton } from "@/app/component/button/tabButton";
 import StockLog from "@/app/component/stock/stockLog";
 import ChatRoom from "../../chatting/page";
-import StockChat from "../../stockchat/[id]/page";
+import StockChat from "../../stockCommun/[id]/page";
 import StockAnnual from "../../stockAnnual/page";
 import Link from "next/link";
 

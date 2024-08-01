@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const StockChatBox = ({ id,writer, title, content, date }: any) => {
+export const StockComuBox = ({ id,writer, title, content, date }: any) => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (

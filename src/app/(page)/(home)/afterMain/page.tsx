@@ -1,17 +1,20 @@
 'use client'
 
-import Image from "next/image";
-import Link from "next/link";
-import { WhiteBox } from "@/app/component/style/whiteBox";
 import { tradeDummy } from "@/app/common/dummy/account.dummy";
 import { IAccount } from "@/app/api/model/account.model";
 import { StockRankingDummy } from "@/app/common/dummy/stock.dummy";
-import MiniChart from "@/app/component/chart/miniChart";
 import { StockJisu } from "@/app/component/stock/stockJisu";
-import StockLank from "@/app/component/stock/stockLank";
+import StockLank, { StockLogos } from "@/app/component/stock/stockLank";
 import MyAccInfo from "@/app/component/main/myAccInfo";
+import NewsTopic from "@/app/component/news/newsTopic";
+import { newsDummy } from "@/app/common/dummy/news.dummy";
+import ChartRoomList from "@/app/component/chat/chatRoom";
+import { stockCommunDummy } from "@/app/common/dummy/chat.dummy";
+import { StockComuBox } from "@/app/component/stock/stockCommun";
+import Link from "next/link";
+import Image from "next/image";
 
-export default function AfterHome() {
+export default async function AfterHome() {
 
     const accList = tradeDummy;
 
@@ -22,19 +25,48 @@ export default function AfterHome() {
         return acc;
     }, {}));
 
-    return (
-        <main className="w-full h-full">
-            <div className="w-full h-[300px] border"><MyAccInfo/></div>
-            <div className=""></div>
-            <div className="px-8"><StockJisu /></div>
-                    
+    // const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/news/list`);
+    // if (!res.ok) {
+    //     throw new Error('Failed to fetch news');
+    // }
+    // const newslist: INews[] = await res.json();
+    const newslist: INews[] = newsDummy;
 
+    return (
+        <main className="w-full h-full space-y-3">
+            <div className="w-full h-[300px] "><MyAccInfo /></div>
+            <div className="px-8"><StockJisu /></div>
+
+            <div className="px-8">
+                <div className="text-2xl py-5">오늘의 hot토픽</div>
+                <NewsTopic newslist={newslist} />
+            </div>
             <div className="w-full flex justify-center">
-                <div className="w-[50%] border ">
+                <div className="w-[50%] ">
                     <StockLank />
                 </div>
             </div>
-            <div className="bg-amber-300 w-full h-[300px]"></div>
+            <div className="w-full flex justify-center space-x-5">
+                <div className="w-[30%]">
+                    <div className="text-xl py-3">인기 급상승 오픈채팅방</div>
+                    <ChartRoomList />
+                </div>
+                <div className="w-[50%]">
+                    <div className="text-xl py-3">인기 급상승 커뮤니티</div>
+                    <div className="mb-15">
+                        {stockCommunDummy.slice(0, 5).map((v: any, i: number) =>
+                            <Link className="flex w-full h-[50px] grid grid-cols-3 px-4 items-center active:text-xl" href={`/stock/stockCommun/${v.id}`}>
+                                <div className="flex">
+                                    <Image src={StockLogos(v.id)} width={30} height={10} alt={"logos"} className="rounded-lg" />
+                                    주식 이름 {v.id}
+                                </div>
+                                <div className="text-lg text-left active:text-xl">{v.title}</div>
+                                <div className="text-slate-400 text-right">{v.writer}</div>
+                            </Link>
+                        )}
+                    </div>
+                </div>
+            </div>
         </main>
     )
 }

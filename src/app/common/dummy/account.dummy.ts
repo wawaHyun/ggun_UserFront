@@ -20,3 +20,18 @@ export const tradeDummy:IAccount[] = [
     { id: 17, acno: "555-555-555555", modDate: "24-6-6", bank: '계좌이체', name: '삼성전자', acType : "출금", balance: 6000 },
     { id: 18, acno: "666-666-555555", modDate: "24-6-6", bank: '계좌이체', name: '삼성전자', acType : "출금", balance: 6000 },
 ]
+
+export const myStockDummy:any = [
+    {id:1, stock:'삼성전자', price: 1300000, volume: 420000, total: 35 },
+    {id:2, stock:'LG전자', price: 1300000, volume: 420000, total: 35 },
+    {id:3, stock:'SK하이닉스', price: 1300000, volume: 420000, total: 35 },
+    {id:4, stock:'DB하이텍', price: 1300000, volume: 420000, total: 35 },
+    {id:5, stock:'네페스', price: 1300000, volume: 420000, total: 35 },
+    {id:6, stock:'후성', price: 1300000, volume: 420000, total: 35 },
+    {id:7, stock:'원익피앤이', price: 1300000, volume: 420000, total: 35 },
+    {id:8, stock:'LS일렉트릭', price: 1400000, volume: 420000, total: 35 },
+    {id:9, stock:'SK시그넷', price: 1300000, volume: 420000, total: 35 },
+    {id:10, stock:'모트렉스', price: 1300000, volume: 420000, total: 35 },
+    {id:11, stock:'신세계I&C', price: 1300000, volume: 420000, total: 35 },
+    {id:12, stock:'프로텍', price:6400000, volume: 420000, total: 35 },
+]
