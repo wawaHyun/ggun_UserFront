@@ -24,7 +24,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
     const url = `${process.env.KIS_DEV_API_BASE_URL}${process.env.KIS_DEV_API_AUTH2}`
-    // console.log("KIS auth!!!" + url);
+    console.log("KIS auth!!!" + url);
         try {
             const response = await fetch(url
                 , {
@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
 
             const res: IKisAuth = await response.json();
 
-            // console.log("KIS auth api : ", res);
+            console.log("KIS auth api : ", res);
             
             if (res.length === 0) {
                 return NextResponse.json({ error: "data NOT FOUND" }, { status: 404 });

@@ -13,24 +13,32 @@ import { stockCommunDummy } from "@/app/common/dummy/chat.dummy";
 import { StockComuBox } from "@/app/component/stock/stockCommun";
 import Link from "next/link";
 import Image from "next/image";
+import { useExchangeFetch, useExchangeStack } from "@/app/store/exchange.store";
+import { useNewsFetch, useNewsStack } from "@/app/store/news.store";
 
 export default async function AfterHome() {
 
     const accList = tradeDummy;
+    // const newslist: INews[] = newsDummy;
 
-    const highestIdPerAcno = Object.values(accList.reduce((acc: Record<string, IAccount>, account: IAccount) => {
-        if (!acc[account.acno] || acc[account.acno].id < account.id) {
-            acc[account.acno] = account;
+    // const highestIdPerAcno = Object.values(accList.reduce((acc: Record<string, IAccount>, account: IAccount) => {
+    //     if (!acc[account.acno] || acc[account.acno].id < account.id) {
+    //         acc[account.acno] = account;
+    //     }
+    //     return acc;
+    // }, {}));
+
+
+    const fecthNews = useNewsFetch();
+    const newslist = useNewsStack();
+
+    try {
+        if(newslist.length == 0){
+            fecthNews();
         }
-        return acc;
-    }, {}));
-
-    // const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/news/list`);
-    // if (!res.ok) {
-    //     throw new Error('Failed to fetch news');
-    // }
-    // const newslist: INews[] = await res.json();
-    const newslist: INews[] = newsDummy;
+    } catch (error) {
+        console.error("Failed to fetch exchange rates:", error);
+    }
 
     return (
         <main className="w-full h-full space-y-3">
@@ -55,7 +63,7 @@ export default async function AfterHome() {
                     <div className="text-xl py-3">인기 급상승 커뮤니티</div>
                     <div className="mb-15">
                         {stockCommunDummy.slice(0, 5).map((v: any, i: number) =>
-                            <Link className="flex w-full h-[50px] grid grid-cols-3 px-4 items-center active:text-xl" href={`/stock/stockCommun/${v.id}`}>
+                            <Link className="w-full h-[50px] grid grid-cols-3 px-4 items-center active:text-xl" href={`/stock/stockCommun/${v.id}`}>
                                 <div className="flex">
                                     <Image src={StockLogos(v.id)} width={30} height={10} alt={"logos"} className="rounded-lg" />
                                     주식 이름 {v.id}

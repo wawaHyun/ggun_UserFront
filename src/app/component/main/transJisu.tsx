@@ -1,8 +1,29 @@
 
+import { useEffect } from "react";
 import BarChart from "../chart/barChart";
 import { WhiteBox } from "../style/whiteBox";
+import { useKisAuthFetch, useKisAuthStack, useKisSectionFetch, useKisSectionStack } from "@/app/store/kisApi.store";
 
 export default function TransJisu() {
+
+    const fecthAccesstoken = useKisAuthFetch();
+    const kisAccesstoken = useKisAuthStack();
+    // const fecthKisSection = useKisSectionFetch();
+    // const kisSection = useKisSectionStack();
+
+    try {
+        if(kisAccesstoken.length == 0){
+            fecthAccesstoken();
+        }
+        // if(kisSection.length == 0){
+        //     fecthKisSection();
+        // }
+        console.log("kisAccesstoken : ", kisAccesstoken);
+        // console.log("kisSection : ", kisSection);
+    } catch (error) {
+        console.error("Failed to fetch exchange rates:", error);
+    }
+
 
 
     return (

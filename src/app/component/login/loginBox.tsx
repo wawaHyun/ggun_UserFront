@@ -6,7 +6,7 @@ import { useRef, useState } from "react";
 import { MoveButton } from "../button/buttons";
 import OAuth from "./oAuth";
 import { useRouter } from "next/navigation";
-import { kisAuthkey } from "./loginSubmit";
+import { useKisAuthFetch } from "@/app/store/kisApi.store";
 
 export default function IdLoginBox() {
 
@@ -56,7 +56,6 @@ export default function IdLoginBox() {
     const handleSubmit = () => {
         console.log('login page 입력받은 내용 ' + JSON.stringify(admininfo))
         setLen(true)
-        kisAuthkey();
         router.push(`/afterMain`);
         // exist()
         //     .then((resp: any) => {
@@ -156,3 +155,7 @@ export default function IdLoginBox() {
 
     )
 };
+function useKisStore() {
+    throw new Error("Function not implemented.");
+}
+

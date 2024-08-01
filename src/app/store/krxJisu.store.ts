@@ -2,15 +2,24 @@ import { create } from 'zustand'
 
 interface KrxJisuState {
     data : IKrx[],
-    update :  (data:IKrx[]) => void,
+    fetchKrxJisu: () => Promise<void>,
+    setKrxJisu: (data: IKrx[]) => void,
 }
 
-const useKrxJisuStore = create<KrxJisuState>()((set) => ({
+const useKrxJisuStore = create<KrxJisuState>()((set,get) => ({
     data: [],
-    // update : ()=> set( (state) => ({ data:{ ...state.data, ...state } }) ),
-    update: (data: IKrx[]) => set({ data }),
+    fetchKrxJisu: async () => {
+        const response = await fetch(`api/krxJisu`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch news');
+        }
+        const data: IKrx[] = await response.json()
+        get().setKrxJisu(data);
+        console.log('KrxJisu fetched',data)
+    },
+    setKrxJisu: (data: IKrx[]) => set((state) => ({ ...state, data })),
 }))
 
-export const useKrxJisuAction =() =>useKrxJisuStore((store)=>store.update)
+export const useKrxJisuFetch =() =>useKrxJisuStore((store)=>store.fetchKrxJisu)
 export const useKrxJisuStack =() =>useKrxJisuStore((store)=>store.data)
 export const useKrxJisuState =() =>useKrxJisuStore.getState();

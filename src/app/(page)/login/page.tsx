@@ -16,7 +16,7 @@ const Login = () => {
                 <div className="flex justify-center w-full h-[50px]">
                     <div className="w-[20%] content-center">
                         <SendMail />
-                        <WhiteLink click="http://localhost:3001/" >ADMIN PAGE</WhiteLink>
+                        <WhiteLink click={process.env.NEXT_PUBLIC_ADMIN_URL} >ADMIN PAGE</WhiteLink>
                     </div>
                 </div>
             </div>
