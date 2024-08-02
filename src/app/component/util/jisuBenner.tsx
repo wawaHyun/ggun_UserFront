@@ -8,21 +8,6 @@ export default async function JisuBenner() {
     const fecthJisu = useKrxJisuFetch();
     const currentJisu = useKrxJisuStack();
 
-    // const fetchData = useCallback(async () => {
-    //     try {
-    //         const res = await fetch('/api/krxJisu');
-    //         const data: IKrx[] = await res.json();
-    //         updateKrxData(data);
-    //         // console.log("JisuBenner : ", currentJisuData);
-    //     } catch (error) {
-    //         console.error("Failed to fetch exchange rates:", error);
-    //     }
-    // }, [updateKrxData, currentJisuData]);
-
-    // useEffect(() => {
-    //     fetchData();
-    // }, []);
-
     try {
         if(currentJisu.length == 0){
             fecthJisu();

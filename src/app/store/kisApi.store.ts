@@ -1,10 +1,11 @@
-import { cookies } from 'next/headers';
+"use client"
+
 import { create } from 'zustand'
 
 interface KisAuthState {
     data : IKisAuth[],
-    fetchKisAuth: () => Promise<void>,
-    setKisAuth: (data: IKisAuth[]) => void,
+    // fetchKisAuth: () => Promise<void>,
+    setKisAuth: (data: string) => void,
 }
 
 interface KisSectionState {
@@ -17,51 +18,49 @@ interface KisState {
     kisAuth : KisAuthState,
     kisSection : KisSectionState,
 }
+
 const useKisStore = create<KisState>()((set,get) => ({
     kisAuth:{
         data: [],
-        fetchKisAuth: async () => {
-            const response = await fetch(`/api/kis/kisAuth`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-
-            if (!response.ok) {
-                throw new Error(`Network response was not ok: ${response.statusText}`);
-            }
-            
-            const data: { access_token: string } = await response.json(); 
+        // fetchKisAuth: (store) => sto
     
-            console.log("KIS authkey : ", cookies().get('kisAccessToken')); 
+        //     // console.log("KIS authkey : ", cookies().get('kisAccessToken')); 
 
-            get().kisAuth.setKisAuth(data);
-            console.log('Kis Auth fetched',data)
-        },
-        setKisAuth: (data: IKrx[]) => set((state) => ({ ...state, data })),
+        //     get().kisAuth.setKisAuth(data.access_token);
+        //     console.log('Kis Auth fetched',data.access_token)
+        // },
+        setKisAuth: (data: string) => set((state) => ({ ...state, data })),
     },
 
     kisSection:{
         data: [],
         fetchKisSection: async () => {
-            const response = await fetch(`api/kis/KisSection`,{
-
+            console.log("KIS authkey : 진입완 ");
+            console.log("KIS authkey : ", get().kisAuth.data);
+            const response = await fetch(`api/kis/kisSection`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${get().kisAuth.data}`
+                },
+                body: JSON.stringify({})
             });
+
             if (!response.ok) {
                 throw new Error('Failed to fetch news');
             }
-            const data: IKrx[] = await response.json()
+
+            const data: IKisSection[] = await response.json()
             get().kisSection.setKisSection(data);
             console.log('Kis Section fetched',data)
         },
-        setKisSection: (data: IKrx[]) => set((state) => ({ ...state, data })),
+        setKisSection: (data: IKisSection[]) => set((state) => ({ ...state, data })),
 
     }
 
 }))
 
-export const useKisAuthFetch =() =>useKisStore((store)=>store.kisAuth.fetchKisAuth)
+export const useKisSetAuth =() =>useKisStore((store)=>store.kisAuth.setKisAuth)
 export const useKisSectionFetch =() =>useKisStore((store)=>store.kisSection.fetchKisSection)
 
 export const useKisAuthStack =() =>useKisStore((store)=>store.kisAuth.data)

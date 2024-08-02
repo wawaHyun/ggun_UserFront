@@ -4,8 +4,8 @@ interface IKrxSectionResponse {
 
 interface IKisAuth {
 length: number;
-access_token : String,
-token_type : String,
+access_token : string,
+token_type : string,
 expires_in : number,
 acess_token_token_expired : String,
 }

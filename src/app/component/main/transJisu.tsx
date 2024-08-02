@@ -1,24 +1,31 @@
+'use client'
 
-import { useEffect } from "react";
 import BarChart from "../chart/barChart";
 import { WhiteBox } from "../style/whiteBox";
-import { useKisAuthFetch, useKisAuthStack, useKisSectionFetch, useKisSectionStack } from "@/app/store/kisApi.store";
+import { useKisSectionFetch, useKisSectionStack } from "@/app/store/kisApi.store";
+import { kisAuthkey } from "../login/kisAuth";
 
 export default function TransJisu() {
 
-    const fecthAccesstoken = useKisAuthFetch();
+    const fecthAccesstoken = useKisSetAuth();
     const kisAccesstoken = useKisAuthStack();
-    // const fecthKisSection = useKisSectionFetch();
-    // const kisSection = useKisSectionStack();
+    const fecthKisSection = useKisSectionFetch();
+    const kisSection = useKisSectionStack();
+
+    const accessToken = kisAuthkey();
 
     try {
-        if(kisAccesstoken.length == 0){
-            fecthAccesstoken();
-        }
-        // if(kisSection.length == 0){
-        //     fecthKisSection();
+        // if(kisAccesstoken == null){
+        //     fecthAccesstoken(accessToken);
         // }
-        console.log("kisAccesstoken : ", kisAccesstoken);
+
+        // console.log("KIS authkey : ", cookies().get('kisAccessToken')); 
+
+        if(kisSection.length == 0){
+            console.log("kisAccesstoken1 : ", accessToken);
+            fecthKisSection();
+        }
+        console.log("kisAccesstoken2 : ", accessToken);
         // console.log("kisSection : ", kisSection);
     } catch (error) {
         console.error("Failed to fetch exchange rates:", error);

@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import { fetchExchange } from '../fetch/exchange/exchange';
 
 interface ExchangeState {
     data: IExchange[],
@@ -9,13 +10,13 @@ interface ExchangeState {
 const useExchangeStore = create<ExchangeState>()((set, get) => ({
     data: [],
     fetchExchange: async () => {
-        const response = await fetch(`api/exchange`);
-        if (!response.ok) {
+        const response:IExchange[] = await fetchExchange();
+        if (!response) {
             throw new Error('Failed to fetch news');
         }
-        const data: IExchange[] = await response.json()
-        get().setExchange(data);
-        console.log('Exchange fetched',data)
+
+        get().setExchange(response);
+        console.log('Exchange fetched',response)
     },
     setExchange: (data: IExchange[]) => set((state) => ({ ...state, data })),
 }))
