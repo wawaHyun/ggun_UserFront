@@ -6,26 +6,27 @@ import Header from "./component/navigation/header";
 import Footer from "./component/box/footer";
 import JisuBenner from "./component/util/jisuBenner";
 import MyHeader from "./component/navigation/myHeader";
-// import {
-//   useQuery,
-//   useMutation,
-//   useQueryClient,
-//   QueryClient,
-//   QueryClientProvider,
-// } from '@tanstack/react-query'
+import Loader from "./component/queryState/loader";
+import QueryError from "./component/queryState/queryError";
+import ReactQueryProviders from "./hooks/useReactQuery";
+import { QueryObserverBaseResult } from "@tanstack/react-query";
 
 const inter = Inter({ subsets: ["latin"] });
-// const queryClient = new QueryClient();
-
-const ReduxProvider = dynamic(() => import("./redux/redux-provider"), {
-  ssr: false
-});
 
 export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+  children,queryState
+}: {
+  children: React.ReactNode,
+  queryState: QueryObserverBaseResult;
+}) {
+
+  if (queryState.isLoading) {
+    return <Loader />;
+  }
+  if (queryState.isError) {
+    console.error(queryState.error);
+    return <QueryError />;
+  }
 
   return (
     <html lang="ko">
@@ -35,9 +36,8 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <div className="bg-white">
-          <ReduxProvider>
-            {/* <QueryClientProvider client={queryClient}> */}
-            {/* {parseCookies().accessToken != undefined ? */}
+            <ReactQueryProviders >
+            {/* {cookies.accessToken != undefined ? */}
             <div className="h-[95px]">
               <div className="fixed h-[50px] top-0 left-0 z-30 ">
                 <JisuBenner/>
@@ -50,8 +50,7 @@ export default function RootLayout({
               {children}
             </div>
               <div className="border-t-[1px] relative bottom-0 f-full"><Footer /></div>
-              {/* </QueryClientProvider> */}
-              </ReduxProvider>
+              </ReactQueryProviders>
         </div>
       </body>
     </html>

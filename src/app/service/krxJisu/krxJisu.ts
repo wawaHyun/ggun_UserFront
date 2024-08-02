@@ -17,11 +17,12 @@ import { NextRequest, NextResponse } from "next/server";
 // 11	거래대금	ACC_TRDVAL	string()
 // 12	상장시가총액	MKTCAP	string()
 
-export async function GET(req: NextRequest) {
+// export async function GET(req: NextRequest) {
+export const fetchKrxJisu = async (): Promise<IKrx[] | undefined> => {
     async function fetchData(date: string): Promise<IKrx[]> {
         const response = await fetch(`${process.env.KRX_DEV_API_URL}?AUTH_KEY=${process.env.KRX_DEV_API_KEY}&basDd=${date}`);
         // console.log("KRX JISU!!!" + `${process.env.KRX_DEV_API_URL}?AUTH_KEY=${process.env.KRX_DEV_API_KEY}&basDd=${date}`);
-        
+
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
@@ -31,14 +32,14 @@ export async function GET(req: NextRequest) {
     }
 
     try {
-        let date = new Date(); 
+        let date = new Date();
         let res = await fetchData(Today());
         let attempts = 0;
 
         while (res.length === 0 && attempts < 7) {
-            date = new Date(); 
-            date.setDate(date.getDate() - (attempts + 1)); 
-            const formattedDate = Yesterday(date); 
+            date = new Date();
+            date.setDate(date.getDate() - (attempts + 1));
+            const formattedDate = Yesterday(date);
             res = await fetchData(formattedDate);
             attempts++;
             // console.log("Retrying with date: ", formattedDate);
@@ -47,12 +48,11 @@ export async function GET(req: NextRequest) {
         // console.log("KRX JISU : ", res);
 
         if (res.length === 0) {
-            return NextResponse.json({ error: "No data found for both today and yesterday" }, { status: 404 });
+            throw new Error("No data found for both today and yesterday");
         }
-
-        return NextResponse.json(res);
+        
+        return res;
     } catch (error) {
         console.log("KRX JISU err : " + error);
-        return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
     }
 }
