@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { fetchExchange } from '../fetch/exchange/exchange';
+import { fetchExchange } from '../service/exchange/exchange';
 
 interface ExchangeState {
     data: IExchange[],
