@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-const QueryError: React.FC = () => {
+const IsError: React.FC = () => {
 
   return (
     <div className="">
@@ -10,4 +10,4 @@ const QueryError: React.FC = () => {
   );
 };
 
-export default QueryError;
+export default IsError;

@@ -1,25 +1,23 @@
 'use client'
 
 import FirstMenu from "@/app/component/navigation/fristMenu";
-import { Search } from "@/app/component/search/search";
 import { Suspense, useState } from "react";
 import AdBox from "@/app/component/main/adBox";
 import { WhiteBox } from "@/app/component/style/whiteBox";
-import TransJisu from "@/app/component/main/transJisu";
 import TransWon from "@/app/component/main/transWon";
-import NasdaqBarChart from "@/app/component/chart/nasdaqBarChart";
 import Introduce from "@/app/component/main/introduce";
+import StockMarket from "@/app/component/main/stockMarket";
 
 export default function BeforeHome() {
 
   const [btn, setBtn] = useState(1)
 
   function handleCharts(btn: any) {
-    console.log("handelCharts : ", btn)
+    // console.log("handelCharts : ", btn)
     const enums: any = {
-      1: <NasdaqBarChart />,
-      2: <TransWon />,
-      3: <TransJisu />,
+      1:<StockMarket props={1}/>,
+      2: <StockMarket props={2}/>,
+      3: <TransWon />,
     };
     return <div>{enums[btn]}</div>;
   }
@@ -44,9 +42,9 @@ export default function BeforeHome() {
           </div>
 
           <div className="flex-col h-full w-full ">
-            <button className="h-1/3 w-full truncate" onClick={() => setBtn(1)}><WhiteBox style="h-full text-center content-center bg-white" ><span>나스닥<br />주가지수</span></WhiteBox></button>
-            <button className="py-2 h-1/3 w-full truncate" onClick={() => setBtn(2)}><WhiteBox style="h-full text-center content-center bg-white" ><span>오늘의<br />환율</span></WhiteBox></button>
-            <button className="h-1/3 w-full truncate" onClick={() => setBtn(3)}><WhiteBox style="h-full text-center content-center bg-white" >주요 <br />지수</WhiteBox></button>
+            <button className="h-1/3 w-full truncate" onClick={() => setBtn(1)}><WhiteBox style="h-full text-center content-center bg-white" ><span>코스닥</span></WhiteBox></button>
+            <button className="py-2 h-1/3 w-full truncate" onClick={() => setBtn(2)}><WhiteBox style="h-full text-center content-center bg-white" >코스피</WhiteBox></button>
+            <button className="h-1/3 w-full truncate" onClick={() => setBtn(3)}><WhiteBox style="h-full text-center content-center bg-white" ><span>오늘의<br />환율</span></WhiteBox></button>
           </div>
 
           <div className="col-span-3 h-full w-full" >

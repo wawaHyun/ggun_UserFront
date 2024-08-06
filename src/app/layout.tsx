@@ -1,13 +1,9 @@
 
 import { Inter } from "next/font/google";
 import "./globals.css";
-import dynamic from "next/dynamic";
-import Header from "./component/navigation/header";
 import Footer from "./component/box/footer";
 import JisuBenner from "./component/util/jisuBenner";
 import MyHeader from "./component/navigation/myHeader";
-import Loader from "./component/queryState/loader";
-import QueryError from "./component/queryState/queryError";
 import ReactQueryProviders from "./hooks/useReactQuery";
 import { QueryObserverBaseResult } from "@tanstack/react-query";
 
@@ -19,14 +15,6 @@ export default function RootLayout({
   children: React.ReactNode,
   queryState: QueryObserverBaseResult;
 }) {
-
-  if (queryState.isLoading) {
-    return <Loader />;
-  }
-  if (queryState.isError) {
-    console.error(queryState.error);
-    return <QueryError />;
-  }
 
   return (
     <html lang="ko">

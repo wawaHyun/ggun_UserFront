@@ -6,7 +6,7 @@ import { useRef, useState } from "react";
 import { MoveButton } from "../button/buttons";
 import OAuth from "./oAuth";
 import { useRouter } from "next/navigation";
-import { useKisAuthFetch } from "@/app/store/kisApi.store";
+import { useKisAuthFetch } from "@/app/store/kis.api.store";
 
 export default function IdLoginBox() {
 

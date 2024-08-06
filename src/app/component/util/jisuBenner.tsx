@@ -7,10 +7,10 @@ import { QueryClient, useMutation, useQuery } from "@tanstack/react-query";
 
 export default async function JisuBenner() {
 
-    const { data: krxJisu = [], isLoading, isError } = useQuery<IKrx[], Error>({
-        queryKey: ['krxJisu'],
-        queryFn: fetchKrxJisu(),
-    });
+    // const { data: krxJisu = [], isLoading, isError } = useQuery<IKrx[], Error>({
+    //     queryKey: ['krxJisu'],
+    //     queryFn: fetchKrxJisu(),
+    // });
 
     //   const krxJisu = useQuery<IKrx[]>(['krxJisu'], fetchKrxJisu());
 
@@ -25,6 +25,8 @@ export default async function JisuBenner() {
     // } catch (error) {
     //     console.error("Failed to fetch exchange rates:", error);
     // }
+
+    const krxJisu = KrxJisuDummy
 
     return (
         <div className="bg-pebble-100">
