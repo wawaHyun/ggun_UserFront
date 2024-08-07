@@ -16,13 +16,33 @@
   }
 }
 
-body {
-}
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+/* ::-webkit-scrollbar-track {
+  background-color: gray;
+} */
+::-webkit-scrollbar-thumb { 
+  background-color:#433E49 ;
+  background-image: linear-gradient(to right, #F3E8EB, #928490, #928490, #F3E8EB);
+}
+::-webkit-scrollbar-button {
+  display: none;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color:  #433E49 ;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
 }
 
 select {

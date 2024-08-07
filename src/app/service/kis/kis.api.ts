@@ -78,7 +78,7 @@ export async function fetchKisSection(props:number): Promise<IKisSection | { sta
         }
 
         const res: IKisSection = await response.json();
-        console.log("KIS Section data : ", res.output1);
+        // console.log("KIS Section data : ", res.output1);
 
         if (res.length === 0) {
             return { status: 404 };

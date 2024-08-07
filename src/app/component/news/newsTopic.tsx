@@ -1,13 +1,29 @@
+import { newsDummy } from "@/app/common/dummy/news.dummy";
+import { fetchNews } from "@/app/service/news/news.api";
+import { useQuery } from "@tanstack/react-query";
 import Image from "next/image"
 
-export default async function NewsTopic({newslist}:{newslist?:INews[]}){
+export default function NewsTopic(){
 
-    // const todayNews:INews[] = await allNews()
-    // const todayNews = newsDummy
+  const fetchData= async (): Promise<INews[]> => {
+    const response = await fetchNews()
+    if ('status' in response) {
+        throw new Error(`Error: ${response.status}`);}
+    return response;
+}
+
+
+  const { data } = useQuery<INews[]>(
+    {
+        queryKey: ["news"],
+        queryFn : fetchData,
+        // initialData: newsDummy,
+    }
+);
     
     return(
         <div className="text-center grid grid-cols-5 gap-3">
-        {newslist.slice(0,5).map((v: INews, i: any) =>
+        {data&&data.slice(0,5).map((v: INews, i: any) =>
             <ul key={v.id} className="border text-center text-black hover:text-gray-500 hover:shadow-lg hover:border rounded-lg">
                 <li className="flex justify-center h-[60%]">
                   <Image unoptimized src={v.imgSrc} height={150} width={300} alt={v.title} className="rounded-t-lg" />

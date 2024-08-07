@@ -1,17 +1,17 @@
 import { StockRankingDummy } from "@/app/common/dummy/stock.dummy";
 import { WhiteBox } from "../style/whiteBox";
 import Link from "next/link";
-import Image from "next/image";
 import MiniChart from "../chart/miniChart";
 
-export const StockJisu = () => {
+export const MyStockList = () => {
 
     let current = 150;
     // -translate-x-${current}/3
 
+
     return (
-        <div className="h-full w-full rounded-lg overflow-hidden py-3 border">
-            <div className={`flex space-x-5 translate-x-3/6`}>
+        <div className="h-full w-full rounded-lg overflow-hidden overflow-x-scroll overscroll-contain scroll-smooth will-change-auto hover:will-change-scroll">
+            <div className={`flex space-x-5 hover:translate-x-3/6`}>
                 {StockRankingDummy.map((v: any, i: number) =>
                     <WhiteBox key={v.id} style=" min-w-[200px] min-h-[100px] content-center bg-slate-100">
                         <Link href={`/stock/stockDetail/${v.id}`}
@@ -24,5 +24,6 @@ export const StockJisu = () => {
                 )}
             </div>
         </div>
+
     )
 }

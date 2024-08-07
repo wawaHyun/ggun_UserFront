@@ -8,74 +8,20 @@ import { cookies } from "next/headers";
 export default async function TransJisu() {
 
 
-    // const fecthAccesstoken = useKisSetAuth();
-    // const kisAccesstoken = useKisAuthStack();
-    // const fecthKisSection = useKisSectionFetch();
-    // const kisSection = useKisSectionStack();
-
-    // const accessToken = kisAuthkey();
-
-    // try {
-    //     // if(kisAccesstoken == null){
-    //     //     fecthAccesstoken(accessToken);
-    //     // }
-
-    //     // console.log("KIS authkey : ", cookies().get('kisAccessToken')); 
-
-    //     if(kisSection.length == 0){
-    //         console.log("kisAccesstoken1 : ", accessToken);
-    //         fecthKisSection();
+    // const fetchNews = useNewsFetch();
+    // const currentNews = useNewsStack();
+  
+    // useEffect(() => {
+    //   const fetchData = async () => {
+    //     try {
+    //       await fetchNews();
+    //     } catch (error) {
+    //       console.error(error);
     //     }
-    //     console.log("kisAccesstoken2 : ", accessToken);
-    //     // console.log("kisSection : ", kisSection);
-    // } catch (error) {
-    //     console.error("Failed to fetch exchange rates:", error);
-    // }
-
-    //  const jisuAccesstoken = ()=> {
-    //         const token = useQuery({
-    //             queryKey: ["kisJisu"],
-    //             queryFn: async () => await fetchKisAuth(),
-    //         })
-    //         console.log("1: ", token)
-    //         // console.log("2: ", token.access_token)
-    //         // cookies().set('kisJisuAcctoken',token.access_token)
-    //     }
-
-    // const cookies = useCookies()
-    // const kisToken = cookies().get('kisToken')
-
-    const fetchAuth = async () => {
-        await fetchKisAuth()
-        // console.log("kisToken: ", kisToken)
-    }
-
-    const fetchSection = async () => {
-        const response = await fetchKisSection()
-        console.log("fetchSection: ", response)
-        return response;
-    }
-
-    const { data } = useQuery(
-        {
-            queryKey: ["kisSection"],
-            queryFn: fetchSection,
-        }
-    );
-
-    try {
-        // if (kisToken == null) {
-        //     fetchAuth
-        // }
-        // if(kisToken){
-        // }
-        // console.log("fetchSection result : ", data)
-        
-    } catch (error) {
-        console.error("Failed to fetch exchange rates:", error);
-    }
-
-
+    //   };
+  
+    //   fetchData();
+    // }, [fetchNews]);
 
     // // 데이터 패칭 함수 
     // const getUserData(userId) = () => {

@@ -1,4 +1,4 @@
-import { IAccount } from "@/app/api/model/account.model"
+import { IAccount } from "@/app/service/model/account.model"
 
 export const tradeDummy:IAccount[] = [
     { id: 1, acno: "111-111-555555", modDate: "24-6-1", bank: '계좌이체', name: '삼성전자', acType : "입금", balance: 3000 },

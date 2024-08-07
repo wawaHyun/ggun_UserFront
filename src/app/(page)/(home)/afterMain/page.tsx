@@ -1,19 +1,14 @@
 'use client'
 
 import { tradeDummy } from "@/app/common/dummy/account.dummy";
-import { IAccount } from "@/app/api/model/account.model";
-import { StockRankingDummy } from "@/app/common/dummy/stock.dummy";
-import { StockJisu } from "@/app/component/stock/stockJisu";
+import { MyStockList } from "@/app/component/stock/stockJisu";
 import StockLank, { StockLogos } from "@/app/component/stock/stockLank";
 import MyAccInfo from "@/app/component/main/myAccInfo";
 import NewsTopic from "@/app/component/news/newsTopic";
-import { newsDummy } from "@/app/common/dummy/news.dummy";
 import ChartRoomList from "@/app/component/chat/chatRoom";
 import { stockCommunDummy } from "@/app/common/dummy/chat.dummy";
-import { StockComuBox } from "@/app/component/stock/stockCommun";
 import Link from "next/link";
 import Image from "next/image";
-import { useExchangeFetch, useExchangeStack } from "@/app/store/exchange.store";
 import { useNewsFetch, useNewsStack } from "@/app/store/news.store";
 
 export default async function AfterHome() {
@@ -42,12 +37,12 @@ export default async function AfterHome() {
 
     return (
         <main className="w-full h-full space-y-3">
-            <div className="w-full h-[300px] "><MyAccInfo /></div>
-            <div className="px-8"><StockJisu /></div>
+            {/* <div className="w-full h-[300px] "><MyAccInfo /></div> */}
+            <div className="px-8"><MyStockList /></div>
 
             <div className="px-8">
                 <div className="text-2xl py-5">오늘의 hot토픽</div>
-                <NewsTopic newslist={newslist} />
+                <NewsTopic />
             </div>
             <div className="w-full flex justify-center">
                 <div className="w-[50%] ">
