@@ -31,7 +31,7 @@ import Today from "@/app/common/date/today";
 // 매매기준율	
 // KFTC_BKPR	String	서울외국환중개
 // 장부가격	
-export async function fetchExchange() {
+export const fetchExchange = async ()=> {
     const code = ['USD', 'CNH', 'EUR', 'JPY(100)'];
     const data: IExchange[] = [];
     const url = `${process.env.EXCHANGE_API_URL}?authkey=${process.env.EXCHANGE_API_KEY}&searchdate=${Today()}&data=AP01`;

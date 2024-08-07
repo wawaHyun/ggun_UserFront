@@ -2,8 +2,8 @@ import { create } from 'zustand'
 import { IAccount } from '../service/model/account.model';
 
 interface AccountState {
-    data : IAccount[],
-    update :  (data:IAccount[]) => void,
+    data: IAccount[],
+    update: (data: IAccount[]) => void,
 }
 
 const useAccountStore = create<AccountState>()((set) => ({
@@ -12,6 +12,6 @@ const useAccountStore = create<AccountState>()((set) => ({
     update: (data: IAccount[]) => set({ data }),
 }))
 
-export const useAccountAction =() =>useAccountStore((store)=>store.update)
-export const useAccountStack =() =>useAccountStore((store)=>store.data)
-export const useAccountState =() =>useAccountStore.getState();
+export const useAccountAction = () => useAccountStore((store) => store.update)
+export const useAccountStack = () => useAccountStore((store) => store.data)
+export const useAccountState = () => useAccountStore.getState();

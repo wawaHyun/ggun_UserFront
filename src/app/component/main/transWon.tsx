@@ -2,22 +2,25 @@
 import { mainExchangeDummy } from "@/app/common/dummy/exchange.dummy";
 import { WhiteBox } from "../style/whiteBox";
 import { useEffect, useState } from "react";
-import { useExchangeFetch, useExchangeStack } from "@/app/store/exchange.store";
+import { useExchangeStack } from "@/app/store/exchange.store";
 // import { cookies } from "next/headers";
 
 export default function TransWon() {
 
-    const fecthExchange = useExchangeFetch();
-    const currentExchange = useExchangeStack();
+    // const fecthExchange = useExchangeFetch();
+    // const currentExchange = useExchangeStack();
 
-    try {
-        if(currentExchange.length == 0){
-            fecthExchange();
-        }
-        console.log("exchange : ", currentExchange);
-    } catch (error) {
-        console.error("Failed to fetch exchange rates:", error);
-    }
+    // try {
+    //     if(currentExchange.length == 0){
+    //         fecthExchange();
+    //     }
+    //     console.log("exchange : ", currentExchange);
+    // } catch (error) {
+    //     console.error("Failed to fetch exchange rates:", error);
+    // }
+
+    const currentExchange = mainExchangeDummy;
+
 
     return (
         <div className="w-full h-full flex justify-center content-center">
