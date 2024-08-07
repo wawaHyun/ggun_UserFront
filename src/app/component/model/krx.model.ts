@@ -1,9 +1,11 @@
 interface IKrxResponse {
-    length: number;
-    OutBlock_1: IKrx[];
+    length: number,
+    OutBlock_1: [],
 }
 
 interface IKrx {
+    OutBlock_1? : IKrxResponse[],
+    length?: number,
     BAS_DD: string,
     IDX_CLSS: string,
     IDX_NM: string,

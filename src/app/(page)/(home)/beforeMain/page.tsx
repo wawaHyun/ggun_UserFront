@@ -22,12 +22,6 @@ export default function BeforeHome() {
     return <div>{enums[btn]}</div>;
   }
 
-  // const handleOnKeyup =(e:React.KeyboardEvent<HTMLInputElement>) =>{
-  const handleOnKeyup =(e:any) =>{
-    // e.key = 'enter' ?
-    console.log(e);
-  }
-
 
   return (
     <main className="w-full h-full flex justify-center">

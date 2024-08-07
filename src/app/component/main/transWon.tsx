@@ -1,31 +1,30 @@
 
 import { mainExchangeDummy } from "@/app/common/dummy/exchange.dummy";
 import { WhiteBox } from "../style/whiteBox";
-import { useEffect, useState } from "react";
-import { useExchangeStack } from "@/app/store/exchange.store";
-// import { cookies } from "next/headers";
+import { useQuery } from "@tanstack/react-query";
+import { fetchExchange } from "@/app/service/exchange/exchange.api";
 
 export default function TransWon() {
 
-    // const fecthExchange = useExchangeFetch();
-    // const currentExchange = useExchangeStack();
+    const queryExchage= async (): Promise<IExchange[]> => {
+        const response = await fetchExchange()
+        if ('status' in response) {
+            throw new Error(`Error: ${response.status}`);}
+        return response;
+    }
 
-    // try {
-    //     if(currentExchange.length == 0){
-    //         fecthExchange();
-    //     }
-    //     console.log("exchange : ", currentExchange);
-    // } catch (error) {
-    //     console.error("Failed to fetch exchange rates:", error);
-    // }
-
-    const currentExchange = mainExchangeDummy;
-
+    const { data } = useQuery<IExchange[]>(
+        {
+            queryKey: ["exchange"],
+            queryFn: queryExchage,
+            initialData: mainExchangeDummy,
+        }
+    );
 
     return (
         <div className="w-full h-full flex justify-center content-center">
             <div className="w-full h-[70%] text-center grid grid-cols-2 gap-5">
-                {currentExchange.map((v: IExchange, i: number) =>
+                {data && data.map((v: IExchange, i: number) =>
                     <WhiteBox key={i}>
                         <div className="py-3 space-y-2">
                             <div className="">{v.cur_nm} {v.cur_unit}<hr /></div>

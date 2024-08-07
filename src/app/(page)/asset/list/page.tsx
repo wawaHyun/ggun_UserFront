@@ -1,8 +1,8 @@
 
-import { IAccount } from "@/app/api/model/account.model";
 import { LocalNumberOptions } from "@/app/common/config/localeString";
 import { tradeDummy } from "@/app/common/dummy/account.dummy";
 import { WhiteLink } from "@/app/component/link/whiteLink";
+import { IAccount } from "@/app/service/model/account.model";
 import Image from "next/image";
 
 export default async function AccountList() {
