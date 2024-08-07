@@ -8,6 +8,7 @@ import StockInfo from "@/app/component/stock/stockInfo";
 import { WhiteBox } from "@/app/component/style/whiteBox";
 import TradeInfo from "@/app/component/trade/tradeInfo";
 import TradeOrder from "@/app/component/trade/tradeOrder";
+import { fetchKisAskingprice } from "@/app/service/kis/kis.api";
 
 
 export default async function tradePage() {
@@ -17,22 +18,39 @@ export default async function tradePage() {
     // const kisTrade = async () => { await kisTradeAPI().then((res: any) => setList(res)) }
     // const kisTrade = await kisTradeAPI();
 
+
+  const fetchData= async (): Promise<IKI[]> => {
+    const response = await fetchKisAskingprice()
+    if ('status' in response) {
+        throw new Error(`Error: ${response.status}`);}
+    return response;
+}
+
+const { data } = useQuery<INews[]>(
+    {
+        queryKey: ["news"],
+        queryFn: fetchData,
+        initialData: newsDummy,
+    }
+);
+
+
     const color = "text-blue-400"
     const now = 9800
 
     return (
         <div className="w-full h-full flex justify-center content-center">
-            <div className="w-[80%] space-y-5">
+            <div className="w-[60%] space-y-5">
                 <div className="w-full">
                     <WhiteBox>
                         <div>
                             <div className="h-[200px] bg-benner_img corver"><BarChart/></div>
-                    <StockInfo />
+                    {/* <StockInfo /> */}
                         </div>
                     </WhiteBox></div>
 
                 <div className="grid grid-cols-3">
-                    <div className="grid grid-cols-6 col-span-2">
+                    <div className="grid grid-cols-4 col-span-2">
                         <div className=" col-span-2">
                             {kisTradeDummy.map((v: any, i: number) =>
                                 <div key={i+v.quote+1} className="border border-b-1 h-[50px] flex w-full">
@@ -52,23 +70,24 @@ export default async function tradePage() {
                         </div>
 
 
-                        <div className="border col-span-2">매도호가<TradeInfo /></div>
+                        {/* <div className="border col-span-2">매도호가<TradeInfo /></div> */}
 
-                        <div className="border col-span-2">매수호가</div>
-                        <div className=" col-span-2">
-                            {kisTradeDummy.map((v: any, i: number) =>
-                                <div key={i+v.quote+2} className="border text-center items-center h-[50px] flex w-full">
-                                    <div className={` w-2/3 text-xl ${color}`}>{v.price}</div>
-                                    <div className=" w-1/3 text-slate-400">-5.01%</div>
-                                </div>
-                            )}
-                        </div>
+                        {/* <div className="border col-span-2">매수호가</div> */}
                         <div className=" col-span-2">
                             {kisTradeDummy.map((v: any, i: number) =>
                                 <div key={i+v.quote} className="border border-b-1 h-[50px] flex w-full">
                                     <div className="w-full">
                                         <QuoteLChart quote={v.quote} />
                                     </div>
+                                </div>
+                            )}
+                        </div>
+                        
+                        <div className=" col-span-2">
+                            {kisTradeDummy.map((v: any, i: number) =>
+                                <div key={i+v.quote+2} className="border text-center items-center h-[50px] flex w-full">
+                                    <div className={` w-2/3 text-xl ${color}`}>{v.price}</div>
+                                    <div className=" w-1/3 text-slate-400">-5.01%</div>
                                 </div>
                             )}
                         </div>

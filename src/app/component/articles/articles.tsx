@@ -1,7 +1,7 @@
-import { myArticleList } from "@/app/common/config/articles/route"
-import { IArticle } from "@/app/api/model/article.model";
+import { myArticleList } from "@/app/service/articles/route"
 import { qnalistDummy } from "@/app/common/dummy/articles.dummy"
 import Link from "next/link"
+import { IArticle } from "@/app/service/model/article.model"
 
 
 export default async function Articles({ prop }: { prop: string }) {

@@ -23,7 +23,7 @@ const { data } = useQuery<INews[]>(
     {
         queryKey: ["news"],
         queryFn: fetchData,
-        // initialData: newsDummy,
+        initialData: newsDummy,
     }
 );
 
