@@ -91,17 +91,15 @@ export async function fetchKisSection(props:number): Promise<IKisSection | { sta
     }
 }
 
-export async function fetchKisAskingprice(props:number): Promise<IKisSection | { status: number }> {
+// 005930 삼성전자
+
+export async function fetchKisAskingprice(): Promise<IKisAskPrice[] | { status: number }> {
     const authToken = cookies().get('kisToken')?.value || await fetchKisAuth();
     // console.log("KIS KOSDAQ : ", authToken);
 
-    const fid_input_iscd = props == 1 ? "1001" : "0001"
     const query = new URLSearchParams({
-        "fid_cond_mrkt_div_code": "U",
-        "fid_input_date_1": "20240701",
-        "fid_input_date_2": "20240731",
-        "fid_input_iscd": fid_input_iscd,
-        "fid_period_div_code": "D"
+        "fid_cond_mrkt_div_code": "J",
+        "fid_input_iscd": "005930",
     })
     
     const url = `${process.env.KIS_DEV_API_BASE_URL}${process.env.KIS_DEV_API_TRADE}?${query}`
@@ -112,7 +110,7 @@ export async function fetchKisAskingprice(props:number): Promise<IKisSection | {
         'authorization': 'Bearer '+authToken,
         'appkey': process.env.KIS_DEV_API_KEY || '',
         'appsecret': process.env.KIS_DEV_API_SECERET || '',
-        'tr_id': 'FHKUP03500100'
+        'tr_id': 'FHKST01010200'
       };
   
     try {
@@ -127,8 +125,8 @@ export async function fetchKisAskingprice(props:number): Promise<IKisSection | {
             throw new Error('Network response was not ok');
         }
 
-        const res: IKisSection = await response.json();
-        console.log("KIS Section data : ", res.output1);
+        const res: IKisAskPrice[] = await response.json();
+        console.log("KIS Section data : ", res);
 
         if (res.length === 0) {
             return { status: 404 };

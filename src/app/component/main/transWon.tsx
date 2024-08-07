@@ -6,10 +6,11 @@ import { fetchExchange } from "@/app/service/exchange/exchange.api";
 
 export default function TransWon() {
 
-    const queryExchage= async (): Promise<IExchange[]> => {
+    const queryExchage = async (): Promise<IExchange[]> => {
         const response = await fetchExchange()
         if ('status' in response) {
-            throw new Error(`Error: ${response.status}`);}
+            throw new Error(`Error: ${response.status}`);
+        }
         return response;
     }
 
@@ -17,7 +18,7 @@ export default function TransWon() {
         {
             queryKey: ["exchange"],
             queryFn: queryExchage,
-            initialData: mainExchangeDummy,
+            placeholderData: mainExchangeDummy,
         }
     );
 

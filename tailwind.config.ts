@@ -16,6 +16,7 @@ const config: Config = {
       backgroundImage: {
           benner_img : "url('/imgs/stockBenner.jpg')",
           search_img : "url('/imgs/searchIcon.png')",
+          coin_img : "url('/bg/bg_coin.png')",
       },
       colors: {
         pebble: {

@@ -1,10 +1,10 @@
 
 
 export const mainExchangeDummy: IExchange[] = [
-    {"result":1,"cur_unit":"CNH","ttb":"187.28","tts":"191.07","deal_bas_r":"189.18","bkpr":"189","yy_efee_r":"0","ten_dd_efee_r":"0","kftc_bkpr":"189","kftc_deal_bas_r":"189.18","cur_nm":"위안화"},
-    {"result":1,"cur_unit":"EUR","ttb":"1,477.84","tts":"1,507.69","deal_bas_r":"1,492.77","bkpr":"1,492","yy_efee_r":"0","ten_dd_efee_r":"0","kftc_bkpr":"1,492","kftc_deal_bas_r":"1,492.77","cur_nm":"유로"},
-    {"result":1,"cur_unit":"JPY(100)","ttb":"849.48","tts":"866.65","deal_bas_r":"858.07","bkpr":"858","yy_efee_r":"0","ten_dd_efee_r":"0","kftc_bkpr":"858","kftc_deal_bas_r":"858.07","cur_nm":"일본 옌"},
-    {"result":1,"cur_unit":"USD","ttb":"1,365.21","tts":"1,392.79","deal_bas_r":"1,379","bkpr":"1,379","yy_efee_r":"0","ten_dd_efee_r":"0","kftc_bkpr":"1,379","kftc_deal_bas_r":"1,379","cur_nm":"미국 달러"}
+    {"result":1,"cur_unit":"CNHD","ttb":"187.28","tts":"191.07","deal_bas_r":"189.18","bkpr":"189","yy_efee_r":"0","ten_dd_efee_r":"0","kftc_bkpr":"189","kftc_deal_bas_r":"189.18","cur_nm":"위안화"},
+    {"result":1,"cur_unit":"EURD","ttb":"1,477.84","tts":"1,507.69","deal_bas_r":"1,492.77","bkpr":"1,492","yy_efee_r":"0","ten_dd_efee_r":"0","kftc_bkpr":"1,492","kftc_deal_bas_r":"1,492.77","cur_nm":"유로"},
+    {"result":1,"cur_unit":"JPYD(100)","ttb":"849.48","tts":"866.65","deal_bas_r":"858.07","bkpr":"858","yy_efee_r":"0","ten_dd_efee_r":"0","kftc_bkpr":"858","kftc_deal_bas_r":"858.07","cur_nm":"일본 옌"},
+    {"result":1,"cur_unit":"USDD","ttb":"1,365.21","tts":"1,392.79","deal_bas_r":"1,379","bkpr":"1,379","yy_efee_r":"0","ten_dd_efee_r":"0","kftc_bkpr":"1,379","kftc_deal_bas_r":"1,379","cur_nm":"미국 달러"}
 ]
 export const allExchangeDummy: IExchange[] = [
     {

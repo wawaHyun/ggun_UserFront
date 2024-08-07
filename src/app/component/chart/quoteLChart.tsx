@@ -20,7 +20,7 @@ Chart.register(CategoryScale,
     Tooltip,
     Legend);
 
-export default function QuoteLChart({ quote }: { quote: number }) {
+export default function QuoteLChart({ quote }: { quote: string }) {
 
     const labels = [quote]
     const data: any =

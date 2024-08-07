@@ -17,7 +17,7 @@ export default function NewsTopic(){
     {
         queryKey: ["news"],
         queryFn : fetchData,
-        // initialData: newsDummy,
+        placeholderData: newsDummy,
     }
 );
     

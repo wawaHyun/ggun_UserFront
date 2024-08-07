@@ -17,7 +17,7 @@ export const MyStockList = () => {
     //     {
     //         queryKey: ["stockRank"],
     //         queryFn: fetchData,
-    //         initialData: StockRankingDummy,
+    //         placeholderData: StockRankingDummy,
     //     }
     // );
 

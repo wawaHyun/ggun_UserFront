@@ -17,10 +17,9 @@ export default function JisuBenner() {
         {
             queryKey: ["krxJisu"],
             queryFn: queryKrxJisu,
+            placeholderData: KrxJisuDummy,
         }
     );
-
-    // const data = KrxJisuDummy
 
     return (
         <div className="bg-pebble-100">

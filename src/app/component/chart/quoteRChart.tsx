@@ -22,17 +22,27 @@ Chart.register(CategoryScale,
     Legend,
     ChartDataLabels);
 
-export default function QuoteRChart({ quote }: { quote: number }) {
+export default function QuoteRChart({ props }: {
+    props: IKisAskPrice[]
+    // {
+    //     rt_cd: string,
+    //     msg_cd: string,
+    //     msg1: string,
+    //     output1: IAskPriceOutput1,
+    //     output2: IAskPriceOutput2,
+    // } 
+}) {
 
-    const labels = [quote]
+    // const labels = Array.from({ length: 10 }, (_, i) => `${i + 1}호가`);
+    const labels = '1호가'
     const data: any =
     {
         labels: labels,
         datasets: [
             {
-                label: [quote],
+                label: 'KisAskPrice',
                 type: 'bar',
-                data: [quote],
+                data: '74100',
                 backgroundColor: '#f87171',
             },
         ],
@@ -43,10 +53,10 @@ export default function QuoteRChart({ quote }: { quote: number }) {
         maintainAspectRatio: false,
         scales: {
             x: {
-                display: false,
+                display: true,
                 reverse: true,
                 min: 0,
-                max: 16500,
+                max: 75000,
             },
             y: {
                 display: false,
@@ -67,12 +77,12 @@ export default function QuoteRChart({ quote }: { quote: number }) {
                 enabled: false,
             },
             datalabels: {
-                color: '#94a3b8' ,
+                color: '#94a3b8',
                 display: true,
-                anchor : 'end',
+                anchor: 'end',
                 align: 'start',
-                offset : 50,
-                formatter: function(value: number) {
+                offset: 50,
+                formatter: function (value: number) {
                     return value;
                 }
             },
