@@ -3,9 +3,9 @@
 import { WhiteBox } from "@/app/component/style/whiteBox";
 import { useState } from "react";
 import Image from "next/image";
-import { MoveButton } from "@/app/component/button/moveButton";
 import { TabButton } from "@/app/component/button/tabButton";
 import { tradeDummy } from "@/app/common/dummy/account.dummy";
+import { MoveButton } from "@/app/component/button/buttons";
 
 export default function AccountTCharge() {
 

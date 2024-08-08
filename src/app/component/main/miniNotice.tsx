@@ -1,4 +1,3 @@
-import { IArticle } from "@/app/api/model/article.model";
 import { articlesDummy } from "@/app/common/dummy/articles.dummy"
 import Link from "next/link";
 

@@ -1,21 +1,34 @@
-import { IAccount } from "@/app/api/model/account.model";
 import { LocalNumberOptions } from "@/app/common/config/localeString";
 import { tradeDummy } from "@/app/common/dummy/account.dummy";
-import { WhiteBox } from "@/app/component/style/whiteBox";
+import { findAccountById } from "@/app/service/asset/account.api";
+import { useQuery } from "@tanstack/react-query";
 
 export default function AiExistTrue() {
 
-    const myAccInfo = tradeDummy[0];
-    const accInfo = tradeDummy;
+    const fetchData = async (): Promise<IAccount[]> => {
+        const response = await findAccountById()
+        if ('status' in response) {
+            throw new Error(`Error: ${response.status}`);
+        }
+        return response;
+    }
+
+    const { data } = useQuery<IAccount[]>(
+        {
+            queryKey: ["myAccInfo"],
+            queryFn: fetchData,
+            placeholderData: tradeDummy,
+        }
+    );
 
     return (
         <div className="w-full h-full flex justify-center">
             <div className="w-[80%]">
                 <div className="gap-3 bg-gradient-to-r content-center from-pebble-200 to-pebble-400 via-pebble-300 grid border grid-cols-2 text-center mb-5 text-[25px] rounded-lg min-h-[100px]">
                     <div>계좌종류 : AI 자동 매매</div>
-                    <div>계좌번호 : {myAccInfo.acno}</div>
+                    <div>계좌번호 : {data && data.acno}</div>
                     <div className="col-span-2">현재 수익률 : 40%</div>
-                    <div className="col-span-2">현재 잔액 : {myAccInfo.balance?.toLocaleString("ko", LocalNumberOptions)}</div>
+                    <div className="col-span-2">현재 잔액 : {data && data.balance?.toLocaleString("ko", LocalNumberOptions)}</div>
                 </div>
 
                 <table className="p-4">
@@ -33,7 +46,7 @@ export default function AiExistTrue() {
                         </tr>
                     </thead>
                     <tbody>
-                        {accInfo.map((v: IAccount, i: any) =>
+                        {data.map((v: IAccount, i: any) =>
                             <tr key={v.id}>
                                 <td>{v.id}</td>
                                 <td>{v.modDate}</td>

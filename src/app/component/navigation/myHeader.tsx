@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import MyHeaderLink from "../header/myheaderLink";
+import HeaderLink from "../header/headerLink";
 
 
 function MyHeader() {
@@ -17,10 +18,12 @@ function MyHeader() {
 
     }, []);
 
+    const exist = true;
+
     return (
         <nav className="w-screen flex justify-center">
             <div className={`duration-500 ease-in-out transition-[width] px-3 border ${showHeader == true ? 'h-[70px] w-[85%]' : 'h-[40px] w-full'} shadow-sm rounded-b-lg bg-white`}>
-                <MyHeaderLink />
+                {exist == true ? <MyHeaderLink /> : <HeaderLink /> }
             </div>
         </nav >
 

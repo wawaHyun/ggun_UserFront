@@ -1,4 +1,4 @@
-export declare type IArticle = {
+interface IArticle {
     id?: number,
     title?: string ,
     content?: string,
@@ -6,4 +6,6 @@ export declare type IArticle = {
     boardId? : string,
     modDate? : string,
     regDate? : string
+
+    answer?:string,
 }

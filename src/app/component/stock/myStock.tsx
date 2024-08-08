@@ -1,8 +1,6 @@
 import { myStockDummy } from "@/app/common/dummy/account.dummy";
-import Link from "next/link";
 
-
-export default async function MyStocks () {
+export default function MyStocks () {
 
     const myStockList = myStockDummy;
     return (
@@ -12,10 +10,11 @@ export default async function MyStocks () {
             <table className="">
             <thead>
                 <tr>
-                    <th>No.</th>
+                    <th>AI / CMA 위에 셀렉 넣어야 함</th>
                     <th>종목명</th>
-                    <th>평가손익</th>
                     <th>보유수량</th>
+                    <th>평가손익</th>
+                    <th>현재잔액</th>
                     <th>매수금액</th>
                 </tr>
             </thead>

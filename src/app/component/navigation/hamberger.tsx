@@ -1,6 +1,6 @@
 'use client'
 
-import { AcountMenus } from "@/app/common/enums/main.menus";
+import { AcountMenus } from "@/app/common/enums/account.menus";
 import { BottomLlinButton } from "@/app/component/button/tabButton";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";

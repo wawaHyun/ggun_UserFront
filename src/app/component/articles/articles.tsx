@@ -1,13 +1,27 @@
-import { myArticleList } from "@/app/service/articles/route"
-import { qnalistDummy } from "@/app/common/dummy/articles.dummy"
+import { fetchMyArticleList } from "@/app/service/articles/articles.api"
+import { articlesDummy, qnalistDummy } from "@/app/common/dummy/articles.dummy"
 import Link from "next/link"
-import { IArticle } from "@/app/service/model/article.model"
+import { useQuery } from "@tanstack/react-query"
 
 
 export default async function Articles({ prop }: { prop: string }) {
 
-    const allArticles = await myArticleList(prop)
-    // const allArticles = qnalistDummy;
+    const fetchData= async (): Promise<IArticle[]> => {
+        const response = await fetchMyArticleList(prop)
+        if ('status' in response) {
+            throw new Error(`Error: ${response.status}`);}
+        return response;
+    }
+    
+    // const { data } = useQuery<IArticle[]>(
+    //     {
+    //         queryKey: ["actricleList"],
+    //         // queryFn: fetchData,
+    //         placeholderData: articlesDummy,
+    //     }
+    // );
+
+    const data =articlesDummy;
 
     return (
         <table className="">
@@ -16,14 +30,13 @@ export default async function Articles({ prop }: { prop: string }) {
                     <th>No.</th>
                     {/* <th>게시판</th> */}
                     <th>제목</th>
-                    {/* <th>작성자</th> */}
                     <th>내용</th>
                     <th>작성일</th>
                     {/* <th>처리완료일</th> */}
                 </tr>
             </thead>
             <tbody>
-                {allArticles.map((v: IArticle, i: number) =>
+                {data&&data.map((v: IArticle, i: number) =>
                     <tr key={v.id}>
                         <td>{v.id}</td>
                         {/* <td>{v.boardId}</td> */}

@@ -1,4 +1,4 @@
-export declare type IMail = {
+interface IMail {
     enpEmail: string,
     message: string,
 }

@@ -1,12 +1,10 @@
 "use client"
 
-import { IUser } from "@/app/api/model/user.model";
-import { existUser, loginUser } from "@/app/api/users/route";
 import { useRef, useState } from "react";
 import { MoveButton } from "../button/buttons";
 import OAuth from "./oAuth";
 import { useRouter } from "next/navigation";
-import { useKisAuthFetch } from "@/app/store/kis.api.store";
+import { loginUser } from "@/app/service/users/users.api";
 
 export default function IdLoginBox() {
 
@@ -50,40 +48,15 @@ export default function IdLoginBox() {
             'Tel : 2046')
     }
 
-    const exist = async () => await existUser(admininfo.username)
+    // const exist = async () => await existUser(admininfo.username)
     const login = async () => await loginUser(admininfo)
 
     const handleSubmit = () => {
         console.log('login page 입력받은 내용 ' + JSON.stringify(admininfo))
         setLen(true)
-        router.push(`/afterMain`);
-        // exist()
-        //     .then((resp: any) => {
-        //         console.log('login page : ' + JSON.stringify(resp))
-        //         if (resp.payload == true) {
-        //             setMsg("* 있는 아이디입니다.")
-        // login()
-        //     .then((resp: any) => {
-        //         setCookie({}, 'message', resp.payload.message, { httpOnly: false, path: '/' })
-        //         setCookie({}, 'accessToken', resp.payload.accessToken, { httpOnly: false, path: '/' })
-        //         console.log("서버에서 넘어온 message " + parseCookies().message)
-        //         console.log("서버에서 넘어온 token " + parseCookies().accessToken)
-        //         console.log("token decoding 내용 " + jwtDecode<any>(parseCookies().accessToken).username)
-        //         router.push(`${PG.REPORT}/dashboard`)
-        //         router.refresh()
-        //     })
-        //     .catch((err: any) => {
-        //         console.log("fetchLoginAdmin error : " + JSON.stringify(err))
-        //         alert("Wrong password. 시도하세요")
-        //     })
-        //     } else {
-        //         console.log("fetchExistAdmin page false : " + JSON.stringify(resp))
-        //         setMsg('* 회원가입을 진행해주세요.')
-        //     }
-        // })
-        // .catch((err: any) => {
-        //     console.log("fetchExistAdmin error : " + err)
-        // })
+        login();
+
+        // router.push(`/afterMain`)
 
         if (ref.current) {
             ref.current.value = "";

@@ -4,7 +4,6 @@
 import { BrownButton, MoveButton } from '../button/buttons';
 import { MapIcon, ClipIcon, XIcon } from '@/app/common/icon/icon';
 import { useState } from 'react';
-import { IMail } from '@/app/api/model/mail.model';
 // import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { sendMail } from '@/app/api/email/route';
 import { useFormState } from 'react-dom';

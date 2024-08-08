@@ -1,4 +1,3 @@
-
 import AccountMenu from "@/app/component/navigation/accountMenu"
 
 export default function AccountLayout({
@@ -12,7 +11,7 @@ export default function AccountLayout({
             <div className="sticky left-0 top-[55px] z-10">
                         <AccountMenu/>
                     </div>
-            <div className="w-full h-auto z-0 top-10 z-0 pt-3">
+            <div className="w-full h-auto z-0 top-10 pt-3">
                 {children}
             </div>
         </div>

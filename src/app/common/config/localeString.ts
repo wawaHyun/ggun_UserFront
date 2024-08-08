@@ -1,5 +1,5 @@
 
-export const LocalNumberOptions = {
+export const  LocalNumberOptions: Intl.NumberFormatOptions ={
   // style: "currency",
   currency: "KRW",
  currencyDisplay: "code",

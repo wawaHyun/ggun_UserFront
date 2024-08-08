@@ -1,17 +1,31 @@
+import { useQuery } from "@tanstack/react-query";
 import AiExistFalse from "./existFalse/page";
 import AiExistTrue from "./existTrue/page";
+import { existAccount } from "@/app/service/asset/ai.api";
 
+export default function aiExist() {
 
-export default function aiExist(){
-    
-    const exist = 1;
-
-    return(
-        <div className="w-full h-full flex justify-center">
-            {exist==1 ?
-        <div><AiExistFalse/></div>    
-        :<div><AiExistTrue/></div>    
+    const fetchData = async (): Promise<boolean> => {
+        const response = await existAccount()
+        if (typeof response === 'object' && 'status' in response) {
+            throw new Error(`Error: ${response.status}`);
         }
+        return response;
+    }
+
+    const { data } = useQuery<boolean>(
+        {
+            queryKey: ["accExist"],
+            queryFn: fetchData,
+            placeholderData: false,
+        }
+    );
+    return (
+        <div className="w-full h-full flex justify-center">
+            {data == true ?
+                <div><AiExistFalse /></div>
+                : <div><AiExistTrue /></div>
+            }
         </div>
     )
 }

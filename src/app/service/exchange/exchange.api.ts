@@ -7,14 +7,12 @@ export async function fetchExchange() : Promise<IExchange[] | { status: number }
     const data: IExchange[] = [];
     const url = `${process.env.EXCHANGE_API_URL}?authkey=${process.env.EXCHANGE_API_KEY}&searchdate=${Today()}&data=AP01`;
 
-    console.log("findExchangeByCodeAPI URL!!!", url);
+    console.log("fetchExchange URL!!!", url);
     
     try {
         const response = await fetch(url);
 
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
+        if (!response.ok) { throw new Error('API Network response was not ok'); }
 
         const res: IExchange[] = await response.json();
         
@@ -24,15 +22,13 @@ export async function fetchExchange() : Promise<IExchange[] | { status: number }
             }
         });
 
-        console.log("findExchangeByCodeAPI data : ", data);
+        console.log("fetchExchange data : ", data);
 
-        if (data.length === 0) {
-            return { status: 404 };
-        }
+        if (data.length === 0) { return { status: 404 }; }
 
         return data;
     } catch (error) {
-        console.error("findExchangeByCodeAPI err : " + error);
+        console.error("fetchExchange err : " + error);
         return { status: 500 };
     }
 }

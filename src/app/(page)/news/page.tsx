@@ -1,9 +1,7 @@
 'use client'
  
-import Image from 'next/image';
 import NewsHeader from "../../component/navigation/newsHeader";
 import NewsToday from "../../component/news/newsToday";
-import Link from "next/link";
 import NewsTopic from '@/app/component/news/newsTopic';
 import { useQuery } from '@tanstack/react-query';
 import { Suspense } from 'react';

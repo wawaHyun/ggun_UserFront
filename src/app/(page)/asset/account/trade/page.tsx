@@ -1,9 +1,5 @@
 'use client'
 
-// import { deposit, withdraw } from "@/app/api/account/route";
-import { IAccount } from "@/app/api/model/account.model";
-import { useState } from "react";
-
 export default function AccountTrade() {
 
     // const [accinfo, setAccInfo] = useState<IAccount>({

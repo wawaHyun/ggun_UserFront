@@ -1,20 +1,33 @@
+'use client'
 
-import { tradeDummy } from "@/app/common/dummy/account.dummy";
+import { accListDummy } from "@/app/common/dummy/account.dummy";
 import { MoveButton } from "@/app/component/button/buttons";
 import MiniCalendar from "@/app/component/util/miniCalender";
-import { IAccount } from "@/app/service/model/account.model";
+import { accountHistories } from "@/app/service/asset/account.api";
+import { useQuery } from "@tanstack/react-query";
 
-async function AccountHistories({ params }
+function AccountHistories({ params }
     : {
         params: {
             id: number,
         }
     }) {
 
+    const fetchData = async (): Promise<IAccount[]> => {
+        const response = await accountHistories()
+        if (typeof response === 'object' && 'status' in response) {
+            throw new Error(`Error: ${response.status}`);
+          }
+        return response;
+    }
 
-    // const addTrade = await accountHistories();
-    // const accList = await allAccount();
-    const addTrade = tradeDummy;
+    const { data } = useQuery<IAccount[]>(
+        {
+            queryKey: ["accHistory"],
+            queryFn: fetchData,
+            placeholderData: accListDummy,
+        }
+    );
 
     return (
         <div className="w-full h-full flex justify-center ">
@@ -23,7 +36,7 @@ async function AccountHistories({ params }
                     <div className="col-span-3 text-xl bold">{params.id == 1 ? 'AI 거래내역 조회' : 'CMA 거래내역 조회'}</div>
                     <label htmlFor="" className="text-right">계좌선택 : </label>
                     <select name="" id="" className="">
-                        {addTrade.map((i: any) =>
+                        {data && data.map((i: any) =>
                             <option value="" key={i.id}>{i.acno}</option>)}
                     </select>
                     <div></div>
@@ -57,7 +70,7 @@ async function AccountHistories({ params }
                         </tr>
                     </thead>
                     <tbody>
-                        {addTrade.map((v: IAccount, i: any) =>
+                        {data && data.map((v: IAccount, i: any) =>
                             <tr key={v.id}>
                                 <td>{v.id}</td>
                                 <td>{v.modDate}</td>
@@ -65,8 +78,8 @@ async function AccountHistories({ params }
                                 <td>{v.acType == "입금" ? v.balance : 0}</td>
                                 <td>{v.acType == "출금" ? v.balance : 0}</td>
                                 <td>{v.balance}</td>
-                                <td>{v.user}</td>
-                                <td>{v.name}</td>
+                                {/* <td>{v.user}</td>
+                                <td>{v.name}</td> */}
                                 <td>{v.refundAcno}</td>
                             </tr>
                         )}

@@ -1,33 +1,47 @@
-// import { AttachFile, FmdGood } from '@mui/icons-material';
+
 import { articlesDummy } from '@/app/common/dummy/articles.dummy';
 import { WhiteBox } from '@/app/component/style/whiteBox';
 import Link from 'next/link';
-import { MoveButton } from '@/app/component/button/moveButton';
-import { IArticle } from '@/app/api/model/article.model';
 import { ClipIcon, MapIcon } from '@/app/common/icon/icon';
 import Image from 'next/image';
+import { MoveButton } from '@/app/component/button/buttons';
+import { useQuery } from '@tanstack/react-query';
+import { fetchMyArticleList } from '@/app/service/articles/articles.api';
 
-async function ArticleDetail({ props }: any) {
+function ArticleDetail({ props }: { props: { id: number } }) {
 
-  //   const article = await findArticleById(params.id);
-  const article: IArticle = articlesDummy[1];
+  const fetchData = async (): Promise<IArticle[]> => {
+    const response = await fetchMyArticleList(props.id)
+    if ('status' in response) {
+      throw new Error(`Error: ${response.status}`);
+    }
+    return response;
+  }
+
+  const { data } = useQuery<IArticle[]>(
+    {
+      queryKey: ["actricle"],
+      // queryFn: fetchData,
+      placeholderData: articlesDummy[1],
+    }
+  );
 
   return (
     <div className=' w-full h-full'>
       <WhiteBox style="flex justify-center items-center ">
         <div className="w-[80%]" >
           <Image src={'/imgs/notice.jpg'} className="w-full h-[400px]" width={500} height={500} alt={'notice'} />
-          <div className="text-center text-[36px] my-3">{article.title} <hr /></div>
+          <div className="text-center text-[36px] my-3">{data.title} <hr /></div>
 
           <div className='flex py-2 w-full border-b-2'>
             <div className='w-1/2'>
-              작성자 : {article.writerId} 부서 {article.writerId} 님
+              작성자 : {data.writerId} 부서 {data.writerId} 님
             </div>
-            <div className='text-right w-1/2'>작성일자 : {article.regDate} </div>
+            <div className='text-right w-1/2'>작성일자 : {data.regDate} </div>
           </div>
 
           <div className='min-h-[200px] py-[20px]'>
-            {article.content}
+            {data.content}
 
           </div>
           <div className="icons flex text-gray-500 gap-3 cursor-point">

@@ -1,10 +1,10 @@
 'use client'
 import CmaTerm from "@/app/common/terms/cmaTerm";
-import { MoveButton } from "@/app/component/button/moveButton";
 import { WhiteBox } from "@/app/component/style/whiteBox";
 import { useState } from "react";
 import Image from "next/image";
 import { WhiteLink } from "@/app/component/link/whiteLink";
+import { MoveButton } from "@/app/component/button/buttons";
 
 export default function AiExistFalse() {
     const [isOpen, setIsOpen] = useState(false);

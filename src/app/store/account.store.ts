@@ -1,5 +1,4 @@
 import { create } from 'zustand'
-import { IAccount } from '../service/model/account.model';
 
 interface AccountState {
     data: IAccount[],

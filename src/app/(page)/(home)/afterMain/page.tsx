@@ -10,6 +10,7 @@ import { stockCommunDummy } from "@/app/common/dummy/chat.dummy";
 import Link from "next/link";
 import Image from "next/image";
 import { useNewsFetch, useNewsStack } from "@/app/store/news.store";
+import MyStocks from "@/app/component/stock/myStock";
 
 export default async function AfterHome() {
 
@@ -37,7 +38,7 @@ export default async function AfterHome() {
 
     return (
         <main className="w-full h-full space-y-3">
-            {/* <div className="w-full h-[300px] "><MyAccInfo /></div> */}
+            <div className="w-full h-[300px] "><MyAccInfo /></div>
             <div className="px-8"><MyStockList /></div>
 
             <div className="px-8">
@@ -45,6 +46,9 @@ export default async function AfterHome() {
                 <NewsTopic />
             </div>
             <div className="w-full flex justify-center">
+                {/* <div className="w-[50%] ">
+                <MyStocks />
+            </div> */}
                 <div className="w-[50%] ">
                     <StockLank />
                 </div>
