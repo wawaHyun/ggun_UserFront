@@ -20,9 +20,9 @@ export default function ㅠAdBox() {
             </div>
             
             <div className={`w-[300%] h-full flex ${current != undefined ? `-translate-x-${current}/3` : '' } `}>
-                <div className="w-1/3"><Image src='/ads/jusikAd2.jpg' alt='jusikAd2' width={700} height={300} style={{ width: 700, height: 300 }} priority/></div>
-                <div className="w-1/3"><Image src='/ads/jusikAd1.jpg' alt='jusikAd1' width={700} height={300} style={{ width: 700, height: 300 }} priority/></div>
-                <div className="w-1/3"><Image src='/ads/jusikAd3.jpg' alt='jusikAd3' width={700} height={300} style={{ width: 700, height: 300 }} priority/></div>
+                <div className="w-1/3"><Image src='/ads/jusikAd2.jpg' alt='jusikAd2' width={700} height={350} style={{ width: 700, height: 350 }} priority/></div>
+                <div className="w-1/3"><Image src='/ads/jusikAd1.jpg' alt='jusikAd1' width={700} height={350} style={{ width: 700, height: 350 }} priority/></div>
+                <div className="w-1/3"><Image src='/ads/jusikAd3.jpg' alt='jusikAd3' width={700} height={350} style={{ width: 700, height: 350 }} priority/></div>
             </div>
         </div>
         </div>

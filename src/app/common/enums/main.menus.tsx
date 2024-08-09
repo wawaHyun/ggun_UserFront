@@ -26,9 +26,9 @@ export const MyHeaderMenus: IMenu[] = [
 
 export const MyMenus: IMenu[] = [
     // { id: 1, title: "Mypage", href: `/user/login` },
-    { id: 2, title: "Join", href: `/user/join` },
-    { id: 3, title: "Login", href: `/user/login` },
-    { id: 4, title: "Logout", href: `#` },
+    { id: 2, title: "Join", href: `/(user)/join` },
+    { id: 3, title: "Login", href: `/afterMain` },
+    { id: 4, title: "Logout", href: `/beforeMain` },
 ]
 
 export const BoardMenus: IMenu[] = [

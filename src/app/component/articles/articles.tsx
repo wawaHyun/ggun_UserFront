@@ -1,8 +1,6 @@
 import { fetchMyArticleList } from "@/app/service/articles/articles.api"
 import { articlesDummy, qnalistDummy } from "@/app/common/dummy/articles.dummy"
 import Link from "next/link"
-import { useQuery } from "@tanstack/react-query"
-
 
 export default async function Articles({ prop }: { prop: string }) {
 

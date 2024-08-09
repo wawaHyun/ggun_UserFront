@@ -91,8 +91,15 @@ function MarketBarChart({ props }: { props: IKisSection }) {
             legend: {
                 display: false,
             },
-            datalabels: {
-                display: false,
+            datalabels: {   
+                color: 'black',
+                display: true,
+                anchor: 'end',
+                align: 'start',
+                offset: 0,
+                formatter: function (value: number) {
+                    return value;
+                }
             },
         },
     }

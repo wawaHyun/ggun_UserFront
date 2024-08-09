@@ -9,11 +9,11 @@ import { loginUser } from "@/app/service/users/users.api";
 import { error } from "console";
 
 export default function IdLoginBox() {
-    
+
     const router = useRouter();
-    
+
     const userSubmit = useLoginAction();
-    const userInfo:IUser = useLoginStack();
+    const userInfo: IUser = useLoginStack();
 
     const [isWrongId, setIsWrongId] = useState('');
     const [isWrongPw, setIsWrongPw] = useState('');
@@ -43,21 +43,38 @@ export default function IdLoginBox() {
             'Tel : 2046')
     }
 
-    const login = async () => await loginUser(userInfo)
+    const loginApi = async () => await loginUser(userInfo)
+    // const fecthLogin = async() => await fetch('/api/login',{
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify(userInfo),
+    // })
 
     const handleSubmit = () => {
         console.log('login page 입력받은 내용 ' + JSON.stringify(userInfo))
-        login()
-        .then((res: boolean | { status: number; }) => {
-            res === true ? router.push(`/afterMain`) : setMsg("로그인실패")
-        })
-        .catch((error)=>{
-            console.log("login page err: ",error)
-        })
+        loginApi()
+            .then((res: boolean | { status: number; }) => {
+                res === true ? router.push(`/afterMain`) : setMsg("로그인실패")
+            })
+            .catch((error) => {
+                console.log("login page err: ", error)
+            })
+
+        // fecthLogin()
+        //    .then(res => res.json())
+        //    .then(data => {
+        //         console.log(data)
+        //         data.state === 200 ? 'router.push(`/afterMain`)' : setMsg("로그인실패")
+        //     })
+        //    .catch(error => {
+        //         console.error("login page err: ", error)
+        //     })
 
         if (ref.current) {
             ref.current.value = "";
-            userSubmit({ ...userInfo, username: '',password:'' });
+            userSubmit({ ...userInfo, password: '' });
         }
     }
 
@@ -70,7 +87,7 @@ export default function IdLoginBox() {
                     <div className="text-slate-500 text-center">주문/뱅킹/서비스 신청 등 모든 거래가 가능합니다.</div>
                 </div>
                 <label className="block text-gray-700 text-sm font-bold mb-2">
-                    ID : jgs0318@gmail.com
+                    ID : qwe
                 </label>
                 <input type="text" name="username" onChange={handleUsername} required />
 
@@ -86,7 +103,7 @@ export default function IdLoginBox() {
             <div className="mt-4 flex flex-col justify-between">
                 <div className="flex justify-between">
                     <label className="block text-gray-700 text-sm font-bold mb-2">
-                        Password : pO2(eO73)%@
+                        Password : qwe
                     </label>
                 </div>
                 <input type="password" name="password" onChange={handlePassword} ref={ref} />

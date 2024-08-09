@@ -1,15 +1,9 @@
 'use client'
 
-// import { useForm } from 'react-hook-form';
 import { BrownButton, MoveButton } from '../button/buttons';
 import { MapIcon, ClipIcon, XIcon } from '@/app/common/icon/icon';
 import { useState } from 'react';
-// import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { sendMail } from '@/app/api/email/route';
-import { useFormState } from 'react-dom';
-import { fromUnixTime } from 'date-fns';
 import { useMailAction, useMailStack } from '@/app/store/sendMail.store';
-import { useQuery } from '@tanstack/react-query';
 import { SendMailApi } from '@/app/service/mail/mail.api';
 
 export default function SendMail() {
@@ -35,7 +29,6 @@ export default function SendMail() {
     return (
 
         <div className="">
-
             <BrownButton click={() => setIsOpen(!isOpen)} style='truncate'>관리자 문의 메일 보내기</BrownButton>
 
             {isOpen == true ?

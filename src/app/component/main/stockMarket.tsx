@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import { KrxJisuDummy } from "@/app/common/dummy/krx.dummy";
 import { KisSectionDummy } from "@/app/common/dummy/kis.dummy";
 import MarketBarChart from "../chart/marketChart";
+import IsLoading from "../queryState/isLoading";
 
 export default function StockMarket({ props }: { props: number }) {
     // props = 1 코스닥, 2 = 코스피
@@ -32,7 +33,7 @@ export default function StockMarket({ props }: { props: number }) {
     return (
         <div className="w-full h-full flex justify-center content-center">
             <Suspense>
-                {data ? <MarketBarChart props={data} /> : ''}
+                {data ? <MarketBarChart props={data} /> :''}
             </Suspense>
         </div >
     )

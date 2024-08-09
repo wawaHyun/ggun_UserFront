@@ -29,8 +29,8 @@ export default function TransWon() {
                     <WhiteBox key={i}>
                         <div className="py-3 space-y-2">
                             <div className="">{v.cur_nm} {v.cur_unit}<hr /></div>
-                            <div className="text-blue-500 ">살때 {v.ttb}</div>
-                            <div className="text-blue-500 ">팔때 {v.tts}</div>
+                            <div className="text-red-400 ">살때 {v.ttb}</div>
+                            <div className="text-blue-400 ">팔때 {v.tts}</div>
                         </div>
                     </WhiteBox>
                 )}

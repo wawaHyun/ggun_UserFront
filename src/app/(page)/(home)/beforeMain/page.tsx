@@ -29,16 +29,16 @@ export default function BeforeHome() {
     
         <div className="grid grid-cols-7 h-[350px] gap-3">
           <div className="col-span-3 w-full h-full">
-            <div className="w-full h-[85%]"><AdBox /></div>
-            <div className="w-full h-[15%] content-center">
-              {/* <Search keyup={handleOnKeyup} text="search"/> */}
-              </div>
+            <div className="w-full h-full border"><AdBox /></div>
+            {/* <div className="w-full h-[15%] content-center">
+              <Search keyup={handleOnKeyup} text="search"/>
+              </div> */}
           </div>
 
           <div className="flex-col h-full w-full ">
-            <button className="h-1/3 w-full truncate" onClick={() => setBtn(1)}><WhiteBox style="h-full text-center content-center bg-white" ><span>코스닥</span></WhiteBox></button>
-            <button className="py-2 h-1/3 w-full truncate" onClick={() => setBtn(2)}><WhiteBox style="h-full text-center content-center bg-white" >코스피</WhiteBox></button>
-            <button className="h-1/3 w-full truncate" onClick={() => setBtn(3)}><WhiteBox style="h-full text-center content-center bg-white" ><span>오늘의<br />환율</span></WhiteBox></button>
+            <button className="p-1 h-1/3 w-full truncate" onClick={() => setBtn(1)}><WhiteBox style="h-full text-center content-center bg-white" ><span>코스닥</span></WhiteBox></button>
+            <button className="p-1 h-1/3 w-full truncate" onClick={() => setBtn(2)}><WhiteBox style="h-full text-center content-center bg-white" >코스피</WhiteBox></button>
+            <button className="p-1 h-1/3 w-full truncate" onClick={() => setBtn(3)}><WhiteBox style="h-full text-center content-center bg-white" ><span>오늘의<br />환율</span></WhiteBox></button>
           </div>
 
           <div className="col-span-3 h-full w-full" >

@@ -18,36 +18,32 @@ export async function existUser(username: string): Promise<boolean | { status: n
     }
 }
 
-export async function loginUser(user: IUser): Promise<boolean | { status: number }> {
-    console.log("user : ",user)
-    const Dadmin: IUser = { email: 'jgs0318@gmail.com', password: 'pO2(eO73)%@' }
+export async function loginUser(user: IUser): Promise<any | { status: number }> {
     const token: IAuthToken = { accessToken: '1sdfwtehhhefqada!@$!#%43444', refreshToken: '1sdfwtehhhefqada!@$!#%43444' }
     try {
         const bodys = {
-            'email': Dadmin.email,
-            'password': Dadmin.password,
+            username: user.username,
+            password: user.password,
         };
-
-        // const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/admins/login`, {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         // 'authorization': 'Bearer 38334a76c71a7b868b2618371a83665b8bae201f940e9a7791de668efb2a83b4' ,
-        //     },
-        //     body: JSON.stringify(bodys),
-        // })
+        
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login/local`, {
+            method: 'POST',
+            headers: {},
+            body: JSON.stringify(bodys),
+        })
 
         // if (!response.ok) { throw new Error('API Network response was not ok'); }
-        // const data: boolean = await response.json();
-        // if (data == undefined || data == null) { return { status: 404 }; }
+        const data: any = await response.json();
+        if (data == undefined || data == null) { return { status: 404 }; }
 
-        // console.log("loginAdmin : " + JSON.stringify(data))
+        console.log("loginAdmin : " + JSON.stringify(data))
+        // console.log("cookies : " + cookies().get()?.value)
 
         if(token.accessToken && token.refreshToken){
-            cookies().set('accessToken', token.accessToken);
-            cookies().set('refreshToken', token.refreshToken);
+            // cookies().set('accessToken', token.accessToken);
+            // cookies().set('refreshToken', token.refreshToken);
             // cookies().set('id', token.refreshToken);
-            console.log("toekens : {},{}",cookies().get('accessToken'),cookies().get('refreshToken'))
+            // console.log("toekens : {},{}",cookies().get('accessToken'),cookies().get('refreshToken'))
         }
 
         // return data
