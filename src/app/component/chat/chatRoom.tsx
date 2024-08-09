@@ -1,31 +1,42 @@
-import Image from "next/image"
-import Link from "next/link"
+'use client'
 import { WhiteBox } from "../style/whiteBox"
-import { roomlistDummy } from "@/app/common/dummy/chat.dummy"
+import { RoomlistDummy } from "@/app/common/dummy/chat.dummy"
 import { useRouter } from "next/navigation";
+import { useQuery } from "@tanstack/react-query";
 
-export default function ChartRoomList () {
+export default function ChartRoomList() {
 
     const router = useRouter();
 
-    const roomlist = roomlistDummy;
+    const fetchData = async (): Promise<IChatRoom[]> => {
+        const response = await fetchNews()
+        if ('status' in response) {
+            throw new Error(`Error: ${response.status}`);
+        }
+        return response;
+    }
 
-    return(<>
-      {roomlist.map((i: any) =>
-                <button key={i.id} className="flex-col py-1 w-full text-left" onClick={() => router.push(`/stock/chatting/${i.senderId}`)}>
-                    <WhiteBox style="white hover:bg-pebble-400 flex-col">
-                        <div className="">
-                            <div className="flex ">
-                                <div className="text-sm w-2/3 truncate">{i.sender}와의 대화</div>
-                                <div className="text-gray-400 text-xs w-1/3">{i.modDate}</div>
-                            </div>
-                            {/* <div>
-                                        <div className="text-xs row-span-2 text-gray-400 truncate">{i.content}</div>
-                                    </div> */}
+    const { data } = useQuery<IChatRoom[]>(
+        {
+            queryKey: ["news"],
+            queryFn: fetchData,
+            placeholderData: RoomlistDummy,
+        }
+    );
+
+    return (<>
+        {data&&data.map((v:any, i: number) =>
+            <button key={v.id} className="flex-col py-1 w-full text-left" onClick={() => router.push(`/stock/chatting/${v.senderId}`)}>
+                <WhiteBox style="white hover:bg-pebble-400 flex-col">
+                    <div className="">
+                        <div className="flex ">
+                            <div className="text-sm w-2/3 truncate">{v.sender}와의 대화</div>
+                            <div className="text-gray-400 text-xs w-1/3">{v.modDate}</div>
                         </div>
-                    </WhiteBox>
+                    </div>
+                </WhiteBox>
 
-                </button>
-            )}
+            </button>
+        )}
     </>)
 }

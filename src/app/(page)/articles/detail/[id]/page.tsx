@@ -1,30 +1,32 @@
+'use client'
 
-import { articlesDummy } from '@/app/common/dummy/articles.dummy';
 import { WhiteBox } from '@/app/component/style/whiteBox';
 import Link from 'next/link';
 import { ClipIcon, MapIcon } from '@/app/common/icon/icon';
 import Image from 'next/image';
 import { MoveButton } from '@/app/component/button/buttons';
-import { useQuery } from '@tanstack/react-query';
-import { fetchMyArticleList } from '@/app/service/articles/articles.api';
+import { findByArticleId } from '@/app/service/articles/articles.api';
 
-function ArticleDetail({ props }: { props: { id: number } }) {
+export default async function ArticleDetail({ props }: { props: { id: number } }) {
 
-  const fetchData = async (): Promise<IArticle[]> => {
-    const response = await fetchMyArticleList(props.id)
-    if ('status' in response) {
-      throw new Error(`Error: ${response.status}`);
-    }
-    return response;
-  }
+  const data:IArticle =await findByArticleId(props.id)
+  .then((res: Promise<IArticle | { status: number }> )=>{
+    if ('status' in res) 
+      throw new Error(`Error: ${res.status}`);
+    
+    return res;
+  })
 
-  const { data } = useQuery<IArticle[]>(
-    {
-      queryKey: ["actricle"],
-      // queryFn: fetchData,
-      placeholderData: articlesDummy[1],
-    }
-  );
+  // const { data } = useQuery<IArticle[]>(
+  //   {
+  //     queryKey: ["actricle"],
+  //     queryFn: fetchData,
+  //     placeholderData: articlesDummy[1],
+  //   }
+  // );
+
+  // const InputArti = useArticleAction();
+  // const article = useArticleStack();
 
   return (
     <div className=' w-full h-full'>
@@ -49,7 +51,7 @@ function ArticleDetail({ props }: { props: { id: number } }) {
             <span className="hover:toolkit flex gap-4 group">
               <ClipIcon /> <span className='invisible group-hover:visible rounded-lg p-1 px-3 bg-pebble-400'>첨부파일이 없습니다.</span>
             </span>
-            <div className="count ml-auto text-gray-400 text-xs font-semibold">0/300</div>
+            <div className="count ml-auto text-gray-400 text-xs font-semibold">{}/300</div>
           </div>
           <div className="buttons flex gap-5 justify-center h-[70px] ">
             <Link href={`/articles/list/1`} className='w-[20%] '><MoveButton style='w-full h-full'>목록으로 돌아가기</MoveButton></Link>
@@ -60,5 +62,3 @@ function ArticleDetail({ props }: { props: { id: number } }) {
     </div>
   );
 };
-
-export default ArticleDetail;

@@ -36,7 +36,6 @@ export async function fetchKisAuth() {
 }
 
 
-
 export async function fetchKisSection(props: number): Promise<IKisSection | { status: number }> {
     const authToken = cookies().get('kisToken')?.value || await fetchKisAuth();
     // console.log("KIS KOSDAQ : ", authToken);
@@ -80,12 +79,10 @@ export async function fetchKisSection(props: number): Promise<IKisSection | { st
 
         return res;
     } catch (error) {
-        console.log("KIS Section route err : " + error);
+        console.log("KIS Section api err : " + error);
         return { status: 500 };
     }
 }
-
-// 005930 삼성전자
 
 export async function fetchKisAskingprice(): Promise<IKisAskPrice[] | { status: number }> {
     const authToken = cookies().get('kisToken')?.value || await fetchKisAuth();
@@ -126,7 +123,53 @@ export async function fetchKisAskingprice(): Promise<IKisAskPrice[] | { status: 
 
         return res;
     } catch (error) {
-        console.log("KIS AskPrice route err : " + error);
+        console.log("KIS AskPrice api err : " + error);
         return { status: 500 };
     }
 }
+
+// 005930 삼성전자
+
+// export async function fetchKisDailyPrice(): Promise<IKisAskPrice[] | { status: number }> {
+//     const authToken = cookies().get('kisToken')?.value || await fetchKisAuth();
+//     // console.log("KIS KOSDAQ : ", authToken);
+
+//     const query = new URLSearchParams({
+//         "fid_cond_mrkt_div_code": "J",
+//         "fid_input_iscd": "005930",
+//     })
+
+//     const url = `${process.env.KIS_DEV_API_BASE_URL}${process.env.KIS_DEV_API_DAILYPRICE}?${query}`
+//     // console.log("KIS Section url ", url)
+
+//     const headers: HeadersInit = {
+//         'content-type': 'application/json',
+//         'authorization': 'Bearer ' + authToken,
+//         'appkey': process.env.KIS_DEV_API_KEY || '',
+//         'appsecret': process.env.KIS_DEV_API_SECERET || '',
+//         'tr_id': 'FHKST01010200'
+//     };
+
+//     try {
+//         const response = await fetch(url
+//             , {
+//                 method: 'GET',
+//                 headers: headers,
+//             }
+//         );
+
+//         if (!response.ok) { throw new Error('API Network response was not ok'); }
+
+//         const res: IKisAskPrice[] = await response.json();
+//         console.log("KIS AskPrice data : ", res);
+
+//         if (res.length === 0) {
+//             return { status: 404 };
+//         }
+
+//         return res;
+//     } catch (error) {
+//         console.log("KIS AskPrice api err : " + error);
+//         return { status: 500 };
+//     }
+// }

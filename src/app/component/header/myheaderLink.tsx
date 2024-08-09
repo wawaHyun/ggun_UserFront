@@ -12,7 +12,7 @@ export default function MyHeaderLink() {
 
 
     return (
-        <ul className="grid grid-cols-9 justify-center gap-5 h-full w-full">
+        <ul className="grid grid-cols-8 justify-center gap-5 h-full w-full">
             {MyHeaderMenus.map((hover: IMenu, i: number) => (
                 <li key={hover.id} className="group/item">
                     <Link className={`flex hover:border-t-2 hover:border-pebble-500 h-full w-full text-center justify-center items-center ${pathName == hover.href ? 'border-pebble-500 border-t-2' : ''}`}
@@ -22,7 +22,7 @@ export default function MyHeaderLink() {
                         <div className="h-full rounded-lg ">
 
                             {hover.title == "Finance" ?
-                            <div className="grid grid-cols-2 w-[250px] border gap-1">
+                            <div className="grid grid-cols-2 w-[250px] gap-1">
                                 <ul className="text-center py-2 items-center justify-center border rounded-lg shadow-sm bg-white">
                                     <li className="bold border-dashed border-b-2 border-amber-200 mb-1">CMA</li>
                                     <li className="border border-1 border-pebble-200 mb-3"></li>

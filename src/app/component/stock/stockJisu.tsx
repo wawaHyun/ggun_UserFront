@@ -21,6 +21,15 @@ export const MyStockList = () => {
     //     }
     // );
 
+    
+    // const mutation = useMutation({
+    //     mutationFn: sendMail,
+    //     onSuccess: () => {
+    //         queryClient.invalidateQueries({queryKey:[data]})
+    //     },
+    // })
+    
+
     const data = StockRankingDummy
 
     return (

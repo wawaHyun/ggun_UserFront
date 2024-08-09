@@ -4,41 +4,36 @@ import { useRef, useState } from "react";
 import { MoveButton } from "../button/buttons";
 import OAuth from "./oAuth";
 import { useRouter } from "next/navigation";
+import { useLoginAction, useLoginStack } from "@/app/store/login.store";
 import { loginUser } from "@/app/service/users/users.api";
+import { error } from "console";
 
 export default function IdLoginBox() {
-
+    
     const router = useRouter();
+    
+    const userSubmit = useLoginAction();
+    const userInfo:IUser = useLoginStack();
 
     const [isWrongId, setIsWrongId] = useState('');
     const [isWrongPw, setIsWrongPw] = useState('');
-
-    const [len, setLen] = useState(false);
     const [msg, setMsg] = useState('');
 
     const ref = useRef<HTMLInputElement>(null)
 
-    const [admininfo, setadmininfo] = useState({ username: '' } as IUser)
-
-    const handleAdminname = (e: any) => {
+    const handleUsername = (e: any) => {
         const ID_CHECK = /^[a-zA-Z][a-zA-Z0-9]{5,11}$/g;
-        ID_CHECK.test(admininfo.username + "") ? setIsWrongId('false') : setIsWrongId('true');
-        setadmininfo({
-            ...admininfo,
-            username: e.target.value
-        })
-        // console.log('username : ' + JSON.stringify(admininfo))
-        setLen(false)
+        ID_CHECK.test(userInfo.username + "") ? setIsWrongId('false') : setIsWrongId('true');
+        userSubmit({ ...userInfo, username: e.target.value });
+        // console.log('username : ' + JSON.stringify(userInfo))
     }
 
 
     const handlePassword = (e: any) => {
         const PW_CHECK = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{6,15}$/g;
-        PW_CHECK.test(admininfo.password + "") ? setIsWrongPw('false') : setIsWrongPw('true');
-        setadmininfo({
-            ...admininfo,
-            password: e.target.value
-        })
+        PW_CHECK.test(userInfo.password + "") ? setIsWrongPw('false') : setIsWrongPw('true');
+        userSubmit({ ...userInfo, password: e.target.value });
+        // console.log('password : ' + JSON.stringify(userInfo))
     }
 
     const forgetPw = () => {
@@ -48,18 +43,21 @@ export default function IdLoginBox() {
             'Tel : 2046')
     }
 
-    // const exist = async () => await existUser(admininfo.username)
-    const login = async () => await loginUser(admininfo)
+    const login = async () => await loginUser(userInfo)
 
     const handleSubmit = () => {
-        console.log('login page 입력받은 내용 ' + JSON.stringify(admininfo))
-        setLen(true)
-        login();
-
-        // router.push(`/afterMain`)
+        console.log('login page 입력받은 내용 ' + JSON.stringify(userInfo))
+        login()
+        .then((res: boolean | { status: number; }) => {
+            res === true ? router.push(`/afterMain`) : setMsg("로그인실패")
+        })
+        .catch((error)=>{
+            console.log("login page err: ",error)
+        })
 
         if (ref.current) {
             ref.current.value = "";
+            userSubmit({ ...userInfo, username: '',password:'' });
         }
     }
 
@@ -72,12 +70,12 @@ export default function IdLoginBox() {
                     <div className="text-slate-500 text-center">주문/뱅킹/서비스 신청 등 모든 거래가 가능합니다.</div>
                 </div>
                 <label className="block text-gray-700 text-sm font-bold mb-2">
-                    ID : ggunAdmin0001
+                    ID : jgs0318@gmail.com
                 </label>
-                <input type="text" name="username" onChange={handleAdminname} required />
+                <input type="text" name="username" onChange={handleUsername} required />
 
-                {len === false ?
-                    admininfo.username?.length === 0 || admininfo.username === undefined ? <pre></pre> :
+                {userInfo.username != undefined && userInfo.username.length > 0 ?
+                    userInfo.username?.length === 0 || userInfo.username === undefined ? <pre></pre> :
                         (isWrongId === 'true' ?
                             (<pre><h6 className='text-red-500 text-sm'>* Wrong username form.</h6></pre>) :
                             (<pre><h6 className='text-green-500 text-sm'>* good username form.</h6></pre>)
@@ -93,10 +91,10 @@ export default function IdLoginBox() {
                 </div>
                 <input type="password" name="password" onChange={handlePassword} ref={ref} />
 
-                {len === false ?
-                    admininfo.password?.length === 0 || admininfo.password === undefined ? <pre></pre> :
+                {userInfo.password != undefined && userInfo.password.length > 0 ?
+                    userInfo.password?.length === 0 || userInfo.password === undefined ? <pre></pre> :
                         (isWrongPw === 'true' ?
-                            admininfo.password.length > 15 ?
+                            userInfo.password.length > 15 ?
                                 (<pre><h6 className='text-orange-500 text-sm'>* password가 15자를 넘었습니다..</h6></pre>) :
                                 (<pre><h6 className='text-red-500 text-sm'>* Wrong password form.<br />영어 소문자, 대문자, #?!@$ %^&*- 포함<br />6자이상 </h6></pre>) :
                             (<pre><h6 className='text-green-500 text-sm'>* good password form.</h6></pre>)
@@ -125,10 +123,5 @@ export default function IdLoginBox() {
                 <OAuth />
             </div>
         </div >
-
     )
 };
-function useKisStore() {
-    throw new Error("Function not implemented.");
-}
-

@@ -1,10 +1,10 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { fetchKisSection } from "@/app/service/kis/kis.api";
-import MarketBarChart from "../chart/marketChart";
 import { Suspense } from "react";
 import { KrxJisuDummy } from "@/app/common/dummy/krx.dummy";
-import { kisTradeDummy } from "@/app/common/dummy/kis.dummy";
+import { KisSectionDummy } from "@/app/common/dummy/kis.dummy";
+import MarketBarChart from "../chart/marketChart";
 
 export default function StockMarket({ props }: { props: number }) {
     // props = 1 코스닥, 2 = 코스피
@@ -14,6 +14,10 @@ export default function StockMarket({ props }: { props: number }) {
         if ('status' in response) {
             throw new Error(`Error: ${response.status}`);
         }
+        let result = response;
+        if(response.length == 0){
+            // result = KisSectionDummy;
+        }
         return response;
     }
 
@@ -21,6 +25,7 @@ export default function StockMarket({ props }: { props: number }) {
         {
             queryKey: ["kisSection", props],
             queryFn: fetchSection,
+            // placeholderData: KisSectionDummy,
         }
     );
 

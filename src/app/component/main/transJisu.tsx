@@ -1,5 +1,5 @@
 
-import BarChart from "../chart/barChart";
+import BarChart from "../chart/askPriceChart";
 import { WhiteBox } from "../style/whiteBox";
 import { useQuery } from "@tanstack/react-query";
 import { fetchKisAuth, fetchKisSection } from "@/app/service/kis/kis.api";

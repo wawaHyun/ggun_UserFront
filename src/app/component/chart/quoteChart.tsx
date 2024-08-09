@@ -12,6 +12,7 @@ import {
 } from 'chart.js';
 import Chart from 'chart.js/auto';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { Margarine } from 'next/font/google';
 
 Chart.register(CategoryScale,
     LinearScale,
@@ -22,28 +23,18 @@ Chart.register(CategoryScale,
     Legend,
     ChartDataLabels);
 
-export default function QuoteRChart({ props }: {
-    props: IKisAskPrice[]
-    // {
-    //     rt_cd: string,
-    //     msg_cd: string,
-    //     msg1: string,
-    //     output1: IAskPriceOutput1,
-    //     output2: IAskPriceOutput2,
-    // } 
-}) {
+export default function QuoteChart({ props }: {props: {data:string, max:string, color:string}}) {
 
-    // const labels = Array.from({ length: 10 }, (_, i) => `${i + 1}호가`);
-    const labels = '1호가'
+    const labels = [props.data];
     const data: any =
     {
         labels: labels,
         datasets: [
             {
-                label: 'KisAskPrice',
+                label: '',
                 type: 'bar',
-                data: '74100',
-                backgroundColor: '#f87171',
+                data:[props.data],
+                backgroundColor: props.color,
             },
         ],
     };
@@ -53,14 +44,14 @@ export default function QuoteRChart({ props }: {
         maintainAspectRatio: false,
         scales: {
             x: {
-                display: true,
+                display: false,
                 reverse: true,
                 min: 0,
-                max: 75000,
+                max: [props.max],
             },
             y: {
                 display: false,
-                position: 'right',
+                position: 'left',
             },
         },
         layout: {
@@ -68,8 +59,10 @@ export default function QuoteRChart({ props }: {
                 top: 0,
                 bottom: 0,
             },
+            
         },
         plugins: {
+            backgroundColor: 'rgba(255, 255, 255, 1)',
             legend: {
                 display: false,
             },
@@ -77,11 +70,11 @@ export default function QuoteRChart({ props }: {
                 enabled: false,
             },
             datalabels: {
-                color: '#94a3b8',
+                color: 'black',
                 display: true,
                 anchor: 'end',
                 align: 'start',
-                offset: 50,
+                offset: 5,
                 formatter: function (value: number) {
                     return value;
                 }

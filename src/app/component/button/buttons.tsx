@@ -9,12 +9,12 @@ export const MoveButton = ({ children, click, style, select }: IButton) => {
         </button>
     )
 }
-export const GrayButton = ({ children, click, style, select }: IButton) => {
+export const GrayButton = ({ children, click, style, select,name,value }: IButton) => {
     return (
         <button key={1}
-            onClick={click}
+            onClick={click} name={name} value={value}
             type="button"
-            className={`text-gray-500 min-h-[30px] border bg-white shadow-lg rounded-lg hover:hover:bg-slate-200 focus:outline-none font-medium text-sm text-center w-full h-full ${style} ${select ? 'bg-pebble-400' : ''}`}>
+            className={`text-gray-500 min-h-[30px] border bg-white shadow-lg rounded-lg hover:hover:bg-slate-200 focus:outline-none font-medium text-sm text-center ${style} ${select ? 'bg-pebble-400' : ''}`}>
             {children}
         </button>
     )
@@ -27,7 +27,7 @@ export const BrownButton = ({ children, click, style, select }: IButton) => {
             className={`min-h-[30px] border border-pebble-200 bg-gradient-to-r from-pebble-200 to-pebble-400 via-pebble-300 shadow-lg rounded-lg 
          before:h-full before:w-1/2 before:rounded-full before:block before:absolute relative overflow-hidden 
     before:bg-pebble-400 before:top-0 before:left-1/4 before:transition-transform before:opacity-0 before:hover:opacity-100 hover:text-200 hover:before:animate-ping
-        focus:outline-none font-medium text-center w-full h-full ${style} ${select ? 'bg-pebble-400' : ''}`}>
+        focus:outline-none font-medium text-center ${style} ${select ? 'bg-pebble-400' : ''}`}>
             {children}
         </button>
     )

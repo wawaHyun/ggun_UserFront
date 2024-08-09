@@ -12,7 +12,6 @@ export default function NewsTopic(){
     return response;
 }
 
-
   const { data } = useQuery<INews[]>(
     {
         queryKey: ["news"],

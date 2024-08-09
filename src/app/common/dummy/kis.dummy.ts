@@ -1,6 +1,9 @@
+export const KisSectionDummy: IKisSection[] = [
 
-export const KisAskPriceDummy: IKisAskPrice[] = [
-    {
+]
+
+
+export const KisAskPriceDummy: IKisAskPrice= {
         rt_cd: "0",
         msg_cd: "MCA00000",
         msg1: "정상처리 되었습니다.Dummy",
@@ -93,4 +96,3 @@ export const KisAskPriceDummy: IKisAskPrice[] = [
             vi_cls_code: "N"
         },
     }
-]

@@ -5,7 +5,7 @@ import MyHeaderLink from "../header/myheaderLink";
 import HeaderLink from "../header/headerLink";
 
 
-function MyHeader() {
+function Header() {
 
     const [showHeader, setShowHeader] = useState(true);
 
@@ -29,4 +29,4 @@ function MyHeader() {
 
     );
 }
-export default MyHeader;
+export default Header;

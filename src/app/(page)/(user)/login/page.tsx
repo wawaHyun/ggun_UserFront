@@ -13,11 +13,9 @@ const Login = () => {
                     <IdLoginBox />
                     <CertificateLogin />
                 </div>
-                <div className="flex justify-center w-full h-[50px]">
-                    <div className="w-[20%] content-center">
+                <div className="flex justify-center items-center w-full h-[70px] space-x-3">
                         <SendMail />
-                        <WhiteLink style="" click={process.env.NEXT_PUBLIC_ADMIN_URL} >ADMIN PAGE</WhiteLink>
-                    </div>
+                        <WhiteLink style="h-[30px] w-[200px]" click={process.env.NEXT_PUBLIC_ADMIN_URL} ><span>ADMIN PAGE</span></WhiteLink>
                 </div>
             </div>
         </div>

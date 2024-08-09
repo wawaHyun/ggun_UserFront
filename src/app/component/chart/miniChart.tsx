@@ -19,7 +19,7 @@ Chart.register(CategoryScale,
     Tooltip,
     Legend);
 
-function MiniChart() {
+function MiniChart({ props }: {props: any}){
 
     const stockData =[
         {date:'24-06-01', value: "200"},

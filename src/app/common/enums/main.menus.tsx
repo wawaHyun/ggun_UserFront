@@ -3,8 +3,8 @@ import Timer from "@/app/component/util/timer"
 
 export const HeaderMenus: IMenu[] = [
     { id: 1, title: "ggunLogo", href: `/` },
-    { id: 2, title: "Finance", href: `/asset` },
-    { id: 3, title: "호가 매매", href: `/trade` },
+    { id: 2, title: "Finance", href: `/gotoLogin` },
+    // { id: 3, title: "호가 매매", href: `/trade` },
     { id: 4, title: "주식 랭킹", href: `/gotoLogin` },
     { id: 5, title: "경제 News", href: `/news` },
     { id: 6, title: "고객센터", href: `/articles/list/2` },
@@ -15,19 +15,20 @@ export const HeaderMenus: IMenu[] = [
 export const MyHeaderMenus: IMenu[] = [
     { id: 1, title: "ggunLogo", href: `/afterMain` },
     { id: 2, title: "Finance", href: `/asset` },
-    { id: 3, title: "호가 매매", href: `/trade` },
+    // { id: 3, title: "호가 매매", href: `/trade` },
     { id: 4, title: "주식 랭킹", href: `/stock` },
     { id: 5, title: "경제 News", href: `/news` },
     { id: 6, title: "고객센터", href: `/articles/list/2` },
     { id: 7, title: <Timer />, href: `` },
-    { id: 8, title: "Login", href: `/login` },
     { id: 9, title: `주식꾼 님`, href: `/` },
+    { id: 8, title: "Logout", href: `#` },
 ]
 
 export const MyMenus: IMenu[] = [
-    { id: 1, title: "Mypage", href: `/user/login` },
+    // { id: 1, title: "Mypage", href: `/user/login` },
     { id: 2, title: "Join", href: `/user/join` },
     { id: 3, title: "Login", href: `/user/login` },
+    { id: 4, title: "Logout", href: `#` },
 ]
 
 export const BoardMenus: IMenu[] = [

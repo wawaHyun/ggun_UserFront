@@ -1,6 +1,5 @@
 'use client'
 
-import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { AdminIcon } from "../../../../common/icon/icon";
 
@@ -26,8 +25,6 @@ function Chartting({ params }: any) {
         { id: 15, roomid: myid, text: "맛밥하시고 내일 봬요", time: "12:03" }
     ]
 
-    const dispatch = useDispatch()
-
     // const allchatlist = useSelector(getAllChats);
 
     // useEffect(() => {
@@ -49,7 +46,7 @@ function Chartting({ params }: any) {
                             </div>
                             :
                             <div key={i.id} className="flex w-full">
-                                <div className="w-[50px] h-[40px]"> <AdminIcon style="#433E49" /></div>
+                                <div className="w-[50px] h-[40px]"> <AdminIcon color="#433E49" /></div>
                                 <div className="border shadow-md rounded-lg text-pretty flex items-center my-3 max-w-[45%] p-2 bg-pebble-400">
                                     {i.text}
                                 </div>

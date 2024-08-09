@@ -4,7 +4,7 @@ import Pagination from "@/app/component/navigation/pagination";
 import { useState } from "react";
 
 
-function StockLog() {
+function StockLog({props}:{props:number}) {
 
     const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(10);

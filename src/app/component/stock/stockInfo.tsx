@@ -1,9 +1,25 @@
 
 import { stockInfoDummy } from "@/app/common/dummy/stock.dummy";
 import { OneBox } from "@/app/component/stock/oneBox";
+import { useQuery } from "@tanstack/react-query";
 
 
-function StockInfo() {
+function StockInfo({props}:{props:number}) {
+
+    const fetchData= async (): Promise<any[]> => {
+        const response = await fetchNews(props)
+        if ('status' in response) {
+            throw new Error(`Error: ${response.status}`);}
+        return response;
+    }
+    
+      const { data } = useQuery<any[]>(
+        {
+            queryKey: ["stockInfo"],
+            queryFn : fetchData,
+            placeholderData: stockInfoDummy,
+        }
+    );
 
     return (
         <div className="w-full h-full">

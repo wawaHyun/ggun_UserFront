@@ -1,8 +1,19 @@
 'use server'
 
+import { cookies } from "next/headers";
+
 export async function fetchNews(): Promise<INews[] | { status: number }> {
     try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admins/news/list`)
+        console.log("refreshToken?: ",cookies().get('refreshToken'))
+        const headers: HeadersInit = {
+            'content-type': 'application/json',
+            'Authorization': 'Bearer ' + cookies().get('refreshToken'),
+        }
+
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admins/news/list`,{
+            method:'GET',
+            headers: headers,
+        })
         // const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/news/list`)
 
         if (!response.ok) {

@@ -10,7 +10,11 @@ export default function JisuBenner() {
         if ('status' in response) {
             throw new Error(`Error: ${response.status}`);
         }
-        return response;
+        let result = response;
+        if(response.length == 0){
+            result = KrxJisuDummy;
+        }
+        return result;
     }
 
     const { data } = useQuery<IKrx[]>(

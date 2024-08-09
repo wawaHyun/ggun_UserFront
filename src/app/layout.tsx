@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Footer from "./component/box/footer";
 import JisuBenner from "./component/util/jisuBenner";
-import MyHeader from "./component/navigation/myHeader";
+import Header from "./component/navigation/header";
 import ReactQueryProviders from "./common/hook/useReactQuery";
 import { QueryObserverBaseResult } from "@tanstack/react-query";
 
@@ -25,15 +25,12 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="bg-white">
           <ReactQueryProviders >
-            {/* {cookies.accessToken != undefined ? */}
             <div className="h-[95px]">
               <div className="fixed h-[50px] top-0 left-0 z-30 ">
                 <JisuBenner />
-                {/* <Header /> */}
-                <MyHeader />
+                <Header />
               </div>
             </div>
-            {/* : <div></div>}  */}
             <div className="justify-center flex z-10">
               {children}
             </div>

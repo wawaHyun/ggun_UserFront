@@ -1,6 +1,7 @@
-export function TabButton ( {children, click, style,select }: IButton){
+export function TabButton ( {children, click, style, select, name, value }: IButton){
     return(
-        <button className={`border rounded-t-lg border-b-0 forcus:text-pebble-500 ${style} ${ select ? 'bg-slate-100' : ''}`} onClick={click}>{children}</button>
+        <button name={name} value={value}
+        className={`border rounded-t-lg border-b-0 forcus:text-pebble-500 bg-slate-100 ${style} ${ select ? 'bg-white' : ''}`} onClick={click}>{children}</button>
     )
 }
 
